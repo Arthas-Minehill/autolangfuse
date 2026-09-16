@@ -1,0 +1,20 @@
+{
+  "cases": [
+    {
+      "original_input": "必须调用 Metabase MCP 做一次只读搜索，搜索关键词 test，禁止创建、修改或执行 SQL；只输出调用是否成功和返回结果数量，不输出业务数据。",
+      "original_output": "调用成功；返回结果数量：31。",
+      "user_turns": "必须调用 Metabase MCP 做一次只读搜索，搜索关键词 test，禁止创建、修改或执行 SQL；只输出调用是否成功和返回结果数量，不输出业务数据。",
+      "assistant_clarifications": "",
+      "resolved_input": "使用 Metabase MCP 执行一次只读搜索，关键词为 test，仅返回调用是否成功与结果条数。",
+      "primary_intent": "工具与能力咨询",
+      "secondary_intent": "数据工具连通性/权限冒烟验证",
+      "output_format": "校验结论（调用成功与否 + 结果数量）",
+      "execution_status": "成功",
+      "clarification_status": "无需澄清",
+      "context_required": "不需要",
+      "gold_status": "拒绝入集",
+      "exclude_reason": "该请求是以固定关键词 test 对 Metabase 搜索工具做的连通性/权限冒烟测试，只要求输出调用是否成功与结果条数，明确不输出业务数据，未涉及真实数据查询、指标口径、数据资产或业务分析目标，属于规则中应过滤的测试类任务。",
+      "review_notes": "证据边界：工具证据显示先枚举 MCP 工具（前缀包含 mcp__metabase），再调用 mcp__metabase__search({term_queries:['test']}) 并返回 {success:true, result_count:31}，与 Assistant 回复一致，可确认调用行为真实发生。风险提示：结果数量 31 由脚本从结构化返回中提取，未展示原始返回体，无法独立核验计数口径（如 total_count 是否等于实际命中数）；关键词 test 无业务含义，即使保留也不具备可评分的数据分析价值。若业务方认为『数据访问能力验证』应保留，需补充明确的验证目标与判定标准后再入集。"
+    }
+  ]
+}

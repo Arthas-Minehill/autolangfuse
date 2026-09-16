@@ -1,0 +1,36 @@
+{
+  "cases": [
+    {
+      "original_input": "生成一下上周的周报。",
+      "original_output": "# FedEx 周报 W/E 9/5 已生成（PPT + PDF，14 页）\n\n**本周是服务面最好的一周，但侵蚀面最差的一周。**\n\n## 好消息：升级投诉全面兑现\n\n- **Local Position Scan 19.94h（−1.71h），首次跌破 20 小时**；24h 率 62.3%（+6.3pp），均为开始跟踪以来最佳\n- **四个升级对象全部改善**：SAV +13.0pp 到 60.4%、NJF02 +12.7pp、NJF +8.3pp、CHI +14.7pp 到 62.8%（三周累计收复 27pp，基本回到崩塌前水位）\n- **对 UPS 差距收窄到 4.60h / 15.3pp**——历史最好相对位置（也有 UPS 自己在 SAV 崩到 25.1h 的因素）\n- 剩余落后仓：**GAE 成为唯一低于 50% 的大仓**（47.1%，26.2h）——隔壁 SAV 刚被修好，证明方案有效，本周的诉求就是把 Savannah 的取件方案延伸到 GAE。HOU07（−9.2pp 到 89.8%）和 SCH（74.4%）列入观察\n\n## 坏消息：非 prepaid 跳升\n\n- **非 prepaid 占比 33.2%（69,566 件），单周 +3.7pp，连续第四周上升**（27.1→28.7→29.5→33.2）\n- prepaid 量 −4.6% 的同时，上传面单 +12.8%、平台面单 +14.0%——**史上最大单周背离**。建议在下次和 Chris 通话前，把这一周的增量拆到客户（用之前的清退/整改名单对一下是不是 Tier B 客户在加速外流），需要的话我来做\n\n其他：量走弱 −4.6%（140,083 件，NJF02 −11.3%、CHI −15.6%）；燃油 Sep 7 周双双回落（FedEx 27.00% vs UPS 27.50%，仍便宜 0.5pp）；DS 均值恶化到 32.7h（CAP-NPRS 55.9h、SALT 48.2h）；两页 Open Items（Hub ID 确认、退款电子化）已带上 **\"awaiting FedEx response\"** 状态延续——如果 FedEx 已答复，告诉我内容我更新状态或撤页。\n\n脚本存为 [build_fedex_weekly_deck_WE_0905.js](build_fedex_weekly_deck_WE_0905.js)，上周列已按惯例重新取数。",
+      "user_turns": "生成一下上周的周报。",
+      "assistant_clarifications": "",
+      "resolved_input": "生成上周的 FedEx 周报，输出 PPT + PDF，沿用既有周报模板与口径。范围包括：按承运商/仓库/枢纽的包裹量、平均 asc 时效、24h 率，FedEx 与 UPS 对比，货量与面单结构（prepaid / 平台面单 / 上传面单），Direct Shipping 时效，以及最新 FedEx/UPS 燃油附加费；并整理 Open Items。",
+      "primary_intent": "数据查询与交付",
+      "secondary_intent": "周期性周报/报表生成与交付",
+      "output_format": "PPT+PDF 周报",
+      "execution_status": "成功",
+      "clarification_status": "无需澄清",
+      "context_required": "上下文不足",
+      "gold_status": "待重制-上下文案例",
+      "exclude_reason": "",
+      "review_notes": "历史回复为 Assistant 自述的周报结果，PPT/PDF 产物与页面结构未在证据中直接验证，不可视为已验证事实。指标口径（asc 平均时效、24h 率、非 prepaid 占比、Direct Shipping、Local Hub 等）来自 metabase 查询与既有周报模板，本 session 未给出模板定义；燃油附加费取自 FedEx/UPS 官网页面快照。'上周'的具体周次需按运行日期确定，resolved_input 中不应写死日期与周次。"
+    },
+    {
+      "original_input": "@\"/Users/conanlee/Library/Containers/com.tencent.xinWeChat/Data/Documents/xwechat_files/conanlee007_65b2/temp/drag/FedEx_Weekly_issue-9.14_styled.pptx\"\n结合这个内容，帮我生成上周的周报。",
+      "original_output": "# FedEx 周报 W/E 9/12 已生成（14 页，PPT + PDF），物流组新 Issue 已整合\n\n## 本周三条主线\n\n1. **量大跌但结构更刺眼**：prepaid 发货 125,528 件（−10.4%，Labor Day 后一周），NJF −21.6%、SCH −33.4%；但**上传面单逆势 +12.1%**——非 prepaid 占比飙到 **38.1%（77,315 件），连续第五周上升**。备注页里加了一个关键拆解：FedEx 总量其实只跌了 3.2%，prepaid 跌 10.4% 的大头是**面单迁移而非需求下滑**。这个数字快到 4 成了，建议尽快做客户级下钻并和 Chris 摊牌。\n2. **NJ 走廊四周升级彻底修复**：NJF 14.30h / **91.7%**（+29pp）、NJF02 14.78h / 72.5%（+33.3pp）——从全网最差到第一梯队，升级流程的完整成功案例。24h 率全网 66.2% 也创新高。\n3. **Savannah 走廊崩了**：SAV 35.4%（−25pp，上周的改善全部回吐）、GAE 41.4%，双双跌破 45%——deck 里的诉求就是\"照 NJ 的方案原样复制到 Savannah\"。CAR（−20.9pp）、CHI（−11.7pp）二次下滑也进了 watch list。\n\n对 UPS 差距缩到历史最小 **+3.46h**（UPS 自己在 CAP 崩了 8 小时）；燃油 Sep 14 周双双大涨 1pp（FedEx 28.00% vs UPS 28.50%）。\n\n## Open Items（物流组文件已整合）\n\n- **Issue 1（Hub ID 确认）**：carry-over，标注 \"awaiting FedEx response (3rd week)\"——三周没回复了，下次会议值得点名\n- **Issue 2（新，Sep 14）**：「争议退款支票状态不明」——按物流组内容重建：申诉成功≠收到钱、支票无状态可查、邮件+订单明细已发无实质回复，三张 visibility-gap 卡片 + ASK（逐张支票确认 mailed/delivered/cashed 状态并给补发方案），页脚注明它是 8/31 电子退款诉求的升级，原诉求继续有效\n\n脚本存为 [build_fedex_weekly_deck_WE_0912.js](build_fedex_weekly_deck_WE_0912.js)，物流组原件留档 `logistics_issue_914.pptx`。上周列（W/E 9/5）已按惯例回填重取。",
+      "user_turns": "@\"/Users/conanlee/Library/Containers/com.tencent.xinWeChat/Data/Documents/xwechat_files/conanlee007_65b2/temp/drag/FedEx_Weekly_issue-9.14_styled.pptx\"\n结合这个内容，帮我生成上周的周报。",
+      "assistant_clarifications": "",
+      "resolved_input": "结合随附的物流组文件 FedEx_Weekly_issue-9.14_styled.pptx 的内容，生成上周的 FedEx 周报（PPT + PDF），沿用既有周报模板与口径（货量、面单结构、时效与 24h 率、FedEx/UPS 对比、燃油附加费），并将该文件中的 Issue 整合进周报的 Open Items。",
+      "primary_intent": "数据查询与交付",
+      "secondary_intent": "周期性周报/报表生成与交付",
+      "output_format": "PPT+PDF 周报",
+      "execution_status": "成功",
+      "clarification_status": "无需澄清",
+      "context_required": "上下文不足",
+      "gold_status": "待重制-上下文案例",
+      "exclude_reason": "",
+      "review_notes": "与上一个 Case 属同一周报系列的不同周次，数据与诉求独立，故拆开。历史回复为 Assistant 自述，PPT/PDF 产物、14 页结构及 Issue 卡片细节未在证据中直接验证。随附物流组文件的具体内容未在 session 中完整呈现，'按物流组内容重建 Issue' 的忠实度需人工核对。指标口径与模板来自既有上下文与 metabase 查询，'上周'周次不得在 resolved_input 中写死。"
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+{"items": [{"case_id": "TEST-001", "user_query": "test query", "expected_tools": "[\"metric-mcp-remote.searchMetricApp\"]", "main_query": "test_metric", "evaluation_focus": ["field:test_col"]}]}

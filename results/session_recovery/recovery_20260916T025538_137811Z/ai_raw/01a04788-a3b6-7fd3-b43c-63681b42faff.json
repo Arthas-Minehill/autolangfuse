@@ -1,0 +1,36 @@
+{
+  "cases": [
+    {
+      "original_input": "测试已经成功，再次确认一下，如果我点击保存，1.提示保存新的 SSO 配置将使您退出登录并跳转到登录页面。请先测试您的配置，以免被锁定。\n新的登录是否兼容旧的\n2.新生成的OIDC 登录后生成的 OpenMetadata 用户名   指的是如果我用casdoor身份登录Openmetadata，统一都会使用固定的用户名吗\n\n（后续以 Response annotations 形式对回复中“会被 Casdoor OIDC 替代”一句发起的标注追问，标注正文被截断）",
+      "original_output": "可以保存，但要明确：这是“切换登录方式”，不是兼容两套登录。\n1. 旧登录是否兼容：保存后，普通用户名/密码登录入口会被 Casdoor OIDC 替代；原有 OpenMetadata 用户、权限和数据不会删除；只有 OIDC 生成的用户名与旧用户名完全相同，才会继续使用旧用户；保存前确认 Admin Principals 包含指定管理员账号。\n2. 是否所有人共用固定用户名：不是，是“固定生成规则”而不是“固定一个账号”。当前 email 排在第一位，因此不同邮箱会分别生成独立的 OpenMetadata 用户名（如 l20378@loctek.com → l20378，l16421@loctek.com → l16421），每个 Casdoor 用户首次登录自动创建 OpenMetadata 用户并绑定默认角色“海外仓AI用户”；如果原 OpenMetadata 用户叫 chenqiyue，新登录得到 l20378，两者会被视为两个不同用户。\n（对标注追问的回复）不能。保存为 Custom OIDC 后，原来的 OpenMetadata 本地账号不能再用密码登录。原用户数据仍保留，但要继续使用该用户，必须让 Casdoor 登录后生成的用户名与旧 OpenMetadata 用户名完全一致；否则会新建用户。如果必须恢复本地账号密码登录，只能把认证方式改回 basic。",
+      "user_turns": "测试已经成功，再次确认一下，如果我点击保存，1.提示保存新的 SSO 配置将使您退出登录并跳转到登录页面。请先测试您的配置，以免被锁定。\n新的登录是否兼容旧的\n2.新生成的OIDC 登录后生成的 OpenMetadata 用户名   指的是如果我用casdoor身份登录Openmetadata，统一都会使用固定的用户名吗\n---\n# Response annotations: 每个条目包含一段此前回复中被选中的文字及用户评论，按数组顺序视为 Annotation 1……<response-annotations>[{\"text\":\"会被 Casdoor OIDC 替代\"...}]（标注正文被截断）",
+      "assistant_clarifications": "",
+      "resolved_input": "在 OpenMetadata 2.0 中把认证方式保存为 Casdoor 自定义 OIDC 后：(1) 原有的 OpenMetadata 本地用户名/密码登录是否还能继续使用？原用户及其权限数据是否保留？(2) 通过 Casdoor OIDC 登录时生成的 OpenMetadata 用户名是否为所有用户共用的同一个固定值？其生成规则由什么决定？",
+      "primary_intent": "工具与能力咨询",
+      "secondary_intent": "数据平台身份与权限机制咨询（OIDC 用户名生成与本地登录兼容性）",
+      "output_format": "结论式技术说明",
+      "execution_status": "成功",
+      "clarification_status": "无需澄清",
+      "context_required": "已具备",
+      "gold_status": "待独立验证",
+      "exclude_reason": "",
+      "review_notes": "范围判定：本会话主题为数据平台（OpenMetadata）的身份/权限与访问连续性咨询，按“数据访问能力/数据资产权限”边界保留；若审核口径将 SSO 鉴权配置整体归入“密钥与鉴权/安装配置”排除项，则本 Case 应改判拒绝入集。证据边界：输入含系统生成的 Response annotations 包装文本，注释正文被截断，仅保留被选中的原句；Assistant 关于“保存后本地密码登录不可用”“用户名按 claims 顺序生成、每人独立创建”的结论来自其自身陈述及其内部 MEMORY.md 记忆，本次会话未通过真实登录复现，MEMORY.md 为自建记忆不能作为已核验事实；应使用对应版本 OpenMetadata 源码或测试环境独立验证后再作为 Gold。"
+    },
+    {
+      "original_input": "这似乎不太对吧，如果我要用这个，是不是代表现在的Openmetadata 用户数据需要迁移过去？或者能否兼容？现在om是线上应用非本地，看看有什么影响面小的方案？\n\n（后续以 Response annotations 形式对回复中“推荐方案：身份映射复用旧用户……”一段发起的标注追问，提问是否需要 Gateway，标注正文被截断）",
+      "original_output": "你判断得对：这不是无感切换。线上最小影响方案是“复用原 OpenMetadata 用户”，不是迁移用户数据到 Casdoor。\n推荐方案：身份映射复用旧用户——让 Casdoor 返回的身份声明中把用户名映射为原 OpenMetadata 用户名、邮箱仍用邮箱，并在 OpenMetadata 配置相应的 Jwt Principal Claims Mapping（username 取 preferred_username、email 取 email）；登录时 OpenMetadata 按用户名查找已有用户，命中即复用，原有 Role、Team、资产 Owner 等关系不需要迁移。若继续使用 email 优先，会按邮箱前缀新建用户，不会自动绑定旧用户，此时才需要迁移权限和资产关系。\n影响最小的两个选择：1）如果只有 MCP 需要 Casdoor，则不要保存 OpenMetadata SSO，保留线上 Basic 登录，由 Gateway 验证 Casdoor、下游继续使用 Bot JWT；2）如果整个 OpenMetadata 都要使用 Casdoor，先完成“preferred_username → 原 OM 用户名”的映射再切换。OpenMetadata 官方明确说明不能同时启用 Basic 和 SSO。\n（对标注追问的回复）可以不用 Gateway：Casdoor 只负责证明“你是谁”，OpenMetadata 继续保存用户、角色、策略和资产权限。但有一个重要修正：在 OpenMetadata 2.0 的 code 登录流程中，不能只靠 Use Roles From Provider 就认定 Casdoor 角色会自动写入 OpenMetadata 用户。完整登录流程为：用户 → OpenMetadata → 跳转 Casdoor 登录 → Casdoor 返回 authorization code → OpenMetadata 换取 ID Token → 从 Token 提取用户名和邮箱 → 查找或创建 OpenMetadata User → OpenMetadata 签发自己的 JWT → 根据 OpenMetadata 中的 Role → Policy 判断权限；最终 AI 客户端连接 MCP 时拿到的是 OpenMetadata 签发的用户 JWT。OpenMetadata 按“用户名”查找已有用户，而不是按 Casdoor 用户 ID 查找。",
+      "user_turns": "这似乎不太对吧，如果我要用这个，是不是代表现在的Openmetadata 用户数据需要迁移过去？或者能否兼容？现在om是线上应用非本地，看看有什么影响面小的方案？\n---\n# Response annotations: 每个条目包含一段此前回复中被选中的文字及用户评论，按数组顺序视为 Annotation 1……<response-annotations>[{\"text\":\"推荐方案：身份映射复用旧用户例如原 OpenMetadata 用户是：\"...}]（标注正文被截断）",
+      "assistant_clarifications": "",
+      "resolved_input": "线上部署（非本地）的 OpenMetadata 2.0 若把登录方式从本地 Basic 切换为 Casdoor 自定义 OIDC：现有 OpenMetadata 用户、角色、Team 与资产 Owner 归属关系是否需要迁移？能否在不迁移用户数据的前提下复用既有用户？请给出影响面最小的切换方案，并说明需要调整哪些身份映射相关配置项及其作用；同时说明不经 Gateway 的方案是否可行、以及角色是否会自动从身份提供方同步。",
+      "primary_intent": "数据工程与技术处理",
+      "secondary_intent": "数据平台身份/权限迁移影响评估与最小影响切换方案设计",
+      "output_format": "影响评估与实施方案说明",
+      "execution_status": "成功",
+      "clarification_status": "无需澄清",
+      "context_required": "已具备",
+      "gold_status": "待独立验证",
+      "exclude_reason": "",
+      "review_notes": "范围判定同前：保留理由是其涉及数据目录平台用户/角色/策略到数据资产权限的连续性与最小影响方案；若审核将 SSO/OIDC 鉴权配置归入排除项，应改判拒绝入集。证据边界：整个 session 因长度限制被截断到 60000 字符，多个 tool 输出（源码片段、MEMORY.md 检索结果）亦被截断，无法完整核验；Assistant 引用的源码行号与 GitHub 链接属其自述证据，非独立验证结论；“按用户名复用即可保留 Role/Team/Owner”“不能同时启用 Basic 与 SSO”“Use Roles From Provider 不会自动写入角色”等均为待验证主张，需用对应版本源码或灰度环境复现；会话中出现具体用户名/邮箱示例（如 chenqiyue、l20378@loctek.com），仅为上下文示例，不得作为通用映射规则或 Gold 口径；会话中还存在大量 user/assistant 为 null 的空 turn，说明预览数据不完整。"
+    }
+  ]
+}

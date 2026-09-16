@@ -1,0 +1,13 @@
+{
+  "run_id": "recovery_20260916T025538_137811Z",
+  "project_id": "cmpmf51m20025wz07k01zzhlx",
+  "from": "2026-09-08T16:00:00Z",
+  "to": "2026-09-16T02:48:55Z",
+  "all_sessions": false,
+  "observation_count": 4738,
+  "session_count": 10,
+  "observations_without_session": 4221,
+  "remote_write": true,
+  "case_count": 16,
+  "low_confidence_count": 0
+}

@@ -1,0 +1,29 @@
+{
+  "items": [
+    {
+      "datasetName": "aieval/data_analysis",
+      "case_id": "L1-METRIC-CUSTOMER-ACTIVE-002",
+      "input": {
+        "case_id": "L1-METRIC-CUSTOMER-ACTIVE-002",
+        "original_request": "查询2026年6月1日后海外仓的多维度收入情况"
+      },
+      "expectedOutput": {
+        "case_id": "L1-METRIC-CUSTOMER-ACTIVE-002",
+        "main_query": "每日每市场每客户业务类型_订单量_收入",
+        "expected_tools": [
+          "metric-mcp-remote.searchMetricApp",
+          "metric-mcp-remote.searchMetricAppQueryResult",
+          "metric-mcp-remote.searchSqlByMetricTypeAndNameExact"
+        ]
+      },
+      "metadata": {
+        "case_id": "L1-METRIC-CUSTOMER-ACTIVE-002",
+        "task_level": "L1",
+        "task_type": "query_metric",
+        "business_domain": "海外仓",
+        "difficulty": null,
+        "source": "manual_mcp_verified"
+      }
+    }
+  ]
+}

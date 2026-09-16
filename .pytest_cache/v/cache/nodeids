@@ -1,0 +1,7 @@
+[
+  "scripts/test_session_annotation_pipeline.py::test_build_candidate_selects_root_observation",
+  "scripts/test_session_annotation_pipeline.py::test_normalize_text_ignores_spacing_and_punctuation",
+  "scripts/test_session_annotation_pipeline.py::test_proposed_admission_status_is_conservative",
+  "scripts/test_session_annotation_pipeline.py::test_root_observation_falls_back_to_parentless",
+  "scripts/test_session_annotation_pipeline.py::test_session_review_context_keeps_all_turns"
+]

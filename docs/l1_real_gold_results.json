@@ -1,0 +1,986 @@
+{
+  "items": {
+    "L1-REAL-01": {
+      "expected_result": {
+        "columns": [
+          "warehouse_code",
+          "outbound_good_cnt_d30_d",
+          "inventory_good_avg_cnt_d30_d",
+          "turnover_rate_d30",
+          "inventory_good_cnt_d"
+        ],
+        "rows": [
+          [
+            "HOU07",
+            889,
+            "862.53",
+            "1.0307",
+            395
+          ],
+          [
+            "NJF",
+            3139,
+            "4226.73",
+            "0.7427",
+            7214
+          ],
+          [
+            "GAE",
+            3249,
+            "8338.53",
+            "0.3896",
+            10966
+          ],
+          [
+            "CAP",
+            442,
+            "3306.90",
+            "0.1337",
+            3464
+          ]
+        ]
+      },
+      "contract": {
+        "source": "target_tool_projection",
+        "last_verified_at": "2026-07-08",
+        "grain": "warehouse_sku_turnover_30d",
+        "filters": {
+          "stats_dt": "2026-06-19",
+          "lecangs_code": "LT-DHW019BN014C",
+          "table": "dws.dws_tra_warehouse_good_daily_hi"
+        },
+        "row_count": 4,
+        "score_mode": "schema_only",
+        "must_include": [
+          "HOU07 turnover=1.0307",
+          "NJF turnover=0.7427",
+          "GAE turnover=0.3896",
+          "CAP turnover=0.1337",
+          "total_outbound=7719",
+          "weighted_turnover=0.4613"
+        ]
+      }
+    },
+    "L1-REAL-02": {
+      "expected_result": {
+        "columns": [
+          "warehouse_code",
+          "outbound_good_cnt_d30_d",
+          "inventory_good_avg_cnt_d30_d",
+          "turnover_rate_d30",
+          "inventory_good_cnt_d"
+        ],
+        "rows": [
+          [
+            "HOU07",
+            889,
+            "862.53",
+            "1.0307",
+            395
+          ],
+          [
+            "NJF",
+            3139,
+            "4226.73",
+            "0.7427",
+            7214
+          ],
+          [
+            "GAE",
+            3249,
+            "8338.53",
+            "0.3896",
+            10966
+          ],
+          [
+            "CAP",
+            442,
+            "3306.90",
+            "0.1337",
+            3464
+          ]
+        ]
+      },
+      "contract": {
+        "source": "target_tool_projection",
+        "last_verified_at": "2026-07-08",
+        "grain": "warehouse_sku_turnover_30d",
+        "filters": {
+          "stats_dt": "2026-06-19",
+          "lecangs_code": "LT-DHW019BN014C",
+          "table": "dws.dws_tra_warehouse_good_daily_hi"
+        },
+        "row_count": 4,
+        "score_mode": "schema_only",
+        "must_include": [
+          "HOU07 turnover=1.0307",
+          "NJF turnover=0.7427",
+          "GAE turnover=0.3896",
+          "CAP turnover=0.1337",
+          "total_outbound=7719",
+          "weighted_turnover=0.4613"
+        ]
+      }
+    },
+    "L1-REAL-03": {
+      "expected_result": {
+        "columns": [
+          "contract_key",
+          "contract_value"
+        ],
+        "rows": [
+          [
+            "expected_answer_key_points",
+            "[\"回答应说明这是到货交接场景的标准入库单类型指标\", \"底表使用 dws_fin_overall_expense_daily_hi\", \"度量字段使用 handover_load_unit_cnt_d\", \"聚合方式为 sum\", \"需按日期 stats_dt 及到货交接/标准入库单口径理解\"]"
+          ],
+          [
+            "must_include",
+            "[\"handover_load_unit_cnt_d\", \"sum\", \"dws_fin_overall_expense_daily_hi\", \"标准入库单类型\"]"
+          ]
+        ]
+      },
+      "contract": {
+        "source": "target_tool_projection",
+        "last_verified_at": "2026-07-08",
+        "grain": "metric_definition_answer",
+        "row_count": 0,
+        "score_mode": "task_completed_only",
+        "expected_answer_key_points": [
+          "回答应说明这是到货交接场景的标准入库单类型指标",
+          "底表使用 dws_fin_overall_expense_daily_hi",
+          "度量字段使用 handover_load_unit_cnt_d",
+          "聚合方式为 sum",
+          "需按日期 stats_dt 及到货交接/标准入库单口径理解"
+        ],
+        "must_include": [
+          "handover_load_unit_cnt_d",
+          "sum",
+          "dws_fin_overall_expense_daily_hi",
+          "标准入库单类型"
+        ],
+        "filters": {}
+      }
+    },
+    "L1-REAL-04": {
+      "expected_result": {
+        "columns": [
+          "owner_group",
+          "customer_count",
+          "inventory_good_volume_m3",
+          "container_cnt_64m3",
+          "outbound_good_volume_m3",
+          "outbound_container_cnt_64m3"
+        ],
+        "rows": [
+          [
+            "3PL",
+            "1047",
+            "405859.4468",
+            "6341.5539",
+            "11843.7131",
+            "185.0580"
+          ],
+          [
+            "FS",
+            "17",
+            "67556.3829",
+            "1055.5685",
+            "1275.1979",
+            "19.9250"
+          ]
+        ]
+      },
+      "contract": {
+        "source": "target_tool_projection",
+        "last_verified_at": "2026-07-08",
+        "grain": "inventory_and_outbound_volume_3pl_fs_split_2026_06_29",
+        "filters": {
+          "stats_dt": "2026-06-29",
+          "inventory_table": "dws.dws_tra_warehouse_good_daily_hi",
+          "customer_dim": "dim.dim_customer_hf",
+          "owner_rule": "business_type_name=海外仓 -> 3PL, else FS"
+        },
+        "row_count": 2,
+        "score_mode": "value_column_signature",
+        "must_include": [
+          "3PL inventory_volume=405859.4468 container=6341.5539 customers=1047",
+          "FS inventory_volume=67556.3829 container=1055.5685 customers=17",
+          "total_inventory_volume=473415.8297",
+          "container_divisor=64"
+        ]
+      }
+    },
+    "L1-REAL-09": {
+      "expected_result": {
+        "columns": [
+          "owner_group",
+          "customer_count",
+          "inventory_good_cnt",
+          "inventory_good_volume_m3",
+          "container_cnt_64m3"
+        ],
+        "rows": [
+          [
+            "3PL",
+            "1047",
+            "4304403",
+            "405859.4468",
+            "6341.5539"
+          ],
+          [
+            "FS",
+            "17",
+            "688224",
+            "67556.3829",
+            "1055.5685"
+          ]
+        ]
+      },
+      "contract": {
+        "source": "target_tool_projection",
+        "last_verified_at": "2026-07-08",
+        "grain": "inventory_count_volume_3pl_fs_split_2026_06_29",
+        "filters": {
+          "stats_dt": "2026-06-29",
+          "inventory_table": "dws.dws_tra_warehouse_good_daily_hi",
+          "customer_dim": "dim.dim_customer_hf",
+          "owner_rule": "business_type_name=海外仓 -> 3PL, else FS"
+        },
+        "row_count": 2,
+        "score_mode": "value_column_signature",
+        "must_include": [
+          "3PL inventory_good_cnt=4304403 inventory_volume=405859.4468 container=6341.5539",
+          "FS inventory_good_cnt=688224 inventory_volume=67556.3829 container=1055.5685",
+          "dim_customer_hf.custom_code has no duplicate values"
+        ]
+      }
+    },
+    "L1-REAL-05": {
+      "expected_result": {
+        "columns": [
+          "warehouse_code",
+          "inventory_good_volume_m3",
+          "container_cnt_64m3"
+        ],
+        "rows": [
+          [
+            "CAP",
+            "95364.25",
+            "1490.07"
+          ],
+          [
+            "NJF02",
+            "49816.53",
+            "778.38"
+          ],
+          [
+            "NJF",
+            "48262.19",
+            "754.10"
+          ],
+          [
+            "EUWE",
+            "38643.65",
+            "603.81"
+          ],
+          [
+            "SAV",
+            "36451.18",
+            "569.55"
+          ],
+          [
+            "HOU07",
+            "32770.68",
+            "512.04"
+          ],
+          [
+            "CHI",
+            "23805.16",
+            "371.96"
+          ],
+          [
+            "CAR",
+            "23517.14",
+            "367.46"
+          ],
+          [
+            "CATO",
+            "21087.92",
+            "329.50"
+          ],
+          [
+            "HOU05",
+            "19361.20",
+            "302.52"
+          ],
+          [
+            "GAE",
+            "18513.90",
+            "289.28"
+          ],
+          [
+            "SCH",
+            "16092.77",
+            "251.45"
+          ],
+          [
+            "UKNH02",
+            "13481.11",
+            "210.64"
+          ],
+          [
+            "CAT",
+            "9813.40",
+            "153.33"
+          ],
+          [
+            "EUKL",
+            "8829.79",
+            "137.97"
+          ],
+          [
+            "JPST01",
+            "6139.91",
+            "95.94"
+          ],
+          [
+            "PAW",
+            "3825.23",
+            "59.77"
+          ],
+          [
+            "UKNH",
+            "3378.01",
+            "52.78"
+          ],
+          [
+            "MEM",
+            "1601.32",
+            "25.02"
+          ],
+          [
+            "CAVR03",
+            "1236.54",
+            "19.32"
+          ],
+          [
+            "MEM-R",
+            "838.51",
+            "13.10"
+          ],
+          [
+            "ONT2",
+            "362.66",
+            "5.67"
+          ],
+          [
+            "CATO02",
+            "101.59",
+            "1.59"
+          ],
+          [
+            "HOU03",
+            "65.01",
+            "1.02"
+          ],
+          [
+            "CAON",
+            "52.44",
+            "0.82"
+          ],
+          [
+            "CAVR02",
+            "3.74",
+            "0.06"
+          ],
+          [
+            "CAVR",
+            "0.00",
+            "0.00"
+          ]
+        ]
+      },
+      "contract": {
+        "source": "target_tool_projection",
+        "last_verified_at": "2026-07-08",
+        "grain": "warehouse_inventory_volume_2026_06_29",
+        "filters": {
+          "stats_dt": "2026-06-29",
+          "table": "dws.dws_tra_warehouse_good_daily_hi"
+        },
+        "row_count": 27,
+        "score_mode": "schema_only",
+        "must_include": [
+          "warehouse_count=27",
+          "total_volume=473415.83",
+          "total_container=7397.12",
+          "CAP volume=95364.25 container=1490.07",
+          "NJF02 volume=49816.53",
+          "CAVR02 volume=3.74",
+          "CAVR volume=0.00"
+        ]
+      }
+    },
+    "L1-REAL-06": {
+      "expected_result": {
+        "columns": [
+          "table_name",
+          "create_month",
+          "total_rows",
+          "null_rate",
+          "missing_rate"
+        ],
+        "rows": [
+          [
+            "ods.ods_oms_toc_order",
+            "2026-06",
+            1756157,
+            "3.9149%",
+            "5.2740%"
+          ],
+          [
+            "ods.ods_tms_external_order",
+            "2026-06",
+            1547944,
+            "0.6118%",
+            "0.6118%"
+          ]
+        ]
+      },
+      "contract": {
+        "source": "target_tool_projection",
+        "last_verified_at": "2026-07-08",
+        "grain": "platform_quality_key_month_summary_for_two_tables",
+        "filters": {
+          "tables": [
+            "ods.ods_oms_toc_order",
+            "ods.ods_tms_external_order"
+          ],
+          "month": "2026-06",
+          "order": "create_month desc",
+          "notes": "OMS missing_rate includes NULL or blank; TMS platform is int so missing equals NULL rate"
+        },
+        "row_count": 2,
+        "score_mode": "value_column_signature",
+        "must_include": [
+          "ods_oms_toc_order 2026-06 total_rows=1756157 null_rate=3.9149% missing_rate=5.2740%",
+          "ods_tms_external_order 2026-06 total_rows=1547944 null_rate=0.6118%",
+          "OMS has case/name inconsistency examples such as Amazon/AMAZON/amazon",
+          "TMS platform valid values are mainly 0 and 1"
+        ]
+      }
+    },
+    "L1-REAL-07": {
+      "expected_result": {
+        "columns": [
+          "month_end",
+          "inventory_good_cnt",
+          "inventory_good_volume_m3",
+          "volume_valuation_usd"
+        ],
+        "rows": [
+          [
+            "2024-01-31",
+            254979,
+            "31097.8254",
+            "7288552.83"
+          ],
+          [
+            "2024-02-29",
+            264988,
+            "31711.1906",
+            "7432310.30"
+          ],
+          [
+            "2024-03-31",
+            254774,
+            "30205.6966",
+            "7079460.14"
+          ],
+          [
+            "2024-04-30",
+            241678,
+            "28812.6540",
+            "6752965.78"
+          ],
+          [
+            "2024-05-31",
+            280810,
+            "33472.2555",
+            "7845059.88"
+          ],
+          [
+            "2024-06-30",
+            313791,
+            "36728.4251",
+            "8608224.63"
+          ],
+          [
+            "2024-07-31",
+            437756,
+            "52003.7923",
+            "12188388.82"
+          ],
+          [
+            "2024-08-31",
+            543280,
+            "67016.6386",
+            "15707024.67"
+          ],
+          [
+            "2024-09-30",
+            678268,
+            "86917.9217",
+            "20371387.90"
+          ],
+          [
+            "2024-10-31",
+            676446,
+            "88257.2775",
+            "20685299.41"
+          ],
+          [
+            "2024-11-30",
+            593309,
+            "77987.0423",
+            "18278213.04"
+          ],
+          [
+            "2024-12-31",
+            470473,
+            "62251.4939",
+            "14590193.88"
+          ]
+        ]
+      },
+      "contract": {
+        "source": "target_tool_projection",
+        "last_verified_at": "2026-07-08",
+        "grain": "customer_month_end_inventory_valuation_2024_ads_aggregate_literal_requested_codes",
+        "filters": {
+          "table": "ads.ads_client_good_overall_mv",
+          "customers": [
+            "XGRB",
+            "LYSB",
+            "ZBY",
+            "HZRZ",
+            "SWWL"
+          ],
+          "month_ends": "2024-01-31..2024-12-31",
+          "valuation_rate": "15000/64 USD per m3",
+          "note": "XGRB has no records, aggregate covers LYSB/ZBY/HZRZ/SWWL"
+        },
+        "row_count": 12,
+        "score_mode": "value_column_signature",
+        "must_include": [
+          "XGRB has no records in ads.ads_client_good_overall_mv",
+          "valuation_rate=15000/64=234.375 USD per m3",
+          "2024-10 total_volume=88257.2775 valuation=20685299.41",
+          "2024-12 total_volume=62251.4939 valuation=14590193.88"
+        ]
+      }
+    },
+    "L1-REAL-08": {
+      "expected_result": {
+        "columns": [
+          "revenue_item",
+          "amount"
+        ],
+        "rows": [
+          [
+            "整体收入",
+            "2682183.7689"
+          ],
+          [
+            "快递收入",
+            "2149904.00"
+          ],
+          [
+            "库内操作收入",
+            "341196.97"
+          ],
+          [
+            "仓租收入",
+            "191082.7989"
+          ]
+        ]
+      },
+      "contract": {
+        "source": "target_tool_projection",
+        "last_verified_at": "2026-07-08",
+        "grain": "overseas_warehouse_daily_overall_revenue_metric_app",
+        "filters": {
+          "stats_dt": "2026-06-24",
+          "metric_app": "海外仓全局经营分析",
+          "measure": "earned_amt_d_sum"
+        },
+        "row_count": 4,
+        "score_mode": "value_column_signature",
+        "must_include": [
+          "overall earned_amt=2682183.7689",
+          "express revenue=2149904.00",
+          "warehouse operation revenue=341196.97",
+          "storage revenue=191082.7989"
+        ]
+      }
+    },
+    "L1-REAL-10": {
+      "expected_result": {
+        "columns": [
+          "product_id",
+          "template_id",
+          "ever_bound_customer_count",
+          "already_target_bound_count",
+          "need_target_bind_count"
+        ],
+        "rows": []
+      },
+      "contract": {
+        "source": "target_tool_projection",
+        "last_verified_at": "2026-07-08",
+        "grain": "price_card_customer_binding_summary_dim_fin_express_sale_basefee_rules",
+        "filters": {
+          "sale_product_code": "usps_ground_advantage1",
+          "template_name": "USPS 2026.7客户VIP报价（3lbs内）",
+          "valid_start_time": "2026-07-12 00:00:00",
+          "valid_end_time": "2027-01-31 23:59:59",
+          "table": "dim.dim_fin_express_sale_basefee_rules",
+          "snapshot_cutoff": "2026-07-08 23:59:59"
+        },
+        "row_count": 0,
+        "score_mode": "schema_only"
+      }
+    },
+    "L1-REAL-11": {
+      "expected_result": {
+        "columns": [
+          "ship_date",
+          "weekday",
+          "package_cnt",
+          "dod_pct",
+          "customer_count",
+          "warehouse_count",
+          "service_count"
+        ],
+        "rows": [
+          [
+            "2026-06-29",
+            "周一",
+            "23746",
+            "-",
+            "161",
+            "18",
+            "3"
+          ],
+          [
+            "2026-06-30",
+            "周二",
+            "11458",
+            "-51.75%",
+            "146",
+            "18",
+            "3"
+          ],
+          [
+            "2026-07-01",
+            "周三",
+            "11448",
+            "-0.09%",
+            "143",
+            "19",
+            "3"
+          ],
+          [
+            "2026-07-02",
+            "周四",
+            "11599",
+            "+1.32%",
+            "141",
+            "18",
+            "3"
+          ],
+          [
+            "2026-07-03",
+            "周五",
+            "9576",
+            "-17.44%",
+            "131",
+            "19",
+            "3"
+          ],
+          [
+            "2026-07-04",
+            "周六",
+            "850",
+            "-91.12%",
+            "28",
+            "5",
+            "2"
+          ],
+          [
+            "2026-07-05",
+            "周日",
+            "10770",
+            "+1167.06%",
+            "107",
+            "15",
+            "2"
+          ]
+        ]
+      },
+      "contract": {
+        "source": "target_tool_projection",
+        "last_verified_at": "2026-07-08",
+        "grain": "ups_daily_shipping_metric_app_previous_calendar_week",
+        "filters": {
+          "date_range": "2026-06-29..2026-07-05",
+          "carrier": "UPS",
+          "metric_app": "多维快递财务收入成本"
+        },
+        "row_count": 7,
+        "score_mode": "value_column_signature",
+        "must_include": [
+          "total package_cnt=79447",
+          "2026-06-29 package_cnt=23746 highest",
+          "2026-07-04 package_cnt=850 lowest",
+          "UPS_GROUND package_cnt=64371 share=81.02%",
+          "USD package_cnt=77353 earned_amt=1954991.09"
+        ]
+      }
+    },
+    "L1-REAL-12": {
+      "expected_result": {
+        "columns": [
+          "custom_type",
+          "business_type",
+          "customer_count"
+        ],
+        "rows": []
+      },
+      "contract": {
+        "source": "target_tool_projection",
+        "last_verified_at": "2026-07-08",
+        "grain": "crm_custom_type_business_type_distribution_after_2025_10_16",
+        "filters": {
+          "create_time_gt": "2025-10-16 00:00:00",
+          "status": 10104,
+          "status_name": "审核通过",
+          "deleted": 0,
+          "create_time_lte": "2026-07-08 23:59:59"
+        },
+        "row_count": 0,
+        "score_mode": "schema_only"
+      }
+    },
+    "L1-REAL-13": {
+      "expected_result": {
+        "columns": [
+          "lecangs_code",
+          "row_count",
+          "goods_num_sum",
+          "min_warehouse_date",
+          "max_warehouse_date"
+        ],
+        "rows": [
+          [
+            "GEWX-ET2-BK",
+            83,
+            -313,
+            "2025-01-07T14:19:22",
+            "2025-11-11T20:31:29"
+          ],
+          [
+            "GEWX-ET2-WH",
+            78,
+            -374,
+            "2025-01-07T14:19:22",
+            "2025-11-11T22:49:00"
+          ],
+          [
+            "GEWX-ET223H(IB)(2/2)-WHT",
+            1,
+            -1,
+            "2025-03-30T11:16:42",
+            "2025-03-30T11:16:42"
+          ],
+          [
+            "GEWX-ET3-BK",
+            286,
+            -982,
+            "2025-01-02T11:28:59",
+            "2025-08-21T14:02:53"
+          ],
+          [
+            "GEWX-ET3-SL",
+            326,
+            -1688,
+            "2025-01-01T00:11:16",
+            "2025-11-25T13:54:29"
+          ],
+          [
+            "GEWX-ET3-WH",
+            169,
+            -1140,
+            "2025-01-02T11:26:54",
+            "2025-07-24T19:34:03"
+          ],
+          [
+            "GEWX-ET3T-BK-1",
+            80,
+            -254,
+            "2025-01-02T17:47:54",
+            "2025-08-05T20:04:31"
+          ],
+          [
+            "GEWX-ET3T-BK-2",
+            79,
+            -255,
+            "2025-01-02T17:47:54",
+            "2025-08-05T20:10:36"
+          ]
+        ]
+      },
+      "contract": {
+        "source": "target_tool_projection",
+        "last_verified_at": "2026-07-08",
+        "grain": "inventory_flow_sku_summary",
+        "filters": {
+          "warehouse_date_gte": "2024-12-31",
+          "warehouse_date_lt": "2026-07-09",
+          "sku_count": 8
+        },
+        "row_count": 8,
+        "score_mode": "schema_only",
+        "must_include": [
+          "total rows=1102",
+          "sku_count=8",
+          "overall goods_num_sum=-5007",
+          "GEWX-ET3-SL row_count=326 goods_num_sum=-1688",
+          "GEWX-ET223H(IB)(2/2)-WHT row_count=1"
+        ]
+      }
+    },
+    "L1-REAL-14": {
+      "expected_result": {
+        "columns": [
+          "row_count",
+          "order_count",
+          "distinct_tracking_no_count",
+          "latest_tracking_no"
+        ],
+        "rows": []
+      },
+      "contract": {
+        "source": "target_tool_projection",
+        "last_verified_at": "2026-07-08",
+        "grain": "toc_order_express_info_usps_tracking_184_label_url_summary_deleted0",
+        "filters": {
+          "table": "ods.ods_oms_toc_order_express_info",
+          "carrier_name": "USPS",
+          "tracking_no_like": "%184%",
+          "label_url": "not empty",
+          "deleted": 0,
+          "create_time_lte": "2026-07-08 23:59:59"
+        },
+        "row_count": 0,
+        "score_mode": "schema_only"
+      }
+    },
+    "L1-REAL-15": {
+      "expected_result": {
+        "columns": [
+          "contract_key",
+          "contract_value"
+        ],
+        "rows": [
+          [
+            "expected_answer_key_points",
+            "[\"从 ods.ods_oms_sales_back_order 销退单表出发\", \"使用 tracking_no 关联 dwd.dwd_tra_toc_order_package_h 反查原订单包裹\", \"使用 loctek.oms_toc_order_package_goods.goods_code 作为原订单货品编码\", \"将 barcode 拆分、去空、去重、排序、转大写后与原订单 goods_code 集合比较\", \"输出不一致或未找到原订单货品的销退单据和关键字段\"]"
+          ],
+          [
+            "must_include",
+            "[\"sales_back\", \"origin_goods\", \"ods_oms_sales_back_order\", \"dwd_tra_toc_order_package_h\", \"oms_toc_order_package_goods\", \"goods_code\", \"barcode\"]"
+          ]
+        ]
+      },
+      "contract": {
+        "source": "target_tool_projection",
+        "last_verified_at": "2026-07-08",
+        "grain": "sql_generation_answer",
+        "row_count": 0,
+        "score_mode": "task_completed_only",
+        "expected_answer_key_points": [
+          "从 ods.ods_oms_sales_back_order 销退单表出发",
+          "使用 tracking_no 关联 dwd.dwd_tra_toc_order_package_h 反查原订单包裹",
+          "使用 loctek.oms_toc_order_package_goods.goods_code 作为原订单货品编码",
+          "将 barcode 拆分、去空、去重、排序、转大写后与原订单 goods_code 集合比较",
+          "输出不一致或未找到原订单货品的销退单据和关键字段"
+        ],
+        "must_include": [
+          "sales_back",
+          "origin_goods",
+          "ods_oms_sales_back_order",
+          "dwd_tra_toc_order_package_h",
+          "oms_toc_order_package_goods",
+          "goods_code",
+          "barcode"
+        ],
+        "filters": {}
+      },
+      "expected_answer_key_points": [
+        "从 ods.ods_oms_sales_back_order 销退单表出发",
+        "使用 tracking_no 关联 dwd.dwd_tra_toc_order_package_h 反查原订单包裹",
+        "使用 loctek.oms_toc_order_package_goods.goods_code 作为原订单货品编码",
+        "将 barcode 拆分、去空、去重、排序、转大写后与原订单 goods_code 集合比较",
+        "输出不一致或未找到原订单货品的销退单据和关键字段"
+      ]
+    },
+    "L1-REAL-16": {
+      "expected_result": {
+        "columns": [
+          "warehouse_code",
+          "delivery_date",
+          "shipped_order_count",
+          "missing_ascan_order_count",
+          "missing_ascan_rate",
+          "detail_row_count",
+          "missing_ascan_detail_count",
+          "missing_ascan_detail_rate"
+        ],
+        "rows": [
+          [
+            "HOU07",
+            "2026-06-30",
+            5257,
+            14,
+            "0.002663",
+            5469,
+            14,
+            "0.002560"
+          ]
+        ]
+      },
+      "contract": {
+        "source": "target_tool_projection",
+        "last_verified_at": "2026-07-08",
+        "grain": "hou07_delivery_time_missing_first_scan_report_2026_06_30",
+        "filters": {
+          "warehouse_code": "HOU07",
+          "delivery_time_date": "2026-06-30",
+          "table": "dwd.dwd_lt_express_h",
+          "valid_order_filters": "deleted=0 and cancel_status=0",
+          "missing_condition": "a_scan_time IS NULL"
+        },
+        "row_count": 1,
+        "score_mode": "value_column_signature",
+        "must_include": [
+          "shipped_order_count=5257",
+          "missing_ascan_order_count=14",
+          "missing_ascan_rate=0.2663%",
+          "detail_row_count=5469",
+          "missing_ascan_detail_rate=0.2560%"
+        ]
+      }
+    }
+  }
+}

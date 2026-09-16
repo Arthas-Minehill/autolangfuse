@@ -1,0 +1,1663 @@
+{
+  "items": [
+    {
+      "case_id": "L1-METRIC-CUSTOMER-ACTIVE-002",
+      "user_query": "查询2026年6月1日后海外仓的多维度收入情况",
+      "expected_tools": [
+        {
+          "tool_name": "metric-mcp-remote.searchMetricApp",
+          "arguments": {}
+        },
+        {
+          "tool_name": "metric-mcp-remote.searchMetricAppQueryResult",
+          "arguments": {}
+        },
+        {
+          "tool_name": "metric-mcp-remote.searchSqlByMetricTypeAndNameExact",
+          "arguments": {}
+        },
+        {
+          "tool_name": "openmetadata.search_metadata",
+          "arguments": {}
+        },
+        {
+          "tool_name": "metabase.search",
+          "arguments": {}
+        },
+        {
+          "tool_name": "metabase.get_table",
+          "arguments": {}
+        },
+        {
+          "tool_name": "metabase.query",
+          "arguments": {}
+        }
+      ],
+      "main_query": "海外仓全局经营分析",
+      "evaluation_focus": [
+        "filter:stats_dt>=2026-06-01",
+        "metric_app:海外仓全局经营分析",
+        "answer:金额沿用指标原始金额且不做汇率换算",
+        "answer:统计区间=2026-06-01至2026-06-26",
+        "answer:最大批次时间=2026-06-26 06:13:42",
+        "answer:总收入=37920269.34",
+        "answer:币种拆分USD=33067639.62,EUR=2147299.29,CAD=2108282.59,GBP=597047.84,JPY=0",
+        "answer:快递收入=26893748.54,库内操作收入=5356763.77,仓租收入=4717678.89",
+        "answer:仓库Top包含CAP=7367495.50,NJF=4588156.21,NJF02=4099952.62,SAV=3066974.17,HOU07=2859655.63",
+        "answer:说明2026-06-26当天数据仍在更新且不完整"
+      ],
+      "expected_result": {
+        "columns": [
+          "section",
+          "item",
+          "value",
+          "share_or_note"
+        ],
+        "rows": [
+          [
+            "overall",
+            "coverage_dates",
+            "2026-06-01 至 2026-06-26",
+            "stats_dt >= 2026-06-01"
+          ],
+          [
+            "overall",
+            "total_revenue",
+            37793508.87,
+            "按指标应用原口径，未做汇率换算"
+          ],
+          [
+            "overall",
+            "express_revenue",
+            26879256.66,
+            null
+          ],
+          [
+            "overall",
+            "operate_revenue",
+            5351568.85,
+            null
+          ],
+          [
+            "overall",
+            "storage_revenue",
+            4610605.22,
+            null
+          ],
+          [
+            "overall",
+            "trailer_revenue",
+            343689.5,
+            null
+          ],
+          [
+            "overall",
+            "express_system_cost",
+            21162641.24,
+            null
+          ],
+          [
+            "overall",
+            "express_margin",
+            5716615.42,
+            "快递毛利率=21.27%"
+          ],
+          [
+            "overall",
+            "delivery_toc_pkg_cnt",
+            1455946,
+            "发货 2C 包裹数"
+          ],
+          [
+            "overall",
+            "earned_express_pkg_cnt",
+            1164021,
+            "完成快递包裹数"
+          ],
+          [
+            "revenue_mix",
+            "express_revenue",
+            26879256.66,
+            null
+          ],
+          [
+            "revenue_mix",
+            "operate_revenue",
+            5351568.85,
+            null
+          ],
+          [
+            "revenue_mix",
+            "storage_revenue",
+            4610605.22,
+            null
+          ],
+          [
+            "revenue_mix",
+            "handadjust_ex_rebate",
+            636895.82,
+            "手工调账-除反充"
+          ],
+          [
+            "revenue_mix",
+            "trailer_revenue",
+            343689.5,
+            null
+          ],
+          [
+            "revenue_mix",
+            "clearance_ex_tariff_revenue",
+            3627.71,
+            null
+          ],
+          [
+            "revenue_mix",
+            "handadjust_rebate",
+            -32134.89,
+            "手工调账-反充"
+          ],
+          [
+            "market_top",
+            "美国 / US",
+            32816091.02,
+            "express=23924198.68; operate=4380514.27; storage=3549006.05"
+          ],
+          [
+            "market_top",
+            "德国 / DE",
+            2146069.97,
+            "express=1267248.26; operate=488450.70; storage=421706.06"
+          ],
+          [
+            "market_top",
+            "加拿大 / CA",
+            2090048.26,
+            "express=1285610.69; operate=349828.03; storage=433903.54"
+          ],
+          [
+            "market_top",
+            "英国 / GB",
+            597064.59,
+            "express=257931.97; operate=132775.85; storage=205989.57"
+          ],
+          [
+            "warehouse_top",
+            "CAP / 美国",
+            7367650.98,
+            null
+          ],
+          [
+            "warehouse_top",
+            "NJF / 美国",
+            4568148.85,
+            null
+          ],
+          [
+            "warehouse_top",
+            "NJF02 / 美国",
+            4085418.75,
+            null
+          ],
+          [
+            "warehouse_top",
+            "SAV / 美国",
+            3056752.39,
+            null
+          ],
+          [
+            "warehouse_top",
+            "HOU07 / 美国",
+            2827899.04,
+            null
+          ],
+          [
+            "business_type",
+            "海外仓",
+            33146332.5,
+            "customers=1091"
+          ],
+          [
+            "business_type",
+            "自营",
+            4031667.17,
+            "customers=10"
+          ],
+          [
+            "business_type",
+            "4SPL",
+            482914.93,
+            "customers=3"
+          ],
+          [
+            "business_type",
+            "4DC",
+            93807.8,
+            "customers=1"
+          ],
+          [
+            "business_type",
+            "外销",
+            38786.47,
+            "customers=3"
+          ],
+          [
+            "currency",
+            "USD",
+            32960358.08,
+            null
+          ],
+          [
+            "currency",
+            "EUR",
+            2146069.69,
+            null
+          ],
+          [
+            "currency",
+            "CAD",
+            2090033.26,
+            null
+          ],
+          [
+            "currency",
+            "GBP",
+            597047.84,
+            null
+          ]
+        ]
+      },
+      "task_level": "L1",
+      "task_type": "query_metric",
+      "business_domain": "海外仓",
+      "difficulty": null,
+      "source": "manual_mcp_verified",
+      "original_request": "查询2026年6月1日后海外仓全局经营分析的多维度收入情况，金额沿用指标原始金额、不做汇率换算；请输出整体、收入构成、仓库市场、仓库Top、客户业务类型和日收入峰值，并说明2026-06-26当天批次是否完整。"
+    },
+    {
+      "case_id": "L1-METRIC-CUSTOMER-ACTIVE-003",
+      "user_query": "查询2026年6月2日后海外仓的多维度收入情况及价卡成本",
+      "expected_tools": [
+        {
+          "tool_name": "metric-mcp-remote.searchMetricApp",
+          "arguments": {}
+        },
+        {
+          "tool_name": "metric-mcp-remote.searchMetricAppQueryResult",
+          "arguments": {}
+        },
+        {
+          "tool_name": "metric-mcp-remote.searchSqlByMetricTypeAndNameExact",
+          "arguments": {}
+        },
+        {
+          "tool_name": "openmetadata.search_metadata",
+          "arguments": {}
+        },
+        {
+          "tool_name": "metabase.search",
+          "arguments": {}
+        },
+        {
+          "tool_name": "metabase.get_table",
+          "arguments": {}
+        },
+        {
+          "tool_name": "metabase.query",
+          "arguments": {}
+        }
+      ],
+      "main_query": "海外仓全局经营分析",
+      "evaluation_focus": [
+        "filter:stats_dt>2026-06-02",
+        "filter:business_type_name=海外仓",
+        "query:dws_fin_express_revenue_cost_daily_hi",
+        "answer:价卡成本字段=earned_sys_init_cost_amt_d",
+        "answer:金额原币种且不做汇率换算",
+        "answer:覆盖日期=2026-06-03至2026-06-26",
+        "answer:156447行,4币种,36仓库,876客户,38承运商服务",
+        "answer:CAD收入=1119959.33,价卡成本=789143.46",
+        "answer:EUR收入=1077622.17,价卡成本=993675.90",
+        "answer:GBP收入=220458.18,价卡成本=196989.01",
+        "answer:USD收入=21597916.77,价卡成本=16932195.62",
+        "answer:仓库Top包含CATO=918920.24,EUWE=1061811.65,UKNH02=182576.19,CAP=4803274.73,NJF=3012949.31,NJF02=2792556.37",
+        "answer:客户Top包含FSCA,JOKJ,HZKU,LYSB,LGUS,SWWL",
+        "answer:承运商服务Top包含FEDEX_GROUND,DPD_DE_PAKET,DPD_UK_TWO_DAY,FEDEX_HOME_DELIVERY,UPS_GROUND"
+      ],
+      "expected_result": {
+        "columns": [
+          "section",
+          "item",
+          "value",
+          "note"
+        ],
+        "rows": [
+          [
+            "overall",
+            "coverage_dates",
+            "2026-06-03 至 2026-06-26",
+            "stats_dt > 2026-06-02; 2026-06-26 数据偏少"
+          ],
+          [
+            "overall",
+            "days",
+            24,
+            null
+          ],
+          [
+            "overall",
+            "customers",
+            1088,
+            null
+          ],
+          [
+            "overall",
+            "warehouses",
+            32,
+            null
+          ],
+          [
+            "overall",
+            "total_revenue",
+            29749706.91,
+            "原币直接合计"
+          ],
+          [
+            "overall",
+            "total_price_card_cost",
+            27385436.02,
+            null
+          ],
+          [
+            "overall",
+            "revenue_minus_price_card_cost",
+            2364270.89,
+            null
+          ],
+          [
+            "overall",
+            "express_pkg_cnt",
+            906292,
+            null
+          ],
+          [
+            "overall",
+            "express_system_cost",
+            17118270.97,
+            null
+          ],
+          [
+            "currency",
+            "USD_total_revenue",
+            26041994.71,
+            "card_cost=23559548.88; diff=2482445.83"
+          ],
+          [
+            "currency",
+            "CAD_total_revenue",
+            1668740.51,
+            "card_cost=1665515.47; diff=3225.04"
+          ],
+          [
+            "currency",
+            "EUR_total_revenue",
+            1624914.84,
+            "card_cost=1736330.27; diff=-111415.43"
+          ],
+          [
+            "currency",
+            "GBP_total_revenue",
+            414056.85,
+            "card_cost=424041.40; diff=-9984.56"
+          ],
+          [
+            "price_card_split_usd",
+            "express_card_cost",
+            18030304.87,
+            null
+          ],
+          [
+            "price_card_split_usd",
+            "operate_card_cost",
+            2955016.04,
+            null
+          ],
+          [
+            "price_card_split_usd",
+            "storage_card_cost",
+            2574227.97,
+            null
+          ],
+          [
+            "price_card_split_eur",
+            "express_card_cost",
+            1060281.17,
+            null
+          ],
+          [
+            "price_card_split_eur",
+            "operate_card_cost",
+            314299.37,
+            null
+          ],
+          [
+            "price_card_split_eur",
+            "storage_card_cost",
+            361749.73,
+            null
+          ],
+          [
+            "price_card_split_cad",
+            "express_card_cost",
+            964182.73,
+            null
+          ],
+          [
+            "price_card_split_cad",
+            "operate_card_cost",
+            310070.93,
+            null
+          ],
+          [
+            "price_card_split_cad",
+            "storage_card_cost",
+            391261.81,
+            null
+          ],
+          [
+            "price_card_split_gbp",
+            "express_card_cost",
+            181252.9,
+            null
+          ],
+          [
+            "price_card_split_gbp",
+            "operate_card_cost",
+            88392.11,
+            null
+          ],
+          [
+            "price_card_split_gbp",
+            "storage_card_cost",
+            154396.4,
+            null
+          ],
+          [
+            "warehouse_top",
+            "CAP / 美国 / USD",
+            6213251.18,
+            "card_cost=5623270.19; diff=589980.99"
+          ],
+          [
+            "warehouse_top",
+            "NJF02 / 美国 / USD",
+            3555846.54,
+            "card_cost=3409754.49; diff=146092.05"
+          ],
+          [
+            "warehouse_top",
+            "NJF / 美国 / USD",
+            3199710.13,
+            "card_cost=3096069.95; diff=103640.18"
+          ],
+          [
+            "warehouse_top",
+            "SAV / 美国 / USD",
+            2716302.84,
+            "card_cost=2458736.85; diff=257566.00"
+          ],
+          [
+            "warehouse_top",
+            "HOU07 / 美国 / USD",
+            2029835.96,
+            "card_cost=1803391.29; diff=226444.67"
+          ],
+          [
+            "customer_top",
+            "LYSB / 美国 / USD",
+            2210186.44,
+            "card_cost=2115036.61; diff=95149.83"
+          ],
+          [
+            "customer_top",
+            "SWWL / 美国 / USD",
+            1507272.48,
+            "card_cost=1400821.76; diff=106450.72"
+          ],
+          [
+            "customer_top",
+            "XGBR / 美国 / USD",
+            1084112.59,
+            "card_cost=1050989.45; diff=33123.14"
+          ],
+          [
+            "customer_top",
+            "HFHQ / 美国 / USD",
+            1040197.76,
+            "card_cost=966961.98; diff=73235.78"
+          ],
+          [
+            "customer_top",
+            "NBRTF / 美国 / USD",
+            805959.49,
+            "card_cost=707491.97; diff=98467.52"
+          ]
+        ]
+      },
+      "task_level": "L1",
+      "task_type": "query_metric",
+      "business_domain": "海外仓",
+      "difficulty": null,
+      "source": null,
+      "original_request": "查询2026年6月2日后海外仓的多维度收入情况及价卡成本；价卡成本使用 earned_sys_init_cost_amt_d（系统初次计费成本，按仓计费），金额保持原币不做汇率换算；请输出整体、币种、仓库、客户、承运商/服务和最高收入日。"
+    },
+    {
+      "case_id": "L1-METRIC-CUSTOMER-ACTIVE-004",
+      "user_query": "查询2026年6月2日客户行为",
+      "expected_tools": [
+        {
+          "tool_name": "metric-mcp-remote.searchMetricApp",
+          "arguments": {}
+        },
+        {
+          "tool_name": "metric-mcp-remote.searchMetricAppQueryResult",
+          "arguments": {}
+        },
+        {
+          "tool_name": "metric-mcp-remote.searchSqlByMetricTypeAndNameExact",
+          "arguments": {}
+        }
+      ],
+      "main_query": "日x销售代表x市场x客户业务类型_客户行为",
+      "evaluation_focus": [
+        "filter:stats_dt=2026-06-02",
+        "filter:apply_pass_time IS NOT NULL",
+        "metric_app:日x销售代表x市场x客户业务类型_客户行为",
+        "answer:新客户人日=1",
+        "answer:活跃客户人日=983",
+        "answer:分组记录数=2328",
+        "answer:海外仓活跃客户人日=970",
+        "answer:华北活跃客户人日=398",
+        "answer:美国/海外仓活跃客户人日=636",
+        "answer:销售代表Top包含喻琦林44"
+      ],
+      "expected_result": {
+        "columns": [
+          "section",
+          "dimension",
+          "new_customer_person_days",
+          "active_customer_person_days",
+          "note"
+        ],
+        "rows": [
+          [
+            "overview",
+            "2026-06-02",
+            1,
+            983,
+            "group_rows=2328; apply_pass_time IS NOT NULL"
+          ],
+          [
+            "business_type",
+            "海外仓",
+            1,
+            970,
+            null
+          ],
+          [
+            "business_type",
+            "自营",
+            0,
+            7,
+            null
+          ],
+          [
+            "business_type",
+            "外销",
+            0,
+            3,
+            null
+          ],
+          [
+            "business_type",
+            "4SPL",
+            0,
+            2,
+            null
+          ],
+          [
+            "business_type",
+            "4DC",
+            0,
+            1,
+            null
+          ],
+          [
+            "area",
+            "华北",
+            0,
+            398,
+            null
+          ],
+          [
+            "area",
+            "华东",
+            1,
+            392,
+            null
+          ],
+          [
+            "area",
+            "华南",
+            0,
+            163,
+            null
+          ],
+          [
+            "area",
+            "海外",
+            0,
+            30,
+            null
+          ],
+          [
+            "area",
+            "空值",
+            0,
+            0,
+            null
+          ],
+          [
+            "market_business_top",
+            "美国 / 海外仓",
+            0,
+            636,
+            null
+          ],
+          [
+            "market_business_top",
+            "德国 / 海外仓",
+            0,
+            145,
+            null
+          ],
+          [
+            "market_business_top",
+            "加拿大 / 海外仓",
+            0,
+            123,
+            null
+          ],
+          [
+            "market_business_top",
+            "英国 / 海外仓",
+            1,
+            66,
+            null
+          ],
+          [
+            "market_business_top",
+            "美国 / 自营",
+            0,
+            3,
+            null
+          ],
+          [
+            "market_business_top",
+            "德国 / 自营",
+            0,
+            2,
+            null
+          ],
+          [
+            "market_business_top",
+            "美国 / 4SPL",
+            0,
+            2,
+            null
+          ],
+          [
+            "market_business_top",
+            "加拿大 / 自营",
+            0,
+            1,
+            null
+          ],
+          [
+            "market_business_top",
+            "德国 / 外销",
+            0,
+            1,
+            null
+          ],
+          [
+            "market_business_top",
+            "美国 / 4DC",
+            0,
+            1,
+            null
+          ],
+          [
+            "sales_top",
+            "喻琦林",
+            null,
+            44,
+            "销售代表维度最高"
+          ],
+          [
+            "sales_top",
+            "史梦妮",
+            null,
+            38,
+            "销售代表维度最高"
+          ],
+          [
+            "sales_top",
+            "周侯宋",
+            null,
+            37,
+            "销售代表维度最高"
+          ],
+          [
+            "sales_top",
+            "程钢",
+            null,
+            36,
+            "销售代表维度最高"
+          ],
+          [
+            "sales_top",
+            "许越",
+            null,
+            29,
+            "销售代表维度最高"
+          ]
+        ]
+      },
+      "task_level": "L1",
+      "task_type": "query_metric",
+      "business_domain": null,
+      "difficulty": null,
+      "source": null
+    },
+    {
+      "case_id": "L1-METRIC-CUSTOMER-ACTIVE-005",
+      "user_query": "查询“客户实时余额_额度_库存体积与估值”的指标定义和返回字段结构，列出16个原始字段及其业务含义；不要查询或引用会随运行时间变化的实时数值，也不要把 create_volume_sum、standard_create_volume_sum 或 create_volume_value_sum 解释成在途体积。",
+      "expected_tools": [
+        {
+          "tool_name": "metric-mcp-remote.searchMetricApp",
+          "arguments": {}
+        },
+        {
+          "tool_name": "metric-mcp-remote.searchMetricAppQueryResult",
+          "arguments": {}
+        },
+        {
+          "tool_name": "metric-mcp-remote.searchSqlByMetricTypeAndNameExact",
+          "arguments": {}
+        }
+      ],
+      "main_query": "客户实时余额_额度_库存体积与估值",
+      "evaluation_focus": [
+        "answer:列出16个原始字段及业务含义",
+        "rule:不把create_volume相关字段解释为在途体积",
+        "rule:不返回运行时动态数值"
+      ],
+      "expected_result": {
+        "columns": [
+          "ads_client_custom_stats_rt_mv.balance_sum",
+          "ads_client_custom_stats_rt_mv.custom_code",
+          "ads_client_custom_stats_rt_mv.inventory_volume_value_sum",
+          "ads_client_custom_stats_rt_mv.standard_inventory_volume_sum",
+          "ads_client_custom_stats_rt_mv.base_unit",
+          "ads_client_custom_stats_rt_mv.to_currency",
+          "ads_client_custom_stats_rt_mv.inventory_volume_sum",
+          "ads_client_custom_stats_rt_mv.create_volume_value_sum",
+          "ads_client_custom_stats_rt_mv.create_volume_sum",
+          "ads_client_custom_stats_rt_mv.metric_unit",
+          "ads_client_custom_stats_rt_mv.standard_balance_sum",
+          "ads_client_custom_stats_rt_mv.currency",
+          "ads_client_custom_stats_rt_mv.credit_sum",
+          "ads_client_custom_stats_rt_mv.market_name",
+          "ads_client_custom_stats_rt_mv.standard_credit_sum",
+          "ads_client_custom_stats_rt_mv.standard_create_volume_sum"
+        ],
+        "rows": []
+      },
+      "task_level": "L1",
+      "task_type": "query_metric",
+      "business_domain": null,
+      "difficulty": null,
+      "source": null,
+      "original_request": "查询“客户实时余额_额度_库存体积与估值”的指标定义和返回字段结构，列出16个原始字段及其业务含义；不要查询或引用会随运行时间变化的实时数值，也不要把 create_volume_sum、standard_create_volume_sum 或 create_volume_value_sum 解释成在途体积。"
+    },
+    {
+      "case_id": "L1-METRIC-CUSTOMER-ACTIVE-006",
+      "user_query": "查询“统计时间内的去重活跃客户数”的指标定义，说明默认统计周期是否在 SQL 中显式限定为2026年，并说明全局去重应采用 overall distinct custom_code，不能把市场或业务类型分组结果直接相加。不要返回运行时动态计数。",
+      "expected_tools": [
+        {
+          "tool_name": "metric-mcp-remote.searchMetricAppQueryResult",
+          "arguments": {}
+        },
+        {
+          "tool_name": "metric-mcp-remote.searchSqlByMetricTypeAndNameExact",
+          "arguments": {}
+        }
+      ],
+      "main_query": "统计时间内的去重活跃客户数",
+      "evaluation_focus": [
+        "answer:说明默认统计周期是否显式限定2026年",
+        "answer:overall distinct custom_code",
+        "rule:不相加分组distinct结果"
+      ],
+      "expected_result": {
+        "columns": [
+          "active_customer_count_2026"
+        ],
+        "rows": []
+      },
+      "task_level": "L1",
+      "task_type": "query_metric",
+      "business_domain": null,
+      "difficulty": null,
+      "source": null,
+      "original_request": "查询“统计时间内的去重活跃客户数”的指标定义，说明默认统计周期是否在 SQL 中显式限定为2026年，并说明全局去重应采用 overall distinct custom_code，不能把市场或业务类型分组结果直接相加。不要返回运行时动态计数。"
+    },
+    {
+      "case_id": "L1-METRIC-CUSTOMER-ACTIVE-007",
+      "user_query": "查询2026年6月1日CAP仓库吞吐量及人员成本指标",
+      "expected_tools": [
+        {
+          "tool_name": "metric-mcp-remote.searchMetricApp",
+          "arguments": {}
+        },
+        {
+          "tool_name": "metric-mcp-remote.searchMetricAppQueryResult",
+          "arguments": {}
+        },
+        {
+          "tool_name": "metric-mcp-remote.searchSqlByMetricTypeAndNameExact",
+          "arguments": {}
+        }
+      ],
+      "main_query": "仓储KPI与人效指标",
+      "evaluation_focus": [
+        "filter:stats_dt=2026-06-01",
+        "filter:warehouse_code=CAP",
+        "field:ads_warehouse_daily.self_employed_work_hours_d_sum",
+        "field:ads_warehouse_daily.labour_ot_cost_amt_d_sum",
+        "field:ads_warehouse_daily.outbound_toc_overtime_package_cnt_d_sum",
+        "field:ads_warehouse_daily.labour_dt_work_hours_d_sum",
+        "field:ads_warehouse_daily.putaway_timely_reg_container_inbound_order_cnt_d_sum",
+        "field:ads_warehouse_daily.tob_pick_outbound_task_cnt_d_sum",
+        "field:ads_warehouse_daily.outbound_good_volume_d_sum",
+        "field:ads_warehouse_daily.etl_bacth_time_max",
+        "field:ads_warehouse_daily.outbound_tob_good_cnt_d_sum",
+        "field:ads_warehouse_daily.fte_labour_employee_cnt_d_sum",
+        "field:ads_warehouse_daily.self_employed_cost_amt_d_sum",
+        "field:ads_warehouse_daily.handover_reg_inbound_order_tl_cnt_d_sum",
+        "field:ads_warehouse_daily.handover_reg_inbound_order_express_cnt_d_sum",
+        "field:ads_warehouse_daily.earned_toc_express_amt_d_sum",
+        "field:ads_warehouse_daily.outbound_toc_package_d_sum",
+        "field:ads_warehouse_daily.outbound_toc_timely_package_cnt_d_sum",
+        "field:ads_warehouse_daily.labour_cost_amt_d_sum",
+        "field:ads_warehouse_daily.inbound_rma_package_cnt_d_sum",
+        "field:ads_warehouse_daily.tob_pick_outbound_location_cnt_d_sum",
+        "field:ads_warehouse_daily.labour_ot_work_hours_d_sum",
+        "field:ads_warehouse_daily.employee_total_cost_amt_d_sum",
+        "field:ads_warehouse_daily.labour_work_hours_d_sum",
+        "field:ads_warehouse_daily.putaway_overtime_reg_container_inbound_order_cnt_d_sum",
+        "field:ads_warehouse_daily.labour_reg_cost_amt_d_sum",
+        "field:ads_warehouse_daily.toc_outbound_finished_package_cnt_d_sum",
+        "field:ads_warehouse_daily.earned_destory_operate_amt_d_sum",
+        "field:ads_warehouse_daily.toc_pick_outbound_location_cnt_d_sum",
+        "field:ads_warehouse_daily.self_employee_cnt_d_sum",
+        "field:ads_warehouse_daily.putaway_reg_task_good_cnt_d_sum",
+        "field:ads_warehouse_daily.labour_reg_work_hours_d_sum",
+        "field:ads_warehouse_daily.labour_dt_cost_amt_d_sum",
+        "field:ads_warehouse_daily.earned_tob_operate_amt_d_sum",
+        "field:ads_warehouse_daily.earned_tob_express_amt_d_sum",
+        "field:ads_warehouse_daily.toc_outbound_unfinished_overtime_package_cnt_d_sum",
+        "field:ads_warehouse_daily.handover_reg_inbound_order_cnt_d_sum",
+        "field:ads_warehouse_daily.earned_rma_operate_amt_d_sum",
+        "field:ads_warehouse_daily.handover_reg_inbound_order_container_cnt_d_sum",
+        "field:ads_warehouse_daily.toc_outbound_should_finished_package_cnt_d_sum",
+        "field:ads_warehouse_daily.toc_pick_outbound_task_cnt_d_sum",
+        "field:ads_warehouse_daily.unload_reg_inbound_order_container_cnt_d_sum"
+      ],
+      "expected_result": {
+        "columns": [
+          "ads_warehouse_daily.self_employed_work_hours_d_sum",
+          "ads_warehouse_daily.labour_ot_cost_amt_d_sum",
+          "ads_warehouse_daily.outbound_toc_overtime_package_cnt_d_sum",
+          "ads_warehouse_daily.labour_dt_work_hours_d_sum",
+          "ads_warehouse_daily.putaway_timely_reg_container_inbound_order_cnt_d_sum",
+          "ads_warehouse_daily.tob_pick_outbound_task_cnt_d_sum",
+          "ads_warehouse_daily.outbound_good_volume_d_sum",
+          "ads_warehouse_daily.etl_bacth_time_max",
+          "ads_warehouse_daily.outbound_tob_good_cnt_d_sum",
+          "ads_warehouse_daily.fte_labour_employee_cnt_d_sum",
+          "ads_warehouse_daily.self_employed_cost_amt_d_sum",
+          "ads_warehouse_daily.handover_reg_inbound_order_tl_cnt_d_sum",
+          "ads_warehouse_daily.handover_reg_inbound_order_express_cnt_d_sum",
+          "ads_warehouse_daily.earned_toc_express_amt_d_sum",
+          "ads_warehouse_daily.outbound_toc_package_d_sum",
+          "ads_warehouse_daily.outbound_toc_timely_package_cnt_d_sum",
+          "ads_warehouse_daily.labour_cost_amt_d_sum",
+          "ads_warehouse_daily.inbound_rma_package_cnt_d_sum",
+          "ads_warehouse_daily.tob_pick_outbound_location_cnt_d_sum",
+          "ads_warehouse_daily.labour_ot_work_hours_d_sum",
+          "ads_warehouse_daily.employee_total_cost_amt_d_sum",
+          "ads_warehouse_daily.labour_work_hours_d_sum",
+          "ads_warehouse_daily.putaway_overtime_reg_container_inbound_order_cnt_d_sum",
+          "ads_warehouse_daily.labour_reg_cost_amt_d_sum",
+          "ads_warehouse_daily.toc_outbound_finished_package_cnt_d_sum",
+          "ads_warehouse_daily.earned_destory_operate_amt_d_sum",
+          "ads_warehouse_daily.toc_pick_outbound_location_cnt_d_sum",
+          "ads_warehouse_daily.self_employee_cnt_d_sum",
+          "ads_warehouse_daily.putaway_reg_task_good_cnt_d_sum",
+          "ads_warehouse_daily.labour_reg_work_hours_d_sum",
+          "ads_warehouse_daily.labour_dt_cost_amt_d_sum",
+          "ads_warehouse_daily.earned_tob_operate_amt_d_sum",
+          "ads_warehouse_daily.earned_tob_express_amt_d_sum",
+          "ads_warehouse_daily.toc_outbound_unfinished_overtime_package_cnt_d_sum",
+          "ads_warehouse_daily.handover_reg_inbound_order_cnt_d_sum",
+          "ads_warehouse_daily.earned_rma_operate_amt_d_sum",
+          "ads_warehouse_daily.handover_reg_inbound_order_container_cnt_d_sum",
+          "ads_warehouse_daily.toc_outbound_should_finished_package_cnt_d_sum",
+          "ads_warehouse_daily.toc_pick_outbound_task_cnt_d_sum",
+          "ads_warehouse_daily.unload_reg_inbound_order_container_cnt_d_sum"
+        ],
+        "rows": [
+          [
+            40.0,
+            10849.52,
+            0,
+            0.0,
+            18,
+            27,
+            1793.3238,
+            "2026-06-26T02:14:14",
+            477,
+            157.94,
+            2540.31,
+            15,
+            0,
+            323248.19,
+            17027,
+            17027,
+            32784.33,
+            214,
+            57,
+            315.44,
+            35324.64,
+            1263.49,
+            0,
+            21934.81,
+            28639,
+            160.4,
+            5373,
+            5,
+            15472,
+            948.05,
+            0.0,
+            3635.99,
+            120.15,
+            0,
+            29,
+            48.0,
+            29,
+            28639,
+            1229,
+            27
+          ]
+        ]
+      },
+      "task_level": "L1",
+      "task_type": "query_metric",
+      "business_domain": "有效客户",
+      "difficulty": null,
+      "source": null
+    },
+    {
+      "case_id": "L1-METRIC-CUSTOMER-ACTIVE-008",
+      "user_query": "查询 2026-06-01 华北业务部韩国市场的客户行为。必须按完整日期、区域和市场条件执行精确查询；若结果为零，需要用完整查询结果证明，不能根据分页或缺少目标行推断。",
+      "expected_tools": [
+        {
+          "tool_name": "metric-mcp-remote.searchMetricApp",
+          "arguments": {}
+        },
+        {
+          "tool_name": "metric-mcp-remote.searchMetricAppQueryResult",
+          "arguments": {}
+        },
+        {
+          "tool_name": "metric-mcp-remote.searchSqlByMetricTypeAndNameExact",
+          "arguments": {}
+        },
+        {
+          "tool_name": "openmetadata.search_metadata",
+          "arguments": {}
+        },
+        {
+          "tool_name": "metabase.search",
+          "arguments": {}
+        },
+        {
+          "tool_name": "metabase.get_table",
+          "arguments": {}
+        },
+        {
+          "tool_name": "metabase.query",
+          "arguments": {}
+        }
+      ],
+      "main_query": "日x销售代表x市场x客户业务类型_客户行为",
+      "evaluation_focus": [
+        "filter:stats_dt=2026-06-01",
+        "filter:effective_area_name=华北",
+        "filter:market=韩国/Korea",
+        "rule:零值必须由完整精确查询证明"
+      ],
+      "expected_result": {
+        "columns": [
+          "result",
+          "row_count",
+          "new_customer_count",
+          "active_customer_count",
+          "evidence"
+        ],
+        "rows": [
+          [
+            "no_matching_customer_behavior",
+            0,
+            0,
+            0,
+            "2026-06-01 华北 + 韩国/Korea 无匹配记录；当天市场只有美国、德国、加拿大、英国、日本"
+          ]
+        ]
+      },
+      "task_level": "L1",
+      "task_type": "query_metric",
+      "business_domain": null,
+      "difficulty": null,
+      "source": null,
+      "original_request": "查询 2026-06-01 华北业务部韩国市场的客户行为。必须按完整日期、区域和市场条件执行精确查询；若结果为零，需要用完整查询结果证明，不能根据分页或缺少目标行推断。"
+    },
+    {
+      "case_id": "L1-METRIC-CUSTOMER-ACTIVE-009",
+      "user_query": "查询 2026-06-01 华北业务部韩国市场的去重活跃客户数。必须按 distinct custom_code 的口径执行精确查询；若结果为零，需要用完整查询结果证明，不能根据分页或缺少目标行推断。",
+      "expected_tools": [
+        {
+          "tool_name": "metric-mcp-remote.searchMetricApp",
+          "arguments": {}
+        },
+        {
+          "tool_name": "metric-mcp-remote.searchMetricAppQueryResult",
+          "arguments": {}
+        },
+        {
+          "tool_name": "metric-mcp-remote.searchSqlByMetricTypeAndNameExact",
+          "arguments": {}
+        },
+        {
+          "tool_name": "openmetadata.search_metadata",
+          "arguments": {}
+        },
+        {
+          "tool_name": "metabase.search",
+          "arguments": {}
+        },
+        {
+          "tool_name": "metabase.get_table",
+          "arguments": {}
+        },
+        {
+          "tool_name": "metabase.query",
+          "arguments": {}
+        }
+      ],
+      "main_query": "销售代表x市场x客户业务类型_去重活跃客户数",
+      "evaluation_focus": [
+        "filter:stats_dt=2026-06-01",
+        "filter:effective_area_name=华北",
+        "filter:market=韩国/Korea",
+        "measure:distinct custom_code",
+        "rule:零值必须由完整精确查询证明"
+      ],
+      "expected_result": {
+        "columns": [
+          "dws_custom_active_status_daily_hi.effective_area_name",
+          "dws_custom_active_status_daily_hi.market_en_name",
+          "dws_custom_active_status_daily_hi.business_type_id",
+          "dws_custom_active_status_daily_hi.effective_id",
+          "dws_custom_active_status_daily_hi.market_cn_name",
+          "dws_custom_active_status_daily_hi.custom_code_count_distinct",
+          "dws_custom_active_status_daily_hi.effective_area_id",
+          "dws_custom_active_status_daily_hi.business_type_name",
+          "dws_custom_active_status_daily_hi.sale_user_id",
+          "dws_custom_active_status_daily_hi.effective_username",
+          "dws_custom_active_status_daily_hi.market_code",
+          "dws_custom_active_status_daily_hi.sale_user_name"
+        ],
+        "rows": [
+          [
+            "华北",
+            "United States",
+            105301.0,
+            49.0,
+            "美国",
+            46.0,
+            70202.0,
+            "海外仓",
+            1315.0,
+            "毛晓杰",
+            30301.0,
+            "刘亚林"
+          ],
+          [
+            "华南",
+            "United States",
+            105301.0,
+            166.0,
+            "美国",
+            21.0,
+            70203.0,
+            "海外仓",
+            2855.0,
+            "黄业德",
+            30301.0,
+            "李勇"
+          ],
+          [
+            null,
+            "United States",
+            105301.0,
+            null,
+            "美国",
+            1.0,
+            null,
+            "海外仓",
+            752.0,
+            null,
+            30301.0,
+            "Jessica"
+          ],
+          [
+            "华东",
+            "United States",
+            105301.0,
+            31.0,
+            "美国",
+            24.0,
+            70201.0,
+            "海外仓",
+            2237.0,
+            "王思琪",
+            30301.0,
+            "何开明"
+          ],
+          [
+            "华南",
+            "United States",
+            105301.0,
+            166.0,
+            "美国",
+            59.0,
+            70203.0,
+            "海外仓",
+            166.0,
+            "黄业德",
+            30301.0,
+            "黄业德"
+          ]
+        ]
+      },
+      "task_level": "L1",
+      "task_type": "query_metric",
+      "business_domain": null,
+      "difficulty": null,
+      "source": null,
+      "original_request": "查询 2026-06-01 华北业务部韩国市场的去重活跃客户数。必须按 distinct custom_code 的口径执行精确查询；若结果为零，需要用完整查询结果证明，不能根据分页或缺少目标行推断。"
+    },
+    {
+      "case_id": "L1-METRIC-CUSTOMER-ACTIVE-010",
+      "user_query": "查询“多维快递财务收入成本”的指标定义和明细字段结构，说明稳定获取前50行时必须固定哪些日期、批次和排序条件；不要返回会随运行时间变化的当前前50行数值。",
+      "expected_tools": [
+        {
+          "tool_name": "metric-mcp-remote.searchMetricApp",
+          "arguments": {}
+        },
+        {
+          "tool_name": "metric-mcp-remote.searchMetricAppQueryResult",
+          "arguments": {}
+        },
+        {
+          "tool_name": "metric-mcp-remote.searchSqlByMetricTypeAndNameExact",
+          "arguments": {}
+        }
+      ],
+      "main_query": "多维快递财务收入成本",
+      "evaluation_focus": [
+        "answer:明细字段结构",
+        "answer:稳定查询需要固定日期、批次和排序",
+        "rule:不返回运行时动态数值"
+      ],
+      "expected_result": {
+        "columns": [
+          "row_number",
+          "custom_code",
+          "market_name",
+          "business_type_name",
+          "warehouse_code",
+          "carrier_std_name",
+          "carrier_std_service",
+          "sale_zone_code",
+          "cost_zone_code",
+          "bill_zone_code",
+          "currency",
+          "package_count",
+          "system_income",
+          "system_billing_cost",
+          "sales_billed_income",
+          "reconciled_cost_income",
+          "reconciled_bill_cost"
+        ],
+        "rows": []
+      },
+      "task_level": "L1",
+      "task_type": "query_metric",
+      "business_domain": null,
+      "difficulty": null,
+      "source": null,
+      "original_request": "查询“多维快递财务收入成本”的指标定义和明细字段结构，说明稳定获取前50行时必须固定哪些日期、批次和排序条件；不要返回会随运行时间变化的当前前50行数值。"
+    },
+    {
+      "case_id": "L1-METRIC-CUSTOMER-ACTIVE-011",
+      "user_query": "查询2026年1月客户行为",
+      "expected_tools": [
+        {
+          "tool_name": "metric-mcp-remote.searchMetricApp",
+          "arguments": {}
+        },
+        {
+          "tool_name": "metric-mcp-remote.searchMetricAppQueryResult",
+          "arguments": {}
+        },
+        {
+          "tool_name": "metric-mcp-remote.searchSqlByMetricTypeAndNameExact",
+          "arguments": {}
+        }
+      ],
+      "main_query": "每月客户行为指标统计",
+      "evaluation_focus": [
+        "filter:month_first_date=2026-01-01",
+        "filter:month_last_date=2026-01-31",
+        "field:dws_custom_active_status_monthly_hi.is_active_sum",
+        "field:dws_custom_active_status_monthly_hi.is_new_sum",
+        "field:dws_custom_active_status_monthly_hi.last_month_is_active_sum",
+        "field:dws_custom_active_status_monthly_hi.month_first_date",
+        "field:dws_custom_active_status_monthly_hi.month_last_date"
+      ],
+      "expected_result": {
+        "columns": [
+          "dws_custom_active_status_monthly_hi.is_active_sum",
+          "dws_custom_active_status_monthly_hi.is_new_sum",
+          "dws_custom_active_status_monthly_hi.last_month_is_active_sum",
+          "dws_custom_active_status_monthly_hi.month_first_date",
+          "dws_custom_active_status_monthly_hi.month_last_date"
+        ],
+        "rows": [
+          [
+            1043.0,
+            38.0,
+            1020.0,
+            "2026-01-01T00:00:00.000",
+            "2026-01-31T00:00:00.000"
+          ]
+        ]
+      },
+      "task_level": "L1",
+      "task_type": "query_metric",
+      "business_domain": null,
+      "difficulty": null,
+      "source": null,
+      "dataset_item_id": "L1-METRIC-CUSTOMER-ACTIVE-011"
+    },
+    {
+      "case_id": "L1-META-FIELD-MAPPING-001",
+      "user_query": "找包含 custom_code、year_month 的表/数据集/看板，并说明这两个字段的含义和推荐使用场景。",
+      "expected_tools": [
+        {
+          "tool_name": "openmetadata.search_metadata",
+          "arguments": {}
+        },
+        {
+          "tool_name": "metabase.search",
+          "arguments": {}
+        },
+        {
+          "tool_name": "metabase.get_table",
+          "arguments": {}
+        }
+      ],
+      "main_query": "OpenMetadata: custom_code year_month table discovery",
+      "evaluation_focus": [
+        "answer_mentions_table:StarRocks-OCI-PRD.default.dws.dws_custom_active_status_monthly_hi",
+        "answer_mentions_field:custom_code",
+        "answer_mentions_field:year_month",
+        "answer_mentions_metabase_table_id:2125"
+      ],
+      "task_level": "L1",
+      "task_type": "metadata_discovery",
+      "business_domain": "客户行为",
+      "difficulty": null,
+      "source": "openmetadata_metabase_verified",
+      "deterministic_evaluators": [
+        "task_completed"
+      ],
+      "evaluation_profile": "task_completed_only",
+      "created_at": "2026-06-26",
+      "last_verified_at": "2026-06-26",
+      "metadata": {
+        "case_id": "L1-META-FIELD-MAPPING-001",
+        "task_level": "L1",
+        "task_type": "metadata_discovery",
+        "business_domain": "客户行为",
+        "evaluation_profile": "task_completed_only",
+        "deterministic_evaluators": [
+          "task_completed"
+        ],
+        "source": "openmetadata_metabase_verified",
+        "created_at": "2026-06-26",
+        "last_verified_at": "2026-06-26",
+        "expected_result_contract": {
+          "source": "target_tool_projection",
+          "grain": "metadata_discovery_answer",
+          "filters": {
+            "openmetadata_table": "StarRocks-OCI-PRD.default.dws.dws_custom_active_status_monthly_hi",
+            "metabase_table_id": 2125
+          },
+          "row_count": 0,
+          "score_mode": "task_completed_only",
+          "expected_answer_key_points": [
+            "推荐 dws_custom_active_status_monthly_hi",
+            "custom_code 是客户代码",
+            "year_month 是统计年月"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "L1-META-BIZ-THEME-001",
+      "user_query": "找客户月度活跃及留存状态相关的表，给出推荐表、数据粒度、来源系统和关键字段。",
+      "expected_tools": [
+        {
+          "tool_name": "openmetadata.search_metadata",
+          "arguments": {}
+        },
+        {
+          "tool_name": "metabase.search",
+          "arguments": {}
+        },
+        {
+          "tool_name": "metabase.get_table",
+          "arguments": {}
+        }
+      ],
+      "main_query": "OpenMetadata: customer monthly active retention table discovery",
+      "evaluation_focus": [
+        "answer_mentions_table:StarRocks-OCI-PRD.default.dws.dws_custom_active_status_monthly_hi",
+        "answer_mentions_grain:单个客户在单个统计月份、业务类型、市场维度",
+        "answer_mentions_source_system:BMS",
+        "answer_mentions_fields:is_active,is_new,last_month_is_active,is_month_retention"
+      ],
+      "task_level": "L1",
+      "task_type": "metadata_discovery",
+      "business_domain": "客户行为",
+      "difficulty": null,
+      "source": "openmetadata_metabase_verified",
+      "deterministic_evaluators": [
+        "task_completed"
+      ],
+      "evaluation_profile": "task_completed_only",
+      "created_at": "2026-06-26",
+      "last_verified_at": "2026-06-26",
+      "metadata": {
+        "case_id": "L1-META-BIZ-THEME-001",
+        "task_level": "L1",
+        "task_type": "metadata_discovery",
+        "business_domain": "客户行为",
+        "evaluation_profile": "task_completed_only",
+        "deterministic_evaluators": [
+          "task_completed"
+        ],
+        "source": "openmetadata_metabase_verified",
+        "created_at": "2026-06-26",
+        "last_verified_at": "2026-06-26",
+        "expected_result_contract": {
+          "source": "target_tool_projection",
+          "grain": "metadata_discovery_answer",
+          "filters": {
+            "openmetadata_table": "StarRocks-OCI-PRD.default.dws.dws_custom_active_status_monthly_hi",
+            "metabase_table_id": 2125
+          },
+          "row_count": 0,
+          "score_mode": "task_completed_only",
+          "expected_answer_key_points": [
+            "推荐 dws_custom_active_status_monthly_hi",
+            "说明月度客户活跃及留存状态",
+            "包含 is_active、is_new、last_month_is_active、is_month_retention"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "L1-META-CONSTRAINED-001",
+      "user_query": "在企业数据目录的 dws 数据中查找客户行为相关、owner 为 HAYLEYHU/hurunli 的表，列出2个候选并说明日粒度和月粒度差异。",
+      "expected_tools": [
+        {
+          "tool_name": "openmetadata.search_metadata",
+          "arguments": {}
+        },
+        {
+          "tool_name": "metabase.search",
+          "arguments": {}
+        },
+        {
+          "tool_name": "metabase.get_table",
+          "arguments": {}
+        }
+      ],
+      "main_query": "OpenMetadata: constrained customer behavior table discovery",
+      "evaluation_focus": [
+        "answer_mentions_table:dws_custom_active_status_daily_hi",
+        "answer_mentions_table:dws_custom_active_status_monthly_hi",
+        "answer_mentions_owner:HAYLEYHU",
+        "answer_mentions_owner:hurunli"
+      ],
+      "task_level": "L1",
+      "task_type": "metadata_discovery",
+      "business_domain": "客户行为",
+      "difficulty": null,
+      "source": "openmetadata_metabase_verified",
+      "deterministic_evaluators": [
+        "task_completed"
+      ],
+      "evaluation_profile": "task_completed_only",
+      "created_at": "2026-06-26",
+      "last_verified_at": "2026-06-26",
+      "metadata": {
+        "case_id": "L1-META-CONSTRAINED-001",
+        "task_level": "L1",
+        "task_type": "metadata_discovery",
+        "business_domain": "客户行为",
+        "evaluation_profile": "task_completed_only",
+        "deterministic_evaluators": [
+          "task_completed"
+        ],
+        "source": "openmetadata_metabase_verified",
+        "created_at": "2026-06-26",
+        "last_verified_at": "2026-06-26",
+        "expected_result_contract": {
+          "source": "target_tool_projection",
+          "grain": "metadata_discovery_answer",
+          "filters": {
+            "openmetadata_owner": "hurunli/HAYLEYHU",
+            "database_schema": "StarRocks-OCI-PRD.default.dws",
+            "candidate_tables": [
+              "dws_custom_active_status_daily_hi",
+              "dws_custom_active_status_monthly_hi"
+            ]
+          },
+          "row_count": 0,
+          "score_mode": "task_completed_only",
+          "expected_answer_key_points": [
+            "日粒度表 dws_custom_active_status_daily_hi",
+            "月粒度表 dws_custom_active_status_monthly_hi",
+            "owner 为 hurunli/HAYLEYHU"
+          ]
+        }
+      },
+      "original_request": "在企业数据目录的 dws 数据中查找客户行为相关、owner 为 HAYLEYHU/hurunli 的表，列出2个候选并说明日粒度和月粒度差异。"
+    },
+    {
+      "case_id": "L1-META-FIELD-USAGE-001",
+      "user_query": "我要取客户近24月留存、最新活跃月份、招商团队区域，可以用哪个表读取？请给出字段名和表名。",
+      "expected_tools": [
+        {
+          "tool_name": "openmetadata.search_metadata",
+          "arguments": {}
+        },
+        {
+          "tool_name": "metabase.search",
+          "arguments": {}
+        },
+        {
+          "tool_name": "metabase.get_table",
+          "arguments": {}
+        }
+      ],
+      "main_query": "OpenMetadata: customer retention field usage discovery",
+      "evaluation_focus": [
+        "answer_mentions_table:dws_custom_active_status_monthly_hi",
+        "answer_mentions_field:recent_24month_retention",
+        "answer_mentions_field:lastest_active_month",
+        "answer_mentions_field:effective_area_name"
+      ],
+      "task_level": "L1",
+      "task_type": "metadata_discovery",
+      "business_domain": "客户行为",
+      "difficulty": null,
+      "source": "openmetadata_metabase_verified",
+      "deterministic_evaluators": [
+        "task_completed"
+      ],
+      "evaluation_profile": "task_completed_only",
+      "created_at": "2026-06-26",
+      "last_verified_at": "2026-06-26",
+      "metadata": {
+        "case_id": "L1-META-FIELD-USAGE-001",
+        "task_level": "L1",
+        "task_type": "metadata_discovery",
+        "business_domain": "客户行为",
+        "evaluation_profile": "task_completed_only",
+        "deterministic_evaluators": [
+          "task_completed"
+        ],
+        "source": "openmetadata_metabase_verified",
+        "created_at": "2026-06-26",
+        "last_verified_at": "2026-06-26",
+        "expected_result_contract": {
+          "source": "target_tool_projection",
+          "grain": "metadata_discovery_answer",
+          "filters": {
+            "openmetadata_table": "StarRocks-OCI-PRD.default.dws.dws_custom_active_status_monthly_hi",
+            "metabase_table_id": 2125,
+            "fields": [
+              "recent_24month_retention",
+              "lastest_active_month",
+              "effective_area_name"
+            ]
+          },
+          "row_count": 0,
+          "score_mode": "task_completed_only",
+          "expected_answer_key_points": [
+            "使用 dws_custom_active_status_monthly_hi",
+            "recent_24month_retention 是近24月留存",
+            "lastest_active_month 是最新活跃月份",
+            "effective_area_name 是招商团队区域名称"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "L1-META-ENUM-001",
+      "user_query": "dws_custom_active_status_monthly_hi 表里 business_type_name、market_cn_name、is_active、is_month_retention 的枚举值有哪些？",
+      "expected_tools": [
+        {
+          "tool_name": "metabase.search",
+          "arguments": {}
+        },
+        {
+          "tool_name": "metabase.get_table",
+          "arguments": {}
+        },
+        {
+          "tool_name": "metabase.get_table_field_values",
+          "arguments": {}
+        }
+      ],
+      "main_query": "Metabase: dws_custom_active_status_monthly_hi field values",
+      "evaluation_focus": [
+        "answer_mentions_field_values:business_type_name=4DC,4SPL,外销,海外仓,自营",
+        "answer_mentions_field_values:market_cn_name=加拿大,德国,日本,美国,英国",
+        "answer_mentions_field_values:is_active=0,1",
+        "answer_mentions_field_values:is_month_retention=0,1"
+      ],
+      "task_level": "L1",
+      "task_type": "enum_discovery",
+      "business_domain": "客户行为",
+      "difficulty": null,
+      "source": "openmetadata_metabase_verified",
+      "deterministic_evaluators": [
+        "task_completed"
+      ],
+      "evaluation_profile": "task_completed_only",
+      "created_at": "2026-06-26",
+      "last_verified_at": "2026-06-26",
+      "metadata": {
+        "case_id": "L1-META-ENUM-001",
+        "task_level": "L1",
+        "task_type": "enum_discovery",
+        "business_domain": "客户行为",
+        "evaluation_profile": "task_completed_only",
+        "deterministic_evaluators": [
+          "task_completed"
+        ],
+        "source": "openmetadata_metabase_verified",
+        "created_at": "2026-06-26",
+        "last_verified_at": "2026-06-26",
+        "expected_result_contract": {
+          "source": "target_tool_projection",
+          "grain": "metadata_field_values_answer",
+          "filters": {
+            "metabase_table_id": 2125,
+            "field_ids": {
+              "business_type_name": 48666,
+              "market_cn_name": 48668,
+              "is_active": 48673,
+              "is_month_retention": 48675
+            }
+          },
+          "row_count": 0,
+          "score_mode": "task_completed_only",
+          "expected_answer_key_points": [
+            "business_type_name 包含 4DC、4SPL、外销、海外仓、自营",
+            "market_cn_name 包含 加拿大、德国、日本、美国、英国",
+            "is_active 和 is_month_retention 均为 0/1"
+          ]
+        }
+      }
+    }
+  ]
+}

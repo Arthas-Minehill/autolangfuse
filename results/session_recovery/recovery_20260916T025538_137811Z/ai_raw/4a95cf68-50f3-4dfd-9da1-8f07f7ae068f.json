@@ -1,0 +1,52 @@
+{
+  "cases": [
+    {
+      "original_input": "@\"/Users/conanlee/Library/Containers/com.tencent.xinWeChat/Data/Documents/xwechat_files/conanlee007_65b2/temp/drag/UPS_Weekly_issue-9.14_styled_v2.pptx\"\n结合这个内容，帮我生成上周的周报。",
+      "original_output": "**上周周报已交付**：[UPS_Weekly_Review_WE_0912.pptx](UPS_Weekly_Review_WE_0912.pptx) + PDF，18 页，validate 与逐页视觉 QA 通过。\n\n**本期数据（W/E 9/5 vs W/E 9/12）——连续第 4 周创纪录，且有两个结构性大事件**：\n\n1. **量 108,521（+7.7%）**：GAE +31.4%、HOU05 +27.9%、NJF +11.2%\n2. **Roadie 提前 3 周跨过 Phase II**：24,225/周 = 20K 承诺的 **121%**（Phase I 269%），4 周暴涨 47%。新开 **BOS**（首周即 98.0% 24h 率，史上最佳开局）和 **DCA** 两个 metro，NYC 创纪录 11.7h/88.9%。Ramp 页改写为\"我方已提前交付——杠杆转向服务质量与账务问题\"，直接挂钩 Issue 4 的费用减免诉求\n3. **GAE 一周上线 7 条 DS lane**（267→8,647 件），DS 总量跳涨 60% 至 22,470；DS 页重构为\"GAE Network Launch\"专题（origin 汇总表 + GAE 7 lane 明细）\n4. **扩张的服务债**：Roadie PHL 崩了（29.7h/29.3%）、Dallas 33.4%、Houston 41.8%——写进摘要作为对 UPS 的施压点\n5. **Local 时效回落（16.72h/69.9%）带了显著 caveat**：周六刚结束、周五六扫描仍在回填，摘要和 CAP（-38.2pp）的 watch list 条目都标注\"下周复核后再升级\"，避免拿未成熟数据去找 UPS 吵架\n6. 燃油：9/14 当周 UPS 28.50% / FedEx 28.00%（官网核实，**缓存文件已回写 9/7 和 9/14 两周**，FedEx 周报会话可直接用），UPS 连续第 8 周高于 FedEx\n\n**物流组 4 个问题**（第 12–15 页，统一模板 + ASK 横幅）：Net 7→Net 30 生效时点确认（$304,826 发票、9 天账期卡片对比）；2026 申诉 **$778,391 / 13,285 单**零回复（五类附加费明细表，Large Package 占 67.7%）；理赔退款明细（标注\"**连续第二期无进展**\"作为升级信号）；Roadie 账户独有 **$53,214** Pay Processing Fee——这页我把措辞和 Ramp 页联动了：\"Roadie 量刚提前达标，这笔说不清的费用是合理的 giveback 诉求\"。\n\n手册记忆已更新网络快照（9 metro、22 DS lane、Phase II 已达标的叙事转向）。下周做周报时这些上下文自动带上。",
+      "user_turns": "@\"/Users/conanlee/Library/Containers/com.tencent.xinWeChat/Data/Documents/xwechat_files/conanlee007_65b2/temp/drag/UPS_Weekly_issue-9.14_styled_v2.pptx\"\n结合这个内容，帮我生成上周的周报。",
+      "assistant_clarifications": "",
+      "resolved_input": "结合提供的周报模板文件（UPS_Weekly_issue-9.14_styled_v2.pptx），沿用其结构、指标与版式，生成本期 UPS 周报并输出可交付文件（PPTX，必要时附 PDF）。",
+      "primary_intent": "数据查询与交付",
+      "secondary_intent": "周报生成与报表数据交付",
+      "output_format": "周报演示文稿（PPTX/PDF）",
+      "execution_status": "成功",
+      "clarification_status": "无需澄清",
+      "context_required": "已具备",
+      "gold_status": "待独立验证",
+      "exclude_reason": "",
+      "review_notes": "报告内数据来自 Metabase SQL（dwm.dwm_lt_express_h 等）与官网网页抓取，Assistant 的汇总叙述与结论均未经独立验证；'上周'的具体周期由模板文件名与查询区间推断，用户未明确确认；燃油等网页抓取数据需复核。模板已提供，故 context 已具备。"
+    },
+    {
+      "original_input": "看一下FedEx周报那边是不是也有这个bug",
+      "original_output": "**FedEx 周报排查完毕，结论：页面数字全部正确，没有 UPS deck 那个 bug。** 汇总：\n\n| 检查项 | 结果 |\n|---|---|\n| 主表 TOTAL Δ | ✅ 本来就是自动计算（`TOT.aW2 - TOT.aW1`），无硬编码 |\n| 两周时效同为 20.04h | ✅ 独立复算确认是**真实巧合**（W1 20.04 / W2 20.04，24h 率 62.3%→66.2% 同样吻合），不是漏改 |\n| 24h 率总计 `+3.9 pp`（硬编码） | ✅ 数值正确（66.2−62.3） |\n| DS 页总计 `-1.76`（硬编码） | ✅ 数值正确（32.15−33.91） |\n| DS 页 speaker note | ⚠️ 唯一瑕疵：残留上期数字（\"29.96h/-2.48h\"，本期实为 32.15h/-1.76h）——观众不可见，但照稿讲会念错 |\n\n已做的处理：修复过期 note；两处硬编码总计格改成与 UPS deck 相同的自动计算式（防御性根治，页面渲染值不变）；重建后 validate 通过，修订版已发你（可见内容与上午版本完全一致，可放心覆盖）。\n\n这条\"**TOTAL 行 Δ 格禁止硬编码、speaker notes 数字随数据更新**\"的铁律已写进手册记忆，两边周报的脚本模板从下期起都带着这个约束。",
+      "user_turns": "看一下FedEx周报那边是不是也有这个bug",
+      "assistant_clarifications": "",
+      "resolved_input": "排查 FedEx 周报（生成脚本及交付文件）是否存在与此前 UPS 周报中相同的 bug，逐项用实际数据复算核对，并对确属问题的部分进行修复、重新生成并校验。",
+      "primary_intent": "数据工程与技术处理",
+      "secondary_intent": "报表数据质量核查/脚本缺陷修复",
+      "output_format": "缺陷排查结论与修正版报告",
+      "execution_status": "成功",
+      "clarification_status": "需要澄清",
+      "context_required": "上下文不足",
+      "gold_status": "待重制-上下文案例",
+      "exclude_reason": "",
+      "review_notes": "用户所指'这个 bug'未在本 session 内定义，来自前序上下文（UPS deck 的缺陷）；resolved_input 依赖 Assistant 的复算与自查项推断，具体缺陷类型需补充上游上下文才能独立复现与评分；修复后数字与 note 修正结果需独立验证。属于数据质量问题，予以保留。"
+    },
+    {
+      "original_input": "这个表格要做一下排序。排序可以按照美东、美中、美南去做聚合。我们是更多的仓群，不然看不清楚数据的实际情况。",
+      "original_output": "**分仓表已改为仓群分组版式并交付。** 结构：\n\n- **仓群小计行**（深色底、加粗，量和时效都是包裹加权聚合）+ **成员仓缩进明细行**，按仓群本周量降序；CHI/CAT/MEM 这类单仓仓群合并成一行不占两行\n- 仓群划分用的是**维度表官方字段** `warehouse_group_name`（纽约/洛杉矶/萨凡纳/休斯顿/芝加哥/奥克兰/孟菲斯七个仓群），不是我自行归类；唯一例外是 **CAMV（Moreno Valley, CA）在维度表里还没维护归属**，暂放洛杉矶仓群并加了脚注——这个建议让数仓把维度补上\n\n聚合之后仓群层的故事一眼可见，比 15 行平铺清楚得多：\n\n| 仓群 | 本周量 | WoW | Local 时效 | 读法 |\n|---|---|---|---|---|\n| 纽约 | 34,343 | +4.8% | 11.92h（+0.07） | 量最大且服务最稳的基本盘 |\n| 洛杉矶 | 27,783 | +9.0% | 20.35h（**+7.43**） | 量涨但服务恶化，全是 CAP 拖的 |\n| 萨凡纳 | 17,660 | **+22.9%** | 21.26h（持平） | GAE DS 转型驱动的增长极 |\n| 休斯顿 | 17,302 | +12.3% | 16.61h（**-1.62**） | 唯一量增+服务同时改善的仓群 |\n| 芝加哥 | 10,121 | -9.7% | 15.38h（+4.76） | 量缩服务降，双弱 |\n\n这个版式已记入手册作为固定模板，下期自动沿用（含 CAMV 归属待维护的提醒——维度表补了之后会自动跟随官方归属）。",
+      "user_turns": "这个表格要做一下排序。排序可以按照美东、美中、美南去做聚合。我们是更多的仓群，不然看不清楚数据的实际情况。",
+      "assistant_clarifications": "",
+      "resolved_input": "将周报中的分仓表按仓群（warehouse group，而非仅按美东/美中/美南三大区）聚合并排序展示，采用仓群小计 + 成员仓明细的层级结构，使各仓群的数据情况一目了然；仓群归属以维度表中的官方仓群字段为准。",
+      "primary_intent": "数据查询与交付",
+      "secondary_intent": "分仓表仓群聚合与排序",
+      "output_format": "仓群聚合排序后的分仓表",
+      "execution_status": "成功",
+      "clarification_status": "无需澄清",
+      "context_required": "已具备",
+      "gold_status": "待独立验证",
+      "exclude_reason": "",
+      "review_notes": "仓群划分使用维度表 warehouse_group_name，但 CAMV 在该维度表未维护归属（被暂行归入洛杉矶仓群），存在口径风险；排序键（本周量降序）与加权方式由 Assistant 自行选择，用户未明确确认；聚合后各仓群数值需独立复算。"
+    }
+  ]
+}

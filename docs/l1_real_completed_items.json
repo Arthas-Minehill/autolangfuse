@@ -1,0 +1,552 @@
+{
+  "dataset": "aieval/data_analysis",
+  "description": "Completed L1-REAL remote Langfuse items",
+  "items": [
+    {
+      "id": "b739b6c2-5c20-41fe-99aa-4bd7268435a1",
+      "datasetName": "aieval/data_analysis",
+      "input": {
+        "case_id": "L1-REAL-01",
+        "original_request": "请从 dws_tra_warehouse_good_daily_hi 查询数据日期为 2026-06-19、SKU 为 LT-DHW019BN014C 的各仓库30日周转率，并汇总整体加权周转率。"
+      },
+      "expectedOutput": {
+        "case_id": "L1-REAL-01",
+        "main_query": "dws_tra_warehouse_good_daily_hi turnover_by_warehouse",
+        "expected_tools": [
+          "openmetadata.search_metadata",
+          "metabase.search",
+          "metabase.get_table",
+          "metabase.query"
+        ],
+        "evaluation_focus": [
+          "filter:stats_dt=2026-06-19",
+          "filter:lecangs_code=LT-DHW019BN014C",
+          "answer:warehouse_turnover_rates",
+          "answer:weighted_turnover=0.4613"
+        ]
+      },
+      "metadata": {
+        "case_id": "L1-REAL-01",
+        "task_level": "L1",
+        "difficulty": null,
+        "source": "l1_real_remote_item_completed",
+        "created_at": "2026-07-08",
+        "last_verified_at": "2026-07-08",
+        "task_type": "query_metric",
+        "business_domain": "库存周转"
+      }
+    },
+    {
+      "id": "349fd8b9-3598-4132-ba65-d3765f4089b0",
+      "datasetName": "aieval/data_analysis",
+      "input": {
+        "case_id": "L1-REAL-02",
+        "original_request": "请从 dws_tra_warehouse_good_daily_hi 查询数据日期为 2026-06-19、SKU 为 LT-DHW019BN014C 的各仓库30日周转率，并汇总整体加权周转率。"
+      },
+      "expectedOutput": {
+        "case_id": "L1-REAL-02",
+        "main_query": "dws_tra_warehouse_good_daily_hi turnover_by_warehouse",
+        "expected_tools": [
+          "openmetadata.search_metadata",
+          "metabase.search",
+          "metabase.get_table",
+          "metabase.query"
+        ],
+        "evaluation_focus": [
+          "filter:stats_dt=2026-06-19",
+          "filter:lecangs_code=LT-DHW019BN014C",
+          "answer:warehouse_turnover_rates",
+          "answer:weighted_turnover=0.4613"
+        ]
+      },
+      "metadata": {
+        "case_id": "L1-REAL-02",
+        "task_level": "L1",
+        "difficulty": null,
+        "source": "l1_real_remote_item_completed",
+        "created_at": "2026-07-08",
+        "last_verified_at": "2026-07-08",
+        "task_type": "query_metric",
+        "business_domain": "库存周转"
+      }
+    },
+    {
+      "id": "4930cfe0-15c3-43c4-9d66-971f3015b569",
+      "datasetName": "aieval/data_analysis",
+      "input": {
+        "case_id": "L1-REAL-03",
+        "original_request": "请问 每天到货交接的标准入库单类型的集装箱柜数 的计算口径是什么"
+      },
+      "expectedOutput": {
+        "case_id": "L1-REAL-03",
+        "main_query": "每天到货交接的标准入库单类型的集装箱柜数",
+        "expected_tools": [
+          "metric-mcp-remote.searchDerivedMetric",
+          "metric-mcp-remote.searchSqlByMetricTypeAndNameFuzzy"
+        ],
+        "evaluation_focus": [
+          "answer:atomic_metric=每天到货交接的标准入库单类型的集装箱柜数",
+          "answer:derived_metric=每天到货交接标准入库柜数",
+          "answer:field=handover_load_unit_cnt_d",
+          "answer:aggregation=sum"
+        ]
+      },
+      "metadata": {
+        "case_id": "L1-REAL-03",
+        "task_level": "L1",
+        "difficulty": null,
+        "source": "l1_real_remote_item_completed",
+        "created_at": "2026-07-08",
+        "last_verified_at": "2026-07-08",
+        "task_type": "metric_definition",
+        "business_domain": "指标口径",
+        "evaluation_profile": "task_completed_only",
+        "deterministic_evaluators": [
+          "task_completed"
+        ]
+      }
+    },
+    {
+      "id": "4e33457a-1113-4085-b6ec-a5d5bf5f1feb",
+      "datasetName": "aieval/data_analysis",
+      "input": {
+        "case_id": "L1-REAL-04",
+        "original_request": "查询 dws_tra_warehouse_good_daily_hi 在 2026-06-29 的数据：inventory_good_volume_d 和 outbound_good_volume_d 单位均为立方米。按客户代码关联 dim_customer_hf，business_type_name=海外仓归为3PL，其他归为FS；分别统计客户数、库存体积、出库体积，并按64立方米/柜折算库存柜数和出库柜数。"
+      },
+      "expectedOutput": {
+        "case_id": "L1-REAL-04",
+        "main_query": "dws_tra_warehouse_good_daily_hi inventory_volume_3pl_fs_split",
+        "expected_tools": [
+          "openmetadata.search_metadata",
+          "metabase.search",
+          "metabase.get_table",
+          "metabase.query"
+        ],
+        "evaluation_focus": [
+          "filter:stats_dt=2026-06-29",
+          "join:dim.dim_customer_hf.custom_code",
+          "rule:business_type_name=海外仓=>3PL,else=>FS",
+          "answer:3PL_FS_inventory_volume_container_and_outbound_volume"
+        ]
+      },
+      "metadata": {
+        "case_id": "L1-REAL-04",
+        "task_level": "L1",
+        "difficulty": null,
+        "source": "l1_real_remote_item_completed",
+        "created_at": "2026-07-08",
+        "last_verified_at": "2026-07-08",
+        "task_type": "query_metric",
+        "business_domain": "库存分析"
+      }
+    },
+    {
+      "id": "530a6966-1015-4452-a4c3-60519d38f445",
+      "datasetName": "aieval/data_analysis",
+      "input": {
+        "case_id": "L1-REAL-09",
+        "original_request": "查询 dws_tra_warehouse_good_daily_hi 在 2026-06-29 的数据，按客户代码关联 dim_customer_hf；business_type_name=海外仓归为3PL，其他归为FS。分别统计客户数、库存数量、库存体积，并按64立方米/柜折算柜数。"
+      },
+      "expectedOutput": {
+        "case_id": "L1-REAL-09",
+        "main_query": "dws_tra_warehouse_good_daily_hi inventory_volume_3pl_fs_split",
+        "expected_tools": [
+          "openmetadata.search_metadata",
+          "metabase.search",
+          "metabase.get_table",
+          "metabase.query"
+        ],
+        "evaluation_focus": [
+          "filter:stats_dt=2026-06-29",
+          "join:dim.dim_customer_hf.custom_code",
+          "rule:business_type_name=海外仓=>3PL,else=>FS",
+          "answer:3PL_FS_inventory_count_volume_container"
+        ]
+      },
+      "metadata": {
+        "case_id": "L1-REAL-09",
+        "task_level": "L1",
+        "difficulty": null,
+        "source": "l1_real_remote_item_completed",
+        "created_at": "2026-07-08",
+        "last_verified_at": "2026-07-08",
+        "task_type": "query_metric",
+        "business_domain": "库存分析"
+      }
+    },
+    {
+      "id": "d4a64786-d915-4353-9554-d286fe85e55c",
+      "datasetName": "aieval/data_analysis",
+      "input": {
+        "case_id": "L1-REAL-05",
+        "original_request": "查询 dws_tra_warehouse_good_daily_hi 在 2026-06-29 每个仓库的在库库存体积；inventory_good_volume_d 单位为立方米，并按64立方米/柜计算柜数。"
+      },
+      "expectedOutput": {
+        "case_id": "L1-REAL-05",
+        "main_query": "dws_tra_warehouse_good_daily_hi inventory_volume_by_warehouse",
+        "expected_tools": [
+          "openmetadata.search_metadata",
+          "metabase.search",
+          "metabase.get_table",
+          "metabase.query"
+        ],
+        "evaluation_focus": [
+          "filter:stats_dt=2026-06-29",
+          "measure:inventory_good_volume_d",
+          "answer:container_cnt=inventory_good_volume_d/64",
+          "answer:warehouse_rows=27"
+        ]
+      },
+      "metadata": {
+        "case_id": "L1-REAL-05",
+        "task_level": "L1",
+        "difficulty": null,
+        "source": "l1_real_remote_item_completed",
+        "created_at": "2026-07-08",
+        "last_verified_at": "2026-07-08",
+        "task_type": "query_metric",
+        "business_domain": "库存分析"
+      }
+    },
+    {
+      "id": "fe273774-0a38-475f-8647-2938e94e4bc2",
+      "datasetName": "aieval/data_analysis",
+      "input": {
+        "case_id": "L1-REAL-06",
+        "original_request": "分析 ods.ods_oms_toc_order 与 ods.ods_tms_external_order 的 platform 字段数据质量。按创建月份倒序输出每月总行数、空值率和缺失率，统计范围截止到 2026-06-30；先确认两张表真实的创建时间字段和 platform 字段类型。"
+      },
+      "expectedOutput": {
+        "case_id": "L1-REAL-06",
+        "main_query": "platform_data_quality_by_create_month",
+        "expected_tools": [
+          "openmetadata.search_metadata",
+          "metabase.search",
+          "metabase.get_table",
+          "metabase.query"
+        ],
+        "evaluation_focus": [
+          "tables:ods_oms_toc_order,ods_tms_external_order",
+          "group_by:create_month_desc",
+          "answer:null_rate_and_missing_rate",
+          "answer:key_month_summary"
+        ]
+      },
+      "metadata": {
+        "case_id": "L1-REAL-06",
+        "task_level": "L1",
+        "difficulty": null,
+        "source": "l1_real_remote_item_completed",
+        "created_at": "2026-07-08",
+        "last_verified_at": "2026-07-08",
+        "task_type": "data_quality_analysis",
+        "business_domain": "数据质量"
+      }
+    },
+    {
+      "id": "9f055dac-90fc-4cf4-b860-8ca1d40f840a",
+      "datasetName": "aieval/data_analysis",
+      "input": {
+        "case_id": "L1-REAL-07",
+        "original_request": "我要找客户24年每个月月底的库存总体积和体积估值，有一张表是结存每日的库存的。现在只要这几个客户代码的数据：XGRB，LYSB，ZBY，HZRZ，SWWL  你找到的表里体积单位就是立方米的，按照美国市场15000美金每64立方米计算体积估值。需要24年每个月最后一天的总库存数量、总体积、体积估值"
+      },
+      "expectedOutput": {
+        "case_id": "L1-REAL-07",
+        "main_query": "ads_client_good_overall_mv month_end_inventory_valuation_2024",
+        "expected_tools": [
+          "openmetadata.search_metadata",
+          "metabase.search",
+          "metabase.get_table",
+          "metabase.query"
+        ],
+        "evaluation_focus": [
+          "filter:2024 month ends",
+          "filter:custom_code in XGRB,LYSB,ZBY,HZRZ,SWWL",
+          "answer:valuation=inventory_good_volume_d*15000/64",
+          "answer:XGRB has no records"
+        ]
+      },
+      "metadata": {
+        "case_id": "L1-REAL-07",
+        "task_level": "L1",
+        "difficulty": null,
+        "source": "l1_real_remote_item_completed",
+        "created_at": "2026-07-08",
+        "last_verified_at": "2026-07-08",
+        "task_type": "query_metric",
+        "business_domain": "库存估值"
+      }
+    },
+    {
+      "id": "2084e583-730b-48ce-909a-5d93b96462f0",
+      "datasetName": "aieval/data_analysis",
+      "input": {
+        "case_id": "L1-REAL-08",
+        "original_request": "查一下26年6月24日海外仓的整体收入"
+      },
+      "expectedOutput": {
+        "case_id": "L1-REAL-08",
+        "main_query": "海外仓全局经营分析",
+        "expected_tools": [
+          "metric-mcp-remote.searchMetricApp",
+          "metric-mcp-remote.searchMetricAppQueryResult"
+        ],
+        "evaluation_focus": [
+          "filter:stats_dt=2026-06-24",
+          "metric_app:海外仓全局经营分析",
+          "answer:overall earned_amt",
+          "answer:revenue_component_breakdown"
+        ]
+      },
+      "metadata": {
+        "case_id": "L1-REAL-08",
+        "task_level": "L1",
+        "difficulty": null,
+        "source": "l1_real_remote_item_completed",
+        "created_at": "2026-07-08",
+        "last_verified_at": "2026-07-08",
+        "task_type": "query_metric",
+        "business_domain": "经营收入"
+      }
+    },
+    {
+      "id": "16ea11a0-b887-4ea6-abf8-3d863579196d",
+      "datasetName": "aieval/data_analysis",
+      "input": {
+        "case_id": "L1-REAL-10",
+        "original_request": "说明如何基于截至 2026-07-08 23:59:59 的历史绑定记录，精确判断曾绑定产品 usps_ground_advantage1、但尚未绑定价卡模版“USPS 2026.7客户VIP报价（3lbs内）”的客户；模版生效时间为 2026-07-12 00:00:00 至 2027-01-31 23:59:59。请给出真实表结构确认要点、筛选与去重口径，以及应输出的字段，不返回客户数量。"
+      },
+      "expectedOutput": {
+        "case_id": "L1-REAL-10",
+        "main_query": "tms_quote_template_usps_ground_advantage1_customer_binding",
+        "expected_tools": [
+          "openmetadata.search_metadata",
+          "metabase.search",
+          "metabase.get_table",
+          "metabase.query"
+        ],
+        "evaluation_focus": [
+          "answer:确认真实表结构",
+          "filter:历史绑定截止2026-07-08 23:59:59",
+          "answer:筛选与去重口径及输出字段",
+          "rule:不返回动态客户数量"
+        ]
+      },
+      "metadata": {
+        "case_id": "L1-REAL-10",
+        "task_level": "L1",
+        "difficulty": null,
+        "source": "l1_real_remote_item_completed",
+        "created_at": "2026-07-08",
+        "last_verified_at": "2026-07-08",
+        "task_type": "query_metric",
+        "business_domain": "报价价卡"
+      }
+    },
+    {
+      "id": "c2a6d624-b513-4967-83b9-118110b3d555",
+      "datasetName": "aieval/data_analysis",
+      "input": {
+        "case_id": "L1-REAL-11",
+        "original_request": "分析 2026-06-29 至 2026-07-05 UPS 的整体发货情况，按天输出包裹量，并汇总服务类型和币种。"
+      },
+      "expectedOutput": {
+        "case_id": "L1-REAL-11",
+        "main_query": "多维快递财务收入成本",
+        "expected_tools": [
+          "metric-mcp-remote.searchMetricApp",
+          "metric-mcp-remote.searchMetricAppQueryResult"
+        ],
+        "evaluation_focus": [
+          "date_range:2026-06-29..2026-07-05",
+          "carrier:UPS",
+          "answer:daily_package_cnt",
+          "answer:service_and_currency_summary"
+        ]
+      },
+      "metadata": {
+        "case_id": "L1-REAL-11",
+        "task_level": "L1",
+        "difficulty": null,
+        "source": "l1_real_remote_item_completed",
+        "created_at": "2026-07-08",
+        "last_verified_at": "2026-07-08",
+        "task_type": "query_metric",
+        "business_domain": "快递发货分析"
+      }
+    },
+    {
+      "id": "f630d4d4-8141-4b46-b862-c0cd3a4769ca",
+      "datasetName": "aieval/data_analysis",
+      "input": {
+        "case_id": "L1-REAL-12",
+        "original_request": "说明如何精确查询 crm_custom 中创建时间晚于 2025-10-16 00:00:00、不晚于 2026-07-08 23:59:59、审批通过且未删除的客户，并按 custom_type 和 business_type 分组。请给出真实字段确认要点、筛选与分组口径，以及应输出的字段，不返回会随数据修订变化的客户数量。"
+      },
+      "expectedOutput": {
+        "case_id": "L1-REAL-12",
+        "main_query": "ods_loctek_crm_custom_approved_after_2025_10_16_type_distribution",
+        "expected_tools": [
+          "openmetadata.search_metadata",
+          "metabase.search",
+          "metabase.get_table",
+          "metabase.query"
+        ],
+        "evaluation_focus": [
+          "answer:确认真实字段",
+          "filter:create_time>2025-10-16且<=2026-07-08 23:59:59",
+          "answer:custom_type,business_type分组口径及输出字段",
+          "rule:不返回动态客户数量"
+        ]
+      },
+      "metadata": {
+        "case_id": "L1-REAL-12",
+        "task_level": "L1",
+        "difficulty": null,
+        "source": "l1_real_remote_item_completed",
+        "created_at": "2026-07-08",
+        "last_verified_at": "2026-07-08",
+        "task_type": "query_metric",
+        "business_domain": "客户分析"
+      }
+    },
+    {
+      "id": "ec36ddac-7f02-4452-a439-66aadb88db2d",
+      "datasetName": "aieval/data_analysis",
+      "input": {
+        "case_id": "L1-REAL-13",
+        "original_request": "按SKU汇总 2024-12-31 至 2026-07-08 的库存流水，输出流水行数、数量合计、最早和最晚库存日期。SKU为：GEWX-ET3-SL、GEWX-ET3-WH、GEWX-ET3-BK、GEWX-ET2-WH、GEWX-ET2-BK、GEWX-ET3T-BK-2、GEWX-ET3T-BK-1、GEWX-ET223H(IB)(2/2)-WHT。"
+      },
+      "expectedOutput": {
+        "case_id": "L1-REAL-13",
+        "main_query": "ods_oms_inventory_flow_sku_flow_summary_2024_12_31_to_2026_07_08",
+        "expected_tools": [
+          "openmetadata.search_metadata",
+          "metabase.search",
+          "metabase.get_table",
+          "metabase.query"
+        ],
+        "evaluation_focus": [
+          "table:ods.ods_oms_inventory_flow",
+          "filter:warehouse_date>=2024-12-31",
+          "filter:8 sku list",
+          "answer:row_count_by_sku",
+          "answer:detail_sql_if_full_export_needed"
+        ]
+      },
+      "metadata": {
+        "case_id": "L1-REAL-13",
+        "task_level": "L1",
+        "difficulty": null,
+        "source": "l1_real_remote_item_completed",
+        "created_at": "2026-07-08",
+        "last_verified_at": "2026-07-08",
+        "task_type": "query_metric",
+        "business_domain": "库存流水"
+      }
+    },
+    {
+      "id": "8ba3dbbf-2ad1-4083-bcd2-31dde608d6b3",
+      "datasetName": "aieval/data_analysis",
+      "input": {
+        "case_id": "L1-REAL-14",
+        "original_request": "说明如何精确查询 oms_toc_order_express_info 中截至 2026-07-08 23:59:59 创建、未删除、承运商为 USPS、tracking_no 包含 184 且 label_url 非空的订单。请给出真实字段确认要点、筛选与去重口径，以及记录数、订单数、去重跟踪号数和最新跟踪号对应的输出字段，不返回会随数据修订变化的具体数值。"
+      },
+      "expectedOutput": {
+        "case_id": "L1-REAL-14",
+        "main_query": "ods_oms_toc_order_express_info_usps_tracking_184_label_url",
+        "expected_tools": [
+          "openmetadata.search_metadata",
+          "metabase.search",
+          "metabase.get_table",
+          "metabase.query"
+        ],
+        "evaluation_focus": [
+          "answer:确认真实字段",
+          "filter:USPS,tracking_no包含184,label_url非空,deleted=0",
+          "answer:四个汇总输出字段及去重口径",
+          "rule:不返回动态数值"
+        ]
+      },
+      "metadata": {
+        "case_id": "L1-REAL-14",
+        "task_level": "L1",
+        "difficulty": null,
+        "source": "l1_real_remote_item_completed",
+        "created_at": "2026-07-08",
+        "last_verified_at": "2026-07-08",
+        "task_type": "query_metric",
+        "business_domain": "订单面单"
+      }
+    },
+    {
+      "id": "49aa276f-8841-45d8-a61f-ab9a23c65905",
+      "datasetName": "aieval/data_analysis",
+      "input": {
+        "case_id": "L1-REAL-15",
+        "original_request": "帮我写个sql对比，oms_sales_back_order表中的barcode和用oms_sales_back_order表中的tracking_no反查原订单找到的货品编码比较，把不一致的结果对应的销退单据查出来。"
+      },
+      "expectedOutput": {
+        "case_id": "L1-REAL-15",
+        "main_query": "oms_sales_back_order barcode compare with original order goods code by tracking_no",
+        "expected_tools": [
+          "openmetadata.search_metadata",
+          "metabase.search",
+          "metabase.get_table"
+        ],
+        "evaluation_focus": [
+          "answer:sql_with_sales_back_and_origin_goods_ctes",
+          "join:tracking_no to package table",
+          "compare:normalized barcode set vs goods_code set",
+          "filter:deleted=0"
+        ]
+      },
+      "metadata": {
+        "case_id": "L1-REAL-15",
+        "task_level": "L1",
+        "difficulty": null,
+        "source": "l1_real_remote_item_completed",
+        "created_at": "2026-07-08",
+        "last_verified_at": "2026-07-08",
+        "task_type": "sql_generation",
+        "business_domain": "SQL生成",
+        "evaluation_profile": "task_completed_only",
+        "deterministic_evaluators": [
+          "task_completed"
+        ]
+      }
+    },
+    {
+      "id": "24e28a58-ef2f-4431-b7f6-92a38db7a606",
+      "datasetName": "aieval/data_analysis",
+      "input": {
+        "case_id": "L1-REAL-16",
+        "original_request": "使用 Metabase 查询 HOU07 仓库在 2026-06-30 已发货的有效订单，以 delivery_time 为发货时间，a_scan_time 为空表示没有 instant/第一枪物流轨迹；输出订单总数、缺失第一枪数量、缺失比例并给出简短报告。"
+      },
+      "expectedOutput": {
+        "case_id": "L1-REAL-16",
+        "main_query": "HOU07_missing_first_scan_report_2026_06_30",
+        "expected_tools": [
+          "openmetadata.search_metadata",
+          "metabase.search",
+          "metabase.get_table",
+          "metabase.query"
+        ],
+        "evaluation_focus": [
+          "warehouse:HOU07",
+          "delivery_date:2026-06-30",
+          "metric:missing a_scan_time",
+          "answer:order_count=5257 missing_count=14 missing_rate=0.2663%"
+        ]
+      },
+      "metadata": {
+        "case_id": "L1-REAL-16",
+        "task_level": "L1",
+        "difficulty": null,
+        "source": "l1_real_remote_item_completed",
+        "created_at": "2026-07-08",
+        "last_verified_at": "2026-07-08",
+        "task_type": "query_metric",
+        "business_domain": "物流轨迹"
+      }
+    }
+  ]
+}

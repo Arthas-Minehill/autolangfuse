@@ -1,0 +1,1275 @@
+{
+  "items": {
+    "L1-METRIC-CUSTOMER-ACTIVE-002": {
+      "expected_result": {
+        "columns": [
+          "dws_fin_overall_expense_daily_hi.earned_express_pkg_volume_d_sum",
+          "dws_fin_overall_expense_daily_hi.delivery_toc_pkg_cnt_d_sum",
+          "dws_fin_overall_expense_daily_hi.earned_express_pkg_cnt_d_sum",
+          "dws_fin_overall_expense_daily_hi.etl_bacth_time_max",
+          "dws_fin_overall_expense_daily_hi.earned_express_pkg_weight_d_sum",
+          "dws_fin_overall_expense_daily_hi.earned_oms_order_amt_d_sum",
+          "dws_fin_overall_expense_daily_hi.earned_operate_amt_d_sum",
+          "dws_fin_overall_expense_daily_hi.earned_clearance_extariff_amt_d_sum",
+          "dws_fin_overall_expense_daily_hi.earned_amt_d_sum",
+          "dws_fin_overall_expense_daily_hi.delivery_toc_pkg_weight_d_sum",
+          "dws_fin_overall_expense_daily_hi.billed_rebate_amt_d_sum",
+          "dws_fin_overall_expense_daily_hi.earned_express_claim_amt_d_sum",
+          "dws_fin_overall_expense_daily_hi.earned_express_amt_d_sum",
+          "dws_fin_overall_expense_daily_hi.stats_dt",
+          "dws_fin_overall_expense_daily_hi.earned_handadjust_rebate_amt_d_sum",
+          "dws_fin_overall_expense_daily_hi.delivery_toc_pkg_volume_d_sum",
+          "dws_fin_overall_expense_daily_hi.earned_handadjust_exrebate_amt_d_sum",
+          "dws_fin_overall_expense_daily_hi.earned_express_sys_cost_amt_d_sum",
+          "dws_fin_overall_expense_daily_hi.earned_storage_amt_d_sum",
+          "dws_fin_overall_expense_daily_hi.earned_trailer_amt_d_sum",
+          "dws_fin_overall_expense_daily_hi.earned_firstmile_amt_d_sum"
+        ],
+        "rows": []
+      },
+      "contract": {
+        "source": "target_tool_output_schema",
+        "trace_id": "199b81186450f5bfd118e932923bb11d",
+        "run_id": "eval-20260703-023648",
+        "grain": "metric_app_overseas_warehouse_native_revenue_schema",
+        "filters": {
+          "stats_dt_gte": "2026-06-01",
+          "exclude_business_type_id": 105305,
+          "exclude_test_warehouse": true,
+          "exclude_deleted_warehouse": true,
+          "exclude_deleted_customer": true
+        },
+        "must_include": [
+          "date_range=2026-06-01..2026-06-26",
+          "native_amount_no_fx",
+          "total_earned_amt=41043142.7290",
+          "currency USD=35912888.9383 EUR=2254911.5500 CAD=2247528.1813 GBP=627814.0594 JPY=0.0000",
+          "revenue_mix express=29225214.9400 operate=5661439.5500 storage=4973759.9590 clearance_extariff=3627.7100",
+          "warehouse_top CAP=8039627.2153 NJF=4985680.5676 NJF02=4453842.5132 SAV=3317737.7902 HOU07=3153626.4116",
+          "business_type overseas=35964635.3929 self=4418136.7776 4SPL=527935.0156 4DC=82942.4147 outbound=49493.1282",
+          "current_day 2026-06-26 amount=2639853.5713 row_count=2708 batch_time>=2026-07-03T05:13:21 batch_status=complete"
+        ],
+        "score_mode": "schema_only",
+        "final_answer_gold_rows": [
+          [
+            "scope",
+            "metric_app",
+            "overseas_warehouse_global_operation",
+            "native_amount_no_fx"
+          ],
+          [
+            "scope",
+            "date_range",
+            "2026-06-01..2026-06-26",
+            "exclude_after=2026-06-26"
+          ],
+          [
+            "overall",
+            "row_count",
+            69700,
+            null
+          ],
+          [
+            "overall",
+            "day_count",
+            26,
+            null
+          ],
+          [
+            "overall",
+            "total_earned_amt",
+            41043142.729,
+            null
+          ],
+          [
+            "currency",
+            "USD",
+            35912888.9383,
+            null
+          ],
+          [
+            "currency",
+            "EUR",
+            2254911.55,
+            null
+          ],
+          [
+            "currency",
+            "CAD",
+            2247528.1813,
+            null
+          ],
+          [
+            "currency",
+            "GBP",
+            627814.0594,
+            null
+          ],
+          [
+            "currency",
+            "JPY",
+            0.0,
+            null
+          ],
+          [
+            "revenue_mix",
+            "express_amt",
+            29225214.94,
+            "pct=71.21"
+          ],
+          [
+            "revenue_mix",
+            "operate_amt",
+            5661439.55,
+            "pct=13.79"
+          ],
+          [
+            "revenue_mix",
+            "storage_amt",
+            4973759.959,
+            "pct=12.12"
+          ],
+          [
+            "revenue_mix",
+            "handadjust_exrebate_amt",
+            636895.82,
+            "pct=1.55"
+          ],
+          [
+            "revenue_mix",
+            "trailer_amt",
+            574339.64,
+            "pct=1.40"
+          ],
+          [
+            "revenue_mix",
+            "clearance_extariff_amt",
+            3627.71,
+            "pct=0.01"
+          ],
+          [
+            "revenue_mix",
+            "handadjust_rebate_amt",
+            -32134.89,
+            "pct=-0.08"
+          ],
+          [
+            "market",
+            "US",
+            35912888.9383,
+            "pct=87.50"
+          ],
+          [
+            "market",
+            "DE",
+            2254911.55,
+            "pct=5.49"
+          ],
+          [
+            "market",
+            "CA",
+            2247528.1813,
+            "pct=5.48"
+          ],
+          [
+            "market",
+            "UK",
+            627814.0594,
+            "pct=1.53"
+          ],
+          [
+            "market",
+            "JP",
+            0.0,
+            "pct=0.00"
+          ],
+          [
+            "warehouse_top",
+            "CAP",
+            8039627.2153,
+            "pct=19.59"
+          ],
+          [
+            "warehouse_top",
+            "NJF",
+            4985680.5676,
+            "pct=12.15"
+          ],
+          [
+            "warehouse_top",
+            "NJF02",
+            4453842.5132,
+            "pct=10.85"
+          ],
+          [
+            "warehouse_top",
+            "SAV",
+            3317737.7902,
+            "pct=8.09"
+          ],
+          [
+            "warehouse_top",
+            "HOU07",
+            3153626.4116,
+            "pct=7.69"
+          ],
+          [
+            "warehouse_top",
+            "CAR",
+            2720954.8024,
+            "pct=6.63"
+          ],
+          [
+            "warehouse_top",
+            "CHI",
+            2470067.4708,
+            "pct=6.02"
+          ],
+          [
+            "warehouse_top",
+            "EUWE",
+            2004708.5809,
+            "pct=4.89"
+          ],
+          [
+            "warehouse_top",
+            "CATO",
+            1952467.5221,
+            "pct=4.76"
+          ],
+          [
+            "warehouse_top",
+            "GAE",
+            1930341.3454,
+            "pct=4.70"
+          ],
+          [
+            "business_type",
+            "overseas_warehouse",
+            35964635.3929,
+            "pct=87.63"
+          ],
+          [
+            "business_type",
+            "self_operated",
+            4418136.7776,
+            "pct=10.77"
+          ],
+          [
+            "business_type",
+            "4SPL",
+            527935.0156,
+            "pct=1.29"
+          ],
+          [
+            "business_type",
+            "4DC",
+            82942.4147,
+            "pct=0.20"
+          ],
+          [
+            "business_type",
+            "outbound_sales",
+            49493.1282,
+            "pct=0.12"
+          ],
+          [
+            "daily_peak",
+            "2026-06-15",
+            2936103.3405,
+            null
+          ],
+          [
+            "current_day",
+            "2026-06-26",
+            2639853.5713,
+            "row_count=2708; max_etl_bacth_time>=2026-07-03T05:13:21; batch_status=complete"
+          ]
+        ],
+        "row_count": 0,
+        "accepted_metric_names": [
+          "海外仓全局经营分析"
+        ],
+        "primary_expected_result_role": "final_answer_gold",
+        "judge_guidance": "Use must_include and final_answer_gold_rows as the primary final-answer gold for the current batch. Chinese labels may vary; grade by section keys, field names, dates, ids, and numeric values. Prioritize amount values, date range, no-FX policy, revenue mix, warehouse Top, customer business type totals, daily peak and batch-complete conclusion; row_count and max_etl_bacth_time may drift slightly as the source refreshes and should not cause a large penalty when amount values and completeness conclusion match. For warehouse-market output, accept primary market/currency totals and do not require small cross-currency adjustment rows to appear as main rows."
+      }
+    },
+    "L1-METRIC-CUSTOMER-ACTIVE-003": {
+      "expected_result": {
+        "columns": [
+          "currency",
+          "revenue_amt",
+          "price_card_cost_amt",
+          "pkg_cnt"
+        ],
+        "rows": []
+      },
+      "contract": {
+        "source": "target_tool_output_schema",
+        "trace_id": "e8874cdd5deb2835952667fa6a896dc9",
+        "run_id": "eval-full-answer-gold-20260626-r9",
+        "grain": "query_native_currency_price_card_cost_schema",
+        "filters": {
+          "stats_dt_gt": "2026-06-02",
+          "business_type_name": "海外仓"
+        },
+        "must_include": [
+          "date_range=2026-06-03..2026-06-26",
+          "business_type=overseas_warehouse",
+          "native_amount_no_fx",
+          "price_card_cost_field=earned_sys_init_cost_amt_d",
+          "currency USD=21482954.78 EUR=1116685.60 CAD=1050375.69 GBP=196613.14",
+          "warehouse_top includes CAP=5129987.15 NJF02=2983597.97 NJF=2681734.64 EUWE=1116685.60 CATO=842894.61 UKNH02=196613.14",
+          "customer_top includes LYSB=2081513.79 SWWL=1227905.45 HFHQ=860532.17 XGBR=822335.79 NBRTF=726021.32",
+          "carrier_service_top includes FEDEX_HOME_DELIVERY=14751875.78 UPS_GROUND=3425484.50 FEDEX_GROUND_USD=1835961.22 FEDEX_GROUND_CAD=948849.23 DPD_DE_PAKET=282506.69",
+          "daily_peak overall=2026-06-24 amount=1905931.56"
+        ],
+        "score_mode": "schema_only",
+        "final_answer_gold_rows": [
+          [
+            "scope",
+            "date_range",
+            "2026-06-03..2026-06-26",
+            null
+          ],
+          [
+            "scope",
+            "business_type",
+            "overseas_warehouse",
+            null
+          ],
+          [
+            "scope",
+            "price_card_cost_field",
+            "earned_sys_init_cost_amt_d",
+            null
+          ],
+          [
+            "overall",
+            "revenue_amt",
+            23846629.21,
+            "price_card_cost=18453903.90; diff=5392725.31"
+          ],
+          [
+            "currency",
+            "USD",
+            21482954.78,
+            "cost=16521527.30; diff=4961427.48"
+          ],
+          [
+            "currency",
+            "EUR",
+            1116685.6,
+            "cost=1022296.15; diff=94389.45"
+          ],
+          [
+            "currency",
+            "CAD",
+            1050375.69,
+            "cost=735049.88; diff=315325.81"
+          ],
+          [
+            "currency",
+            "GBP",
+            196613.14,
+            "cost=175030.57; diff=21582.57"
+          ],
+          [
+            "warehouse_top",
+            "CAP / USD",
+            5129987.15,
+            "cost=3813137.54"
+          ],
+          [
+            "warehouse_top",
+            "NJF02 / USD",
+            2983597.97,
+            "cost=2329494.38"
+          ],
+          [
+            "warehouse_top",
+            "NJF / USD",
+            2681734.64,
+            "cost=2124446.32"
+          ],
+          [
+            "warehouse_top",
+            "SAV / USD",
+            2310758.04,
+            "cost=1745017.89"
+          ],
+          [
+            "warehouse_top",
+            "HOU07 / USD",
+            1752741.33,
+            "cost=1323888.01"
+          ],
+          [
+            "warehouse_top",
+            "CHI / USD",
+            1658129.89,
+            "cost=1309869.90"
+          ],
+          [
+            "warehouse_top",
+            "GAE / USD",
+            1362136.7,
+            "cost=1071583.93"
+          ],
+          [
+            "warehouse_top",
+            "EUWE / EUR",
+            1116685.6,
+            "cost=1022296.15"
+          ],
+          [
+            "warehouse_top",
+            "HOU05 / USD",
+            961334.82,
+            "cost=750288.58"
+          ],
+          [
+            "warehouse_top",
+            "SCH / USD",
+            925565.94,
+            "cost=740265.17"
+          ],
+          [
+            "customer_top",
+            "LYSB / USD",
+            2081513.79,
+            "cost=1654700.48"
+          ],
+          [
+            "customer_top",
+            "SWWL / USD",
+            1227905.45,
+            "cost=927482.23"
+          ],
+          [
+            "customer_top",
+            "HFHQ / USD",
+            860532.17,
+            "cost=699526.76"
+          ],
+          [
+            "customer_top",
+            "XGBR / USD",
+            822335.79,
+            "cost=686574.85"
+          ],
+          [
+            "customer_top",
+            "NBRTF / USD",
+            726021.32,
+            "cost=544251.04"
+          ],
+          [
+            "carrier_service_top",
+            "FEDEX / FEDEX_HOME_DELIVERY / USD",
+            14751875.78,
+            "cost=11185263.12"
+          ],
+          [
+            "carrier_service_top",
+            "UPS / UPS_GROUND / USD",
+            3425484.5,
+            "cost=2690030.73"
+          ],
+          [
+            "carrier_service_top",
+            "FEDEX / FEDEX_GROUND / USD",
+            1835961.22,
+            "cost=1426253.32"
+          ],
+          [
+            "carrier_service_top",
+            "FEDEX / FEDEX_GROUND / CAD",
+            948849.23,
+            "cost=671683.96"
+          ],
+          [
+            "carrier_service_top",
+            "DPD_DE / DPD_DE_PAKET / EUR",
+            282506.69,
+            "cost=266964.00"
+          ],
+          [
+            "daily_peak",
+            "overall / 2026-06-24",
+            1905931.56,
+            "cost=1494933.37"
+          ],
+          [
+            "daily_peak",
+            "USD / 2026-06-24",
+            1741290.66,
+            "cost=1365383.41"
+          ],
+          [
+            "daily_peak",
+            "EUR / 2026-06-15",
+            120256.23,
+            "cost=109975.30"
+          ],
+          [
+            "daily_peak",
+            "CAD / 2026-06-08",
+            110432.56,
+            "cost=75736.14"
+          ],
+          [
+            "daily_peak",
+            "GBP / 2026-06-08",
+            21327.05,
+            "cost=18905.58"
+          ]
+        ],
+        "row_count": 0,
+        "accepted_metric_names": [],
+        "primary_expected_result_role": "final_answer_gold",
+        "judge_guidance": "Use final_answer_gold_rows as the primary final-answer gold. Chinese labels may vary; grade by section keys, field names, dates, ids, and numeric values."
+      }
+    },
+    "L1-METRIC-CUSTOMER-ACTIVE-004": {
+      "expected_result": {
+        "columns": [
+          "dws_custom_active_status_daily_hi.market_code",
+          "dws_custom_active_status_daily_hi.business_type_name",
+          "dws_custom_active_status_daily_hi.is_active_sum",
+          "dws_custom_active_status_daily_hi.business_type_id",
+          "dws_custom_active_status_daily_hi.stats_dt",
+          "dws_custom_active_status_daily_hi.effective_area_id",
+          "dws_custom_active_status_daily_hi.is_new_sum",
+          "dws_custom_active_status_daily_hi.sale_user_name",
+          "dws_custom_active_status_daily_hi.market_en_name",
+          "dws_custom_active_status_daily_hi.effective_area_name",
+          "dws_custom_active_status_daily_hi.sale_user_id",
+          "dws_custom_active_status_daily_hi.effective_id",
+          "dws_custom_active_status_daily_hi.market_cn_name",
+          "dws_custom_active_status_daily_hi.effective_username"
+        ],
+        "rows": []
+      },
+      "contract": {
+        "source": "target_tool_output_schema",
+        "grain": "daily_customer_behavior_metric_app_schema",
+        "filters": {
+          "case_id": "L1-METRIC-CUSTOMER-ACTIVE-004",
+          "stats_dt": "2026-06-02",
+          "apply_pass_time": "IS NOT NULL",
+          "metric_app_name": "日x销售代表x市场x客户业务类型_客户行为",
+          "trace_id": "275f322f2ae5169ee939249d73ac12d5",
+          "run_id": "eval-20260626-023354"
+        },
+        "row_count": 0,
+        "accepted_metric_names": [
+          "日x销售代表x市场x客户业务类型_客户行为"
+        ],
+        "answer_contract": {
+          "primary_expected_result_role": "final_answer_gold",
+          "judge_guidance": "expected_result 是基于本轮 Codex app-server 最终回答整理的客户行为汇总金标；原始14字段明细只作为 alternative_expected_results 的 deterministic 校验候选。",
+          "must_include": [
+            "2026-06-02",
+            "新客户人日",
+            "活跃客户人日",
+            "业务类型汇总",
+            "区域汇总",
+            "市场业务类型Top"
+          ],
+          "numeric_tolerance": "计数类指标应完全一致。"
+        },
+        "score_mode": "schema_only",
+        "final_answer_gold_rows": [
+          [
+            "overview",
+            "2026-06-02",
+            1,
+            983,
+            "apply_pass_time IS NOT NULL"
+          ],
+          [
+            "business_type",
+            "???",
+            1,
+            970,
+            null
+          ],
+          [
+            "business_type",
+            "??",
+            0,
+            7,
+            null
+          ],
+          [
+            "business_type",
+            "??",
+            0,
+            3,
+            null
+          ],
+          [
+            "business_type",
+            "4SPL",
+            0,
+            2,
+            null
+          ],
+          [
+            "business_type",
+            "4DC",
+            0,
+            1,
+            null
+          ],
+          [
+            "area",
+            "??",
+            0,
+            398,
+            null
+          ],
+          [
+            "area",
+            "??",
+            1,
+            392,
+            null
+          ],
+          [
+            "area",
+            "??",
+            0,
+            163,
+            null
+          ],
+          [
+            "area",
+            "??",
+            0,
+            30,
+            null
+          ],
+          [
+            "area",
+            "??",
+            0,
+            0,
+            null
+          ],
+          [
+            "market_business_top",
+            "?? / ???",
+            0,
+            636,
+            null
+          ],
+          [
+            "market_business_top",
+            "?? / ???",
+            0,
+            145,
+            null
+          ],
+          [
+            "market_business_top",
+            "??? / ???",
+            0,
+            123,
+            null
+          ],
+          [
+            "market_business_top",
+            "?? / ???",
+            1,
+            66,
+            null
+          ],
+          [
+            "market_business_top",
+            "?? / ??",
+            0,
+            3,
+            null
+          ],
+          [
+            "market_business_top",
+            "?? / 4SPL",
+            0,
+            2,
+            null
+          ],
+          [
+            "market_business_top",
+            "?? / ??",
+            0,
+            2,
+            null
+          ],
+          [
+            "market_business_top",
+            "?? / 4DC",
+            0,
+            1,
+            null
+          ],
+          [
+            "market_business_top",
+            "?? / ??",
+            0,
+            1,
+            null
+          ],
+          [
+            "market_business_top",
+            "?? / ??",
+            0,
+            1,
+            null
+          ],
+          [
+            "market_business_top",
+            "?? / ??",
+            0,
+            1,
+            null
+          ],
+          [
+            "market_business_top",
+            "?? / ??",
+            0,
+            1,
+            null
+          ],
+          [
+            "market_business_top",
+            "??? / ??",
+            0,
+            1,
+            null
+          ],
+          [
+            "market_business_top",
+            "?? / ??",
+            0,
+            0,
+            null
+          ],
+          [
+            "sales_top",
+            "???",
+            0,
+            66,
+            "????????"
+          ],
+          [
+            "sales_top",
+            "???",
+            0,
+            60,
+            "????????"
+          ],
+          [
+            "sales_top",
+            "???",
+            0,
+            56,
+            "????????"
+          ],
+          [
+            "sales_top",
+            "??",
+            0,
+            55,
+            "????????"
+          ],
+          [
+            "sales_top",
+            "???",
+            0,
+            50,
+            "????????"
+          ],
+          [
+            "sales_top",
+            "???",
+            0,
+            48,
+            "????????"
+          ],
+          [
+            "sales_top",
+            "??",
+            1,
+            43,
+            "????????"
+          ],
+          [
+            "sales_top",
+            "???",
+            0,
+            42,
+            "????????"
+          ],
+          [
+            "sales_top",
+            "???",
+            0,
+            41,
+            "????????"
+          ],
+          [
+            "sales_top",
+            "??",
+            0,
+            40,
+            "????????"
+          ]
+        ],
+        "must_include": [
+          "date=2026-06-02",
+          "new_person_days=1",
+          "active_person_days=983",
+          "business_type overseas=970 self=7 outbound=3 4SPL=2 4DC=1",
+          "area north=398 east=392 south=163 overseas=30 null_or_unassigned=0",
+          "market_business US_overseas=636 DE_overseas=145 CA_overseas=123 UK_overseas=66",
+          "sales_top LiuYanan=66 ShiMengni=60 ZhouHousong=56 ChengGang=55 YuQilin=50"
+        ],
+        "primary_expected_result_role": "final_answer_gold",
+        "judge_guidance": "Use final_answer_gold_rows as the primary final-answer gold. Chinese labels may vary; grade by section keys, field names, dates, ids, and numeric values."
+      }
+    },
+    "L1-METRIC-CUSTOMER-ACTIVE-005": {
+      "expected_result": {
+        "columns": [
+          "ads_client_custom_stats_rt_mv.balance_sum",
+          "ads_client_custom_stats_rt_mv.custom_code",
+          "ads_client_custom_stats_rt_mv.inventory_volume_value_sum",
+          "ads_client_custom_stats_rt_mv.standard_inventory_volume_sum",
+          "ads_client_custom_stats_rt_mv.base_unit",
+          "ads_client_custom_stats_rt_mv.to_currency",
+          "ads_client_custom_stats_rt_mv.inventory_volume_sum",
+          "ads_client_custom_stats_rt_mv.create_volume_value_sum",
+          "ads_client_custom_stats_rt_mv.create_volume_sum",
+          "ads_client_custom_stats_rt_mv.metric_unit",
+          "ads_client_custom_stats_rt_mv.standard_balance_sum",
+          "ads_client_custom_stats_rt_mv.currency",
+          "ads_client_custom_stats_rt_mv.credit_sum",
+          "ads_client_custom_stats_rt_mv.market_name",
+          "ads_client_custom_stats_rt_mv.standard_credit_sum",
+          "ads_client_custom_stats_rt_mv.standard_create_volume_sum"
+        ],
+        "rows": []
+      },
+      "contract": {
+        "source": "target_tool_projection",
+        "grain": "customer_realtime_balance_credit_inventory",
+        "filters": {
+          "case_id": "L1-METRIC-CUSTOMER-ACTIVE-005",
+          "metric_app_name": "客户实时余额_额度_库存体积与估值",
+          "table": "ads.ads_client_custom_stats_rt_mv",
+          "limit": 5,
+          "order_by": [
+            "custom_code",
+            "market_name"
+          ]
+        },
+        "row_count": 0,
+        "score_mode": "schema_only",
+        "score_mode_reason": "real-time metric values are live; validate field set and target app while rows document a current non-empty sample",
+        "answer_contract": {
+          "primary_expected_result_role": "schema_only_realtime_snapshot",
+          "judge_guidance": "实时指标值会随快照变化；eval-prompt 不应按 expected_result.rows 的数值硬比。优先检查最终答案是否说明按 custom_code、market_name 升序前5行，是否保留并展示16个原始字段名，且没有把 create_volume_sum、standard_create_volume_sum、create_volume_value_sum 解释成在途体积。字段顺序接受本 contract 的规范顺序或工具返回顺序。",
+          "must_include_fields": [
+            "custom_code",
+            "market_name",
+            "currency",
+            "balance_sum",
+            "credit_sum",
+            "to_currency",
+            "standard_balance_sum",
+            "standard_credit_sum",
+            "inventory_volume_sum",
+            "base_unit",
+            "standard_inventory_volume_sum",
+            "metric_unit",
+            "inventory_volume_value_sum",
+            "create_volume_sum",
+            "standard_create_volume_sum",
+            "create_volume_value_sum"
+          ],
+          "must_not_interpret_as": {
+            "create_volume_sum": "在途体积",
+            "standard_create_volume_sum": "在途体积",
+            "create_volume_value_sum": "在途体积"
+          }
+        }
+      }
+    },
+    "L1-METRIC-CUSTOMER-ACTIVE-006": {
+      "expected_result": {
+        "columns": [
+          "dws_custom_active_status_daily_hi.business_type_id",
+          "dws_custom_active_status_daily_hi.custom_code_count_distinct",
+          "dws_custom_active_status_daily_hi.market_en_name",
+          "dws_custom_active_status_daily_hi.market_cn_name",
+          "dws_custom_active_status_daily_hi.market_code",
+          "dws_custom_active_status_daily_hi.business_type_name"
+        ],
+        "rows": []
+      },
+      "contract": {
+        "source": "target_tool_output_schema",
+        "trace_id": "10e60efe87556001b1bfba0a318b12c4",
+        "run_id": "eval-full-answer-gold-20260626-r7",
+        "grain": "default_period_distinct_active_customer_metric_app_schema",
+        "accepted_metric_names": [
+          "统计时间内的去重活跃客户数"
+        ],
+        "score_mode": "schema_only",
+        "final_answer_gold_rows": [
+          [
+            "scope",
+            "metric_app",
+            "distinct_active_customer_default_period",
+            "SQL has no explicit 2026 filter"
+          ],
+          [
+            "scope",
+            "aggregation",
+            "count(distinct custom_code)",
+            "apply_pass_time IS NOT NULL; trade_amt_d > 0; stats_dt IS NOT NULL"
+          ],
+          [
+            "overall",
+            "distinct_active_customer_count",
+            1659,
+            "overall count, not sum of grouped distinct"
+          ],
+          [
+            "warning",
+            "date_filter",
+            "not_applied_by_metric_tool",
+            "strict year filter requires metric app date parameter"
+          ]
+        ],
+        "row_count": 0,
+        "primary_expected_result_role": "final_answer_gold",
+        "judge_guidance": "Use final_answer_gold_rows as the primary final-answer gold. Chinese labels may vary; grade by section keys, field names, dates, ids, and numeric values.",
+        "filters": {}
+      }
+    },
+    "L1-METRIC-CUSTOMER-ACTIVE-007": {
+      "expected_result": {
+        "columns": [
+          "stats_dt",
+          "warehouse_code",
+          "outbound_good_volume_d_sum",
+          "outbound_toc_package_d_sum",
+          "outbound_tob_good_cnt_d_sum",
+          "inbound_rma_package_cnt_d_sum",
+          "employee_total_cost_amt_d_sum",
+          "self_employed_cost_amt_d_sum",
+          "labour_cost_amt_d_sum",
+          "labour_reg_cost_amt_d_sum",
+          "labour_ot_cost_amt_d_sum",
+          "labour_dt_cost_amt_d_sum"
+        ],
+        "rows": [
+          [
+            "2026-06-01",
+            "CAP",
+            1793.3238,
+            17027,
+            477,
+            214,
+            35093.7,
+            2309.37,
+            32784.33,
+            21934.81,
+            10849.52,
+            0.0
+          ]
+        ]
+      },
+      "contract": {
+        "source": "target_tool_projection",
+        "grain": "warehouse_kpi_throughput_labor_cost",
+        "filters": {
+          "case_id": "L1-METRIC-CUSTOMER-ACTIVE-007",
+          "metric_app_name": "仓储KPI与人效指标",
+          "table": "ads.ads_warehouse_daily",
+          "stats_dt": "2026-06-01",
+          "warehouse_code": "CAP"
+        },
+        "row_count": 1,
+        "score_mode": "schema_only",
+        "score_mode_reason": "warehouse KPI values are live; validate accepted metric app and field set while rows document the requested CAP 2026-06-01 projection",
+        "accepted_metric_names": [
+          "仓储日统计指标相关查询应用场景",
+          "仓库人效吞吐量人员成本",
+          "仓储KPI与人效指标"
+        ],
+        "must_include": [
+          "date=2026-06-01",
+          "warehouse=CAP",
+          "outbound_good_volume=1793.3238",
+          "toc_packages=17027",
+          "tob_goods=477",
+          "rma_packages=214",
+          "employee_total_cost=35093.70",
+          "self_employed_cost=2309.37",
+          "labour_cost=32784.33",
+          "labour_reg_cost=21934.81",
+          "labour_ot_cost=10849.52",
+          "labour_dt_cost=0.00",
+          "only_CAP_same_day"
+        ],
+        "final_answer_gold_rows": [
+          [
+            "scope",
+            "metric_app",
+            "warehouse_kpi_efficiency",
+            "stats_dt=2026-06-01; warehouse_code=CAP"
+          ],
+          [
+            "throughput",
+            "outbound_good_volume_d_sum",
+            1793.3238,
+            null
+          ],
+          [
+            "throughput",
+            "outbound_toc_package_d_sum",
+            17027,
+            null
+          ],
+          [
+            "throughput",
+            "outbound_tob_good_cnt_d_sum",
+            477,
+            null
+          ],
+          [
+            "throughput",
+            "inbound_rma_package_cnt_d_sum",
+            214,
+            null
+          ],
+          [
+            "cost",
+            "employee_total_cost_amt_d_sum",
+            35093.7,
+            null
+          ],
+          [
+            "cost",
+            "self_employed_cost_amt_d_sum",
+            2309.37,
+            null
+          ],
+          [
+            "cost",
+            "labour_cost_amt_d_sum",
+            32784.33,
+            null
+          ],
+          [
+            "cost",
+            "labour_reg_cost_amt_d_sum",
+            21934.81,
+            null
+          ],
+          [
+            "cost",
+            "labour_ot_cost_amt_d_sum",
+            10849.52,
+            null
+          ],
+          [
+            "cost",
+            "labour_dt_cost_amt_d_sum",
+            0.0,
+            null
+          ]
+        ],
+        "primary_expected_result_role": "final_answer_gold",
+        "judge_guidance": "Use final_answer_gold_rows as the primary final-answer gold. Chinese labels may vary; grade by section keys, field names, dates, ids, and numeric values."
+      }
+    },
+    "L1-METRIC-CUSTOMER-ACTIVE-008": {
+      "expected_result": {
+        "columns": [
+          "result",
+          "row_count",
+          "new_customer_count",
+          "active_customer_count",
+          "evidence"
+        ],
+        "rows": [
+          [
+            "no_matching_customer_behavior",
+            0,
+            0,
+            0,
+            "2026-06-01 华北 + 韩国/Korea 无匹配记录；当天华北市场只有加拿大、德国、美国、英国"
+          ]
+        ]
+      },
+      "contract": {
+        "source": "target_tool_projection",
+        "grain": "final_answer_zero_result",
+        "filters": {
+          "case_id": "L1-METRIC-CUSTOMER-ACTIVE-008",
+          "metric_app_name": "日x销售代表x市场x客户业务类型_客户行为",
+          "stats_dt": "2026-06-01",
+          "effective_area_name_like": "%华北%",
+          "market_cn_name_like": "%韩国%",
+          "market_en_name_like": "%Korea%",
+          "apply_pass_time": "IS NOT NULL",
+          "trace_id": "50caf9ffb6dfe1a9282ec160518615a5",
+          "run_id": "eval-20260626-023354"
+        },
+        "row_count": 1,
+        "accepted_metric_names": [
+          "日x销售代表x市场x客户业务类型_客户行为"
+        ],
+        "answer_contract": {
+          "primary_expected_result_role": "final_answer_gold",
+          "judge_guidance": "expected_result 表达最终业务结论：该切片无匹配客户行为记录，因此新客户数、活跃客户数均为0。空表结构候选在 alternative_expected_results 中用于 deterministic numeric_accuracy。",
+          "must_include": [
+            "无匹配记录",
+            "新客户数为0",
+            "活跃客户数为0",
+            "韩国市场不存在于当天华北市场枚举"
+          ],
+          "numeric_tolerance": "零计数必须完全一致。"
+        }
+      }
+    },
+    "L1-METRIC-CUSTOMER-ACTIVE-009": {
+      "expected_result": {
+        "columns": [
+          "distinct_active_customers"
+        ],
+        "rows": [
+          [
+            0
+          ]
+        ]
+      },
+      "contract": {
+        "source": "target_tool_projection",
+        "grain": "filtered_distinct_active_customer_count",
+        "filters": {
+          "case_id": "L1-METRIC-CUSTOMER-ACTIVE-009",
+          "metric_app_name": "销售代表x市场x客户业务类型_获取统计周期内去重活跃客户数",
+          "stats_dt": "2026-06-01",
+          "effective_area_name": "华北",
+          "market_cn_name": "韩国",
+          "distinct_key": "custom_code",
+          "active_customer_rule": "指标应用原始活跃客户口径",
+          "zero_requires_complete_query_result": true
+        },
+        "row_count": 1,
+        "accepted_metric_names": [
+          "销售代表x市场x客户业务类型_去重活跃客户数",
+          "销售代表x市场x客户业务类型_获取统计周期内去重活跃客户数"
+        ]
+      }
+    },
+    "L1-METRIC-CUSTOMER-ACTIVE-010": {
+      "expected_result": {
+        "columns": [
+          "row_number",
+          "custom_code",
+          "market_name",
+          "business_type_name",
+          "warehouse_code",
+          "carrier_std_name",
+          "carrier_std_service",
+          "sale_zone_code",
+          "cost_zone_code",
+          "bill_zone_code",
+          "currency",
+          "package_count",
+          "system_income",
+          "system_billing_cost",
+          "sales_billed_income",
+          "reconciled_cost_income",
+          "reconciled_bill_cost"
+        ],
+        "rows": []
+      },
+      "contract": {
+        "source": "target_tool_projection",
+        "grain": "limit_50_detail_rows_with_first_10_spot_check",
+        "filters": {
+          "case_id": "L1-METRIC-CUSTOMER-ACTIVE-010",
+          "metric_app_name": "多维快递财务收入成本",
+          "requested_limit": 50,
+          "reliable_answer_rows": 50,
+          "trace_id": "0bacf2d6a637ec461b9e8f11614fcc4f",
+          "run_id": "eval-full-answer-gold-20260626-r1"
+        },
+        "row_count": 0,
+        "answer_contract": {
+          "primary_expected_result_role": "limit_50_final_answer",
+          "judge_guidance": "当模型按指标应用 `多维快递财务收入成本` 成功返回并展示前50行明细时，应视为满足题意，不要要求声明 limit=50 被截断或只可靠展示前10行。expected_result 保留前10行作为最终答案抽查；alternative_expected_results 中的 target_tool_limit_50_previous_gold_for_numeric 是完整50行字段和数值金标。若答案输出完整50行、指标名和字段口径正确，即使未写“截断说明”也不应扣分。",
+          "must_include": [
+            "多维快递财务收入成本",
+            "按默认排序返回前50行明细",
+            "不要要求limit=50被截断说明",
+            "CCRU/CAP/USD",
+            "AMAZON_GROUND和FEDEX_GROUND样例",
+            "第50行GBSD/FEDEX_GROUND/CAP/USD包裹数1系统收入57.97"
+          ],
+          "numeric_tolerance": "前50行金额和包裹数应基本一致，误差不超过1%。"
+        },
+        "accepted_metric_names": [
+          "多维快递财务收入成本"
+        ],
+        "score_mode": "schema_only"
+      }
+    },
+    "L1-METRIC-CUSTOMER-ACTIVE-011": {
+      "expected_result": {
+        "columns": [
+          "dws_custom_active_status_monthly_hi.is_active_sum",
+          "dws_custom_active_status_monthly_hi.is_new_sum",
+          "dws_custom_active_status_monthly_hi.last_month_is_active_sum",
+          "dws_custom_active_status_monthly_hi.month_first_date",
+          "dws_custom_active_status_monthly_hi.month_last_date"
+        ],
+        "rows": [
+          [
+            1043.0,
+            38.0,
+            1020.0,
+            "2026-01-01T00:00:00.000",
+            "2026-01-31T00:00:00.000"
+          ]
+        ]
+      },
+      "contract": {
+        "source": "target_tool_output",
+        "grain": "metric_app_query_result",
+        "filters": {
+          "case_id": "L1-METRIC-CUSTOMER-ACTIVE-011",
+          "metric_app_name": "每月客户行为指标统计",
+          "month_first_date": "2026-01-01",
+          "month_last_date": "2026-01-31",
+          "limit": 50,
+          "page": {
+            "current": 1,
+            "size": 50
+          }
+        },
+        "row_count": 1,
+        "score_mode": "schema_only",
+        "score_mode_reason": "metric app returns a month series; validate field set while gold rows document the requested 2026-01 answer row"
+      }
+    }
+  }
+}

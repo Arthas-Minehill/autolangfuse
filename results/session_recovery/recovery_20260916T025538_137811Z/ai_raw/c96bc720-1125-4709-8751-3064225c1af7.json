@@ -1,0 +1,36 @@
+{
+  "cases": [
+    {
+      "original_input": "帮我分析一下，FedEx的upload label中，有多少是平台面单，有多少是其他第三方乱七八糟账号的。",
+      "original_output": "## FedEx 全结构拆解（近6个月 2026-03-09~09-09，美国仓 TOC，`dwm_tra_toc_outbound_hi`）\n\n**FedEx 总量：593.0 万件**\n\n| 渠道 | 件数 | 占比 | 说明 |\n|---|---:|---:|---|\n| ① Prepaid（常规，乐仓账号出单） | 4,466,206 | 75.3% | 我们的 FedEx 协议账号 |\n| ② Upload（上传面单） | 1,245,807 | 21.0% | 客户自传 PDF 面单 |\n| ③ 3rd（系统第三方平台，bill to 3rd party） | 218,468 | 3.7% | 100% 平台付费账号 |\n\n### ② Upload 上传面单拆细（124.6万件）\n\n| 类别 | 平台 | 件数 | 占Upload |\n|---|---|---:|---:|\n| **平台下载面单** 小计 | | **911,665** | **73.2%** |\n| | Wayfair | 523,644 | 42.0% |\n| | Temu | 334,469 | 26.8% |\n| | The Home Depot | 19,815 | 1.6% |\n| | TikTok | 12,976 | 1.0% |\n| | Walmart | 8,927 | 0.7% |\n| | Amazon | 5,886 | 0.5% |\n| | Overstock | 3,287 | 0.3% |\n| | Lowes | 1,518 | 0.1% |\n| | eBay | 1,015 | 0.1% |\n| | Shein/Target/Chewy/Macys 等 | 128 | 0.0% |\n| **来源不明（疑似客户自有/货代 FedEx 账号）** 小计 | | **334,142** | **26.8%** |\n| | 平台=OTHER | 275,451 | 22.1% |\n| | 平台字段空/null | 58,531 | 4.7% |\n| | Shopify 独立站 | 160 | 0.0% |\n\n**来源不明的 33.4 万件，客户集中度较高**，Top 20 客户占 27.4 万件（82%）：SWWL 一家 12 万件（占不明来源的 36%），NBKMC 22,811、GZMB 17,592、NBYB 12,575、SGSY 10,996 等。\n\n### ③ 3rd 系统第三方平台参考拆分（21.8万件）\nWayfair 88,840、Home Depot 22,290、Lowes 4,696、Walmart 781、Chewy 489，另有 OTHER/空 101,015（46%）。\n\n**口径说明**：数仓不存上传面单的 FedEx 账号号码，“平台下载面单”是按订单来源平台判断的代理口径。Wayfair/Temu 订单基本可确定是平台账号面单；OTHER/空的部分要精确归属需拉面单原始数据或按 tracking 号段反查。",
+      "user_turns": "帮我分析一下，FedEx的upload label中，有多少是平台面单，有多少是其他第三方乱七八糟账号的。\n---\n我们有上传面单和第三方平台。现在只分析上传面单部分。因为在上传面单里面还有一些是客户自己从第三方平台下载的，然后上传给我们。不是用bill to 3rd party。\n\n系统里的第三方平台，是100% bill to 3rd party\n---\n你把整个结构拆解一下，pre-paid，upload，第三方。然后把upload里面也继续拆细。我们要看到明细。",
+      "assistant_clarifications": "",
+      "resolved_input": "分析 FedEx 上传面单（upload，客户自行上传的 PDF 面单）的构成：按订单来源平台拆分，区分平台面单（平台账号出的面单）与其他第三方/客户自有或货代 FedEx 账号面单。同时拆解 FedEx 整体结构（prepaid 乐仓协议账号、upload 上传面单、第三方平台 bill to 3rd party），并将 upload 部分继续拆细到平台与客户明细。用户确认的口径：系统内第三方平台 100% 为 bill to 3rd party；上传面单中存在客户从第三方平台下载后自行上传（非 bill to 3rd party）的部分。",
+      "primary_intent": "业务分析与决策",
+      "secondary_intent": "面单渠道与第三方账号结构分析",
+      "output_format": "分析报告（分渠道/平台明细表）",
+      "execution_status": "成功",
+      "clarification_status": "已完成澄清",
+      "context_required": "已具备",
+      "gold_status": "待独立验证",
+      "exclude_reason": "",
+      "review_notes": "风险与证据边界：1) 时间范围（近6个月 2026-03-09~09-09）、“美国仓/TOC”等口径均为 Assistant 自主选定，未经用户确认，resolved_input 未纳入。2) Turn1 使用 dwm_lt_express_h（pay_type=2）得上传面单 21.8 万件，Turn2/3 改用 dwm_tra_toc_outbound_hi（express_mode='上传面单'）得 124.6 万件，同一问题两次结果口径不一致，需人工确认哪张表/哪个口径正确。3) “平台面单”是按订单来源平台（platform 字段）推断的代理口径，数仓无面单账号字段，Amazon/Walmart/TikTok 等卖家自购面单可能被误归为平台面单。4) 所有件数与占比均来自历史工具输出，未经独立复算，不能直接作为 Gold。5) Turn2 用户对“上传面单 / 第三方平台”的口径澄清是本案例合并的关键。"
+    },
+    {
+      "original_input": "分析一下NJF01和NJF02的FedEx zone分区情况",
+      "original_output": "## NJF01 vs NJF02 — FedEx 销售分区分布（近6个月，2026-03-09~09-09）\n\n注：NJF01 在系统里的仓库代码是 `NJF`。口径：`dwm_lt_express_h`，carrier=FEDEX（不含 FEDEX-SFP），`sales_zone_code`。\n\n| Zone | NJF01 件数 | 占比 | NJF02 件数 | 占比 |\n|---|---:|---:|---:|---:|\n| 2 | 149,582 | 27.9% | 159,015 | 25.2% |\n| 3 | 104,260 | 19.5% | 121,372 | 19.2% |\n| 4 | 114,975 | 21.5% | 145,109 | 23.0% |\n| 5 | 119,369 | 22.3% | 145,433 | 23.1% |\n| 6 | 20,951 | 3.9% | 26,452 | 4.2% |\n| 7 | 6,041 | 1.1% | 8,122 | 1.3% |\n| 8 | 20,191 | 3.8% | 25,229 | 4.0% |\n| 小计（有分区） | 535,369 | 100% | 630,732 | 100% |\n| 无分区（null） | 53,685 | — | 30,735 | — |\n| **总计** | **589,054** | | **661,467** | |\n\n要点：两仓分区结构几乎一致，Zone 2-4 都占约 67-69%，Zone 5 各占 23% 左右，Zone 6-8 远距离合计只有 9% 上下。加权平均 Zone：NJF01 ≈ 3.73，NJF02 ≈ 3.82。NJF01 有 5.4 万件（9.1%）无分区记录，NJF02 是 3.1 万件（4.6%）。",
+      "user_turns": "分析一下NJF01和NJF02的FedEx zone分区情况",
+      "assistant_clarifications": "",
+      "resolved_input": "分析 NJF01 与 NJF02 两个仓库 FedEx 发货的销售分区（zone）分布，对比两仓各 zone 的件数与占比。",
+      "primary_intent": "数据查询与交付",
+      "secondary_intent": "仓库销售分区分布统计",
+      "output_format": "分析报告（分区分布对比表）",
+      "execution_status": "成功",
+      "clarification_status": "需要澄清",
+      "context_required": "已具备",
+      "gold_status": "待独立验证",
+      "exclude_reason": "",
+      "review_notes": "风险与证据边界：1) 时间范围（近6个月 2026-03-09~09-09）与“carrier=FEDEX 不含 FEDEX-SFP”口径均由 Assistant 自主选定，用户未确认。2) NJF01→系统仓库代码 NJF 的映射由 Assistant 自行推断（先查 NJF01/NJF02 无果后改查 NJF），需人工确认 NJF02 是否也有类似映射。3) 无分区（null）记录的归集方式会影响占比分母，需确认。4) 件数与占比均来自历史 SQL 输出，未经独立复算，不能直接作为 Gold。5) 原问题未明确 zone 字段/时间范围/是否含无分区单，属于需要澄清的案例。"
+    }
+  ]
+}

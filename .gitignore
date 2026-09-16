@@ -1,0 +1,52 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Local secrets and overrides
+.env
+.env.local
+.env.*
+!.env.example
+config/session_recovery.env
+*.pem
+*.key
+*.crt
+credentials.json
+
+# Runtime outputs
+.aieval/
+case_snapshots/
+results/
+logs/
+*.log
+
+# Local data files
+*.xlsx
+*.xls
+*.csv
+*.jsonl
+trace-map*.json
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Agent local state
+.agents/
+.claude/
+
+knowledge/
+openspec/

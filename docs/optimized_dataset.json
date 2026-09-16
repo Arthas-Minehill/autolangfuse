@@ -1,0 +1,610 @@
+{
+  "dataset": "aieval/data_analysis",
+  "description": "优化后的评测数据集 - 基于MCP实际数据验证",
+  "optimized_at": "2026-06-16",
+  "schema_version": "aieval-external-runner-v2",
+  "items": [
+    {
+      "case_id": "L1-METRIC-CUSTOMER-ACTIVE-002",
+      "input": {
+        "case_id": "L1-METRIC-CUSTOMER-ACTIVE-002",
+        "original_request": "查询2026年6月1日至2026年6月26日海外仓全局经营分析的多维度收入情况，金额沿用指标原始金额、不做汇率换算；请输出整体、收入构成、仓库市场、仓库Top、客户业务类型和日收入峰值，并说明2026-06-26当天批次是否完整；不要统计2026-06-27及以后的数据。"
+      },
+      "expectedOutput": {
+        "case_id": "L1-METRIC-CUSTOMER-ACTIVE-002",
+        "main_query": "海外仓全局经营分析",
+        "expected_tools": [
+          "metric-mcp-remote.searchMetricApp",
+          "metric-mcp-remote.searchMetricAppQueryResult",
+          "metric-mcp-remote.searchSqlByMetricTypeAndNameExact",
+          "openmetadata.search_metadata",
+          "metabase.search",
+          "metabase.get_table",
+          "metabase.query"
+        ],
+        "evaluation_focus": [
+          "filter:stats_dt>=2026-06-01",
+          "filter:stats_dt<=2026-06-26",
+          "answer:total_earned_amt=41043142.7290",
+          "answer:currency_USD=35912888.9383,EUR=2254911.5500,CAD=2247528.1813,GBP=627814.0594,JPY=0.0000",
+          "answer:batch_status_2026-06-26=complete,row_count=2708,amount=2639853.5713,batch_time>=2026-07-03T05:13:21"
+        ]
+      },
+      "metadata": {
+        "case_id": "L1-METRIC-CUSTOMER-ACTIVE-002",
+        "task_level": "L1",
+        "task_type": "query_metric",
+        "business_domain": "海外仓",
+        "difficulty": null,
+        "source": "manual_mcp_verified"
+      },
+      "datasetName": "aieval/data_analysis"
+    },
+    {
+      "case_id": "L1-METRIC-CUSTOMER-ACTIVE-003",
+      "input": {
+        "case_id": "L1-METRIC-CUSTOMER-ACTIVE-003",
+        "original_request": "查询2026年6月3日至2026年6月26日海外仓的多维度收入情况及价卡成本；价卡成本使用 earned_sys_init_cost_amt_d（系统初次计费成本，按仓计费），金额保持原币不做汇率换算；请输出整体、币种、仓库、客户、承运商/服务和最高收入日。"
+      },
+      "expectedOutput": {
+        "case_id": "L1-METRIC-CUSTOMER-ACTIVE-003",
+        "main_query": "海外仓全局经营分析",
+        "expected_tools": [
+          "metric-mcp-remote.searchMetricApp",
+          "metric-mcp-remote.searchMetricAppQueryResult",
+          "metric-mcp-remote.searchSqlByMetricTypeAndNameExact",
+          "openmetadata.search_metadata",
+          "metabase.search",
+          "metabase.get_table",
+          "metabase.query"
+        ],
+        "evaluation_focus": [
+          "answer:date_range=2026-06-03..2026-06-26",
+          "answer:price_card_cost_field=earned_sys_init_cost_amt_d",
+          "answer:overall_revenue=23846629.21,cost=18453903.90",
+          "answer:currency_USD=21482954.78,EUR=1116685.60,CAD=1050375.69,GBP=196613.14"
+        ]
+      },
+      "metadata": {
+        "case_id": "L1-METRIC-CUSTOMER-ACTIVE-003",
+        "task_level": "L1",
+        "task_type": "query_metric",
+        "business_domain": "海外仓",
+        "difficulty": null,
+        "source": null
+      },
+      "datasetName": "aieval/data_analysis"
+    },
+    {
+      "case_id": "L1-METRIC-CUSTOMER-ACTIVE-004",
+      "input": {
+        "case_id": "L1-METRIC-CUSTOMER-ACTIVE-004",
+        "original_request": "查询2026年6月2日客户行为；按日x销售代表x市场x客户业务类型_客户行为口径，只汇总该日的新客户人日、活跃客户人日、业务类型、区域、市场x业务类型和销售代表Top，不要混入其他日期。"
+      },
+      "expectedOutput": {
+        "case_id": "L1-METRIC-CUSTOMER-ACTIVE-004",
+        "main_query": "日x销售代表x市场x客户业务类型_客户行为",
+        "expected_tools": [
+          "metric-mcp-remote.searchMetricApp",
+          "metric-mcp-remote.searchMetricAppQueryResult",
+          "metric-mcp-remote.searchSqlByMetricTypeAndNameExact"
+        ],
+        "evaluation_focus": [
+          "answer:new_person_days=1",
+          "answer:active_person_days=983",
+          "answer:sales_top=66,60,56,55,50"
+        ]
+      },
+      "metadata": {
+        "case_id": "L1-METRIC-CUSTOMER-ACTIVE-004",
+        "task_level": "L1",
+        "task_type": "query_metric",
+        "business_domain": null,
+        "difficulty": null,
+        "source": null
+      },
+      "datasetName": "aieval/data_analysis"
+    },
+    {
+      "case_id": "L1-METRIC-CUSTOMER-ACTIVE-005",
+      "input": {
+        "case_id": "L1-METRIC-CUSTOMER-ACTIVE-005",
+        "original_request": "查询“客户实时余额_额度_库存体积与估值”的指标定义和返回字段结构，列出16个原始字段及其业务含义；不要查询或引用会随运行时间变化的实时数值，也不要把 create_volume_sum、standard_create_volume_sum 或 create_volume_value_sum 解释成在途体积。"
+      },
+      "expectedOutput": {
+        "case_id": "L1-METRIC-CUSTOMER-ACTIVE-005",
+        "main_query": "客户实时余额_额度_库存体积与估值",
+        "expected_tools": [
+          "metric-mcp-remote.searchMetricApp",
+          "metric-mcp-remote.searchMetricAppQueryResult",
+          "metric-mcp-remote.searchSqlByMetricTypeAndNameExact"
+        ],
+        "evaluation_focus": [
+          "answer:列出16个原始字段及业务含义",
+          "rule:不把create_volume相关字段解释为在途体积",
+          "rule:不返回运行时动态数值"
+        ]
+      },
+      "metadata": {
+        "case_id": "L1-METRIC-CUSTOMER-ACTIVE-005",
+        "task_level": "L1",
+        "task_type": "query_metric",
+        "business_domain": null,
+        "difficulty": null,
+        "source": null
+      },
+      "datasetName": "aieval/data_analysis"
+    },
+    {
+      "case_id": "L1-METRIC-CUSTOMER-ACTIVE-006",
+      "input": {
+        "case_id": "L1-METRIC-CUSTOMER-ACTIVE-006",
+        "original_request": "查询“统计时间内的去重活跃客户数”的指标定义，说明默认统计周期是否在 SQL 中显式限定为2026年，并说明全局去重应采用 overall distinct custom_code，不能把市场或业务类型分组结果直接相加。不要返回运行时动态计数。"
+      },
+      "expectedOutput": {
+        "case_id": "L1-METRIC-CUSTOMER-ACTIVE-006",
+        "main_query": "统计时间内的去重活跃客户数",
+        "expected_tools": [
+          "metric-mcp-remote.searchMetricAppQueryResult",
+          "metric-mcp-remote.searchSqlByMetricTypeAndNameExact"
+        ],
+        "evaluation_focus": [
+          "answer:说明默认统计周期是否显式限定2026年",
+          "answer:overall distinct custom_code",
+          "rule:不相加分组distinct结果"
+        ]
+      },
+      "metadata": {
+        "case_id": "L1-METRIC-CUSTOMER-ACTIVE-006",
+        "task_level": "L1",
+        "task_type": "query_metric",
+        "business_domain": null,
+        "difficulty": null,
+        "source": null
+      },
+      "datasetName": "aieval/data_analysis"
+    },
+    {
+      "case_id": "L1-METRIC-CUSTOMER-ACTIVE-007",
+      "input": {
+        "case_id": "L1-METRIC-CUSTOMER-ACTIVE-007",
+        "original_request": "查询2026年6月1日CAP仓库吞吐量及人员成本指标；只输出CAP当天指标，不扩展到其他仓库、其他日期或无依据的币种筛选。"
+      },
+      "expectedOutput": {
+        "case_id": "L1-METRIC-CUSTOMER-ACTIVE-007",
+        "main_query": "仓储KPI与人效指标",
+        "expected_tools": [
+          "metric-mcp-remote.searchMetricApp",
+          "metric-mcp-remote.searchMetricAppQueryResult",
+          "metric-mcp-remote.searchSqlByMetricTypeAndNameExact"
+        ],
+        "evaluation_focus": [
+          "answer:date=2026-06-01",
+          "answer:warehouse=CAP",
+          "answer:outbound_good_volume=1793.3238",
+          "answer:toc_packages=17027",
+          "answer:tob_goods=477",
+          "answer:rma_packages=214",
+          "answer:employee_total_cost=35093.70",
+          "answer:self_employed_cost=2309.37",
+          "answer:labour_cost=32784.33"
+        ]
+      },
+      "metadata": {
+        "case_id": "L1-METRIC-CUSTOMER-ACTIVE-007",
+        "task_level": "L1",
+        "task_type": "query_metric",
+        "business_domain": "有效客户",
+        "difficulty": null,
+        "source": null
+      },
+      "datasetName": "aieval/data_analysis"
+    },
+    {
+      "case_id": "L1-METRIC-CUSTOMER-ACTIVE-008",
+      "input": {
+        "case_id": "L1-METRIC-CUSTOMER-ACTIVE-008",
+        "original_request": "查询 2026-06-01 华北业务部韩国市场的客户行为。必须按完整日期、区域和市场条件执行精确查询；若结果为零，需要用完整查询结果证明，不能根据分页或缺少目标行推断。"
+      },
+      "expectedOutput": {
+        "case_id": "L1-METRIC-CUSTOMER-ACTIVE-008",
+        "main_query": "日x销售代表x市场x客户业务类型_客户行为",
+        "expected_tools": [
+          "metric-mcp-remote.searchMetricApp",
+          "metric-mcp-remote.searchMetricAppQueryResult",
+          "metric-mcp-remote.searchSqlByMetricTypeAndNameExact",
+          "openmetadata.search_metadata",
+          "metabase.search",
+          "metabase.get_table",
+          "metabase.query"
+        ],
+        "evaluation_focus": [
+          "filter:stats_dt=2026-06-01",
+          "filter:effective_area_name=华北",
+          "filter:market=韩国/Korea",
+          "rule:零值必须由完整精确查询证明"
+        ]
+      },
+      "metadata": {
+        "case_id": "L1-METRIC-CUSTOMER-ACTIVE-008",
+        "task_level": "L1",
+        "task_type": "query_metric",
+        "business_domain": null,
+        "difficulty": null,
+        "source": null
+      },
+      "datasetName": "aieval/data_analysis"
+    },
+    {
+      "case_id": "L1-METRIC-CUSTOMER-ACTIVE-009",
+      "input": {
+        "case_id": "L1-METRIC-CUSTOMER-ACTIVE-009",
+        "original_request": "查询 2026-06-01 华北业务部韩国市场的去重活跃客户数。必须按 distinct custom_code 的口径执行精确查询；若结果为零，需要用完整查询结果证明，不能根据分页或缺少目标行推断。"
+      },
+      "expectedOutput": {
+        "case_id": "L1-METRIC-CUSTOMER-ACTIVE-009",
+        "main_query": "销售代表x市场x客户业务类型_获取统计周期内去重活跃客户数",
+        "expected_tools": [
+          "metric-mcp-remote.searchMetricApp",
+          "metric-mcp-remote.searchMetricAppQueryResult",
+          "metric-mcp-remote.searchSqlByMetricTypeAndNameExact",
+          "openmetadata.search_metadata",
+          "metabase.search",
+          "metabase.get_table",
+          "metabase.query"
+        ],
+        "evaluation_focus": [
+          "filter:stats_dt=2026-06-01",
+          "filter:effective_area_name=华北",
+          "filter:market=韩国/Korea",
+          "measure:distinct custom_code",
+          "rule:零值必须由完整精确查询证明"
+        ]
+      },
+      "metadata": {
+        "case_id": "L1-METRIC-CUSTOMER-ACTIVE-009",
+        "task_level": "L1",
+        "task_type": "query_metric",
+        "business_domain": null,
+        "difficulty": null,
+        "source": null
+      },
+      "datasetName": "aieval/data_analysis"
+    },
+    {
+      "case_id": "L1-METRIC-CUSTOMER-ACTIVE-010",
+      "input": {
+        "case_id": "L1-METRIC-CUSTOMER-ACTIVE-010",
+        "original_request": "查询“多维快递财务收入成本”的指标定义和明细字段结构，说明稳定获取前50行时必须固定哪些日期、批次和排序条件；不要返回会随运行时间变化的当前前50行数值。"
+      },
+      "expectedOutput": {
+        "case_id": "L1-METRIC-CUSTOMER-ACTIVE-010",
+        "main_query": "多维快递财务收入成本",
+        "expected_tools": [
+          "metric-mcp-remote.searchMetricApp",
+          "metric-mcp-remote.searchMetricAppQueryResult",
+          "metric-mcp-remote.searchSqlByMetricTypeAndNameExact"
+        ],
+        "evaluation_focus": [
+          "answer:明细字段结构",
+          "answer:稳定查询需要固定日期、批次和排序",
+          "rule:不返回运行时动态数值"
+        ]
+      },
+      "metadata": {
+        "case_id": "L1-METRIC-CUSTOMER-ACTIVE-010",
+        "task_level": "L1",
+        "task_type": "query_metric",
+        "business_domain": null,
+        "difficulty": null,
+        "source": null
+      },
+      "datasetName": "aieval/data_analysis"
+    },
+    {
+      "case_id": "L1-METRIC-CUSTOMER-ACTIVE-011",
+      "input": {
+        "case_id": "L1-METRIC-CUSTOMER-ACTIVE-011",
+        "original_request": "查询2026年1月客户行为"
+      },
+      "expectedOutput": {
+        "case_id": "L1-METRIC-CUSTOMER-ACTIVE-011",
+        "main_query": "每月客户行为指标统计",
+        "expected_tools": [
+          "metric-mcp-remote.searchMetricApp",
+          "metric-mcp-remote.searchMetricAppQueryResult",
+          "metric-mcp-remote.searchSqlByMetricTypeAndNameExact"
+        ],
+        "evaluation_focus": [
+          "filter:month_first_date=2026-01-01",
+          "filter:month_last_date=2026-01-31",
+          "field:dws_custom_active_status_monthly_hi.is_active_sum",
+          "field:dws_custom_active_status_monthly_hi.is_new_sum",
+          "field:dws_custom_active_status_monthly_hi.last_month_is_active_sum",
+          "field:dws_custom_active_status_monthly_hi.month_first_date",
+          "field:dws_custom_active_status_monthly_hi.month_last_date"
+        ]
+      },
+      "metadata": {
+        "case_id": "L1-METRIC-CUSTOMER-ACTIVE-011",
+        "task_level": "L1",
+        "task_type": "query_metric",
+        "business_domain": null,
+        "difficulty": null,
+        "source": null
+      },
+      "datasetName": "aieval/data_analysis",
+      "id": "L1-METRIC-CUSTOMER-ACTIVE-011"
+    },
+    {
+      "case_id": "L1-META-FIELD-MAPPING-001",
+      "input": {
+        "case_id": "L1-META-FIELD-MAPPING-001",
+        "original_request": "找包含 custom_code、year_month 的表/数据集/看板，并说明这两个字段的含义和推荐使用场景。"
+      },
+      "expectedOutput": {
+        "case_id": "L1-META-FIELD-MAPPING-001",
+        "main_query": "OpenMetadata: custom_code year_month table discovery",
+        "expected_tools": [
+          "openmetadata.search_metadata",
+          "metabase.search",
+          "metabase.get_table"
+        ],
+        "evaluation_focus": [
+          "answer_mentions_table:StarRocks-OCI-PRD.default.dws.dws_custom_active_status_monthly_hi",
+          "answer_mentions_field:custom_code",
+          "answer_mentions_field:year_month",
+          "answer_mentions_metabase_table_id:2125"
+        ],
+        "expected_result_contract": {
+          "source": "target_tool_projection",
+          "grain": "metadata_discovery_answer",
+          "filters": {
+            "openmetadata_table": "StarRocks-OCI-PRD.default.dws.dws_custom_active_status_monthly_hi",
+            "metabase_table_id": 2125
+          },
+          "row_count": 0,
+          "score_mode": "task_completed_only",
+          "expected_answer_key_points": [
+            "推荐 dws_custom_active_status_monthly_hi",
+            "custom_code 是客户代码",
+            "year_month 是统计年月"
+          ]
+        }
+      },
+      "metadata": {
+        "case_id": "L1-META-FIELD-MAPPING-001",
+        "task_level": "L1",
+        "task_type": "metadata_discovery",
+        "business_domain": "客户行为",
+        "evaluation_profile": "task_completed_only",
+        "deterministic_evaluators": [
+          "task_completed"
+        ],
+        "source": "openmetadata_metabase_verified",
+        "created_at": "2026-06-26",
+        "last_verified_at": "2026-06-26"
+      },
+      "datasetName": "aieval/data_analysis"
+    },
+    {
+      "case_id": "L1-META-BIZ-THEME-001",
+      "input": {
+        "case_id": "L1-META-BIZ-THEME-001",
+        "original_request": "找客户月度活跃及留存状态相关的表，给出推荐表、数据粒度、来源系统和关键字段。"
+      },
+      "expectedOutput": {
+        "case_id": "L1-META-BIZ-THEME-001",
+        "main_query": "OpenMetadata: customer monthly active retention table discovery",
+        "expected_tools": [
+          "openmetadata.search_metadata",
+          "metabase.search",
+          "metabase.get_table"
+        ],
+        "evaluation_focus": [
+          "answer_mentions_table:StarRocks-OCI-PRD.default.dws.dws_custom_active_status_monthly_hi",
+          "answer_mentions_grain:单个客户在单个统计月份、业务类型、市场维度",
+          "answer_mentions_source_system:BMS",
+          "answer_mentions_fields:is_active,is_new,last_month_is_active,is_month_retention"
+        ],
+        "expected_result_contract": {
+          "source": "target_tool_projection",
+          "grain": "metadata_discovery_answer",
+          "filters": {
+            "openmetadata_table": "StarRocks-OCI-PRD.default.dws.dws_custom_active_status_monthly_hi",
+            "metabase_table_id": 2125
+          },
+          "row_count": 0,
+          "score_mode": "task_completed_only",
+          "expected_answer_key_points": [
+            "推荐 dws_custom_active_status_monthly_hi",
+            "说明月度客户活跃及留存状态",
+            "包含 is_active、is_new、last_month_is_active、is_month_retention"
+          ]
+        }
+      },
+      "metadata": {
+        "case_id": "L1-META-BIZ-THEME-001",
+        "task_level": "L1",
+        "task_type": "metadata_discovery",
+        "business_domain": "客户行为",
+        "evaluation_profile": "task_completed_only",
+        "deterministic_evaluators": [
+          "task_completed"
+        ],
+        "source": "openmetadata_metabase_verified",
+        "created_at": "2026-06-26",
+        "last_verified_at": "2026-06-26"
+      },
+      "datasetName": "aieval/data_analysis"
+    },
+    {
+      "case_id": "L1-META-CONSTRAINED-001",
+      "input": {
+        "case_id": "L1-META-CONSTRAINED-001",
+        "original_request": "在企业数据目录的 dws 数据中查找客户行为相关、owner 为 HAYLEYHU/hurunli 的表，列出2个候选并说明日粒度和月粒度差异。"
+      },
+      "expectedOutput": {
+        "case_id": "L1-META-CONSTRAINED-001",
+        "main_query": "OpenMetadata: constrained customer behavior table discovery",
+        "expected_tools": [
+          "openmetadata.search_metadata",
+          "metabase.search",
+          "metabase.get_table"
+        ],
+        "evaluation_focus": [
+          "answer_mentions_table:dws_custom_active_status_daily_hi",
+          "answer_mentions_table:dws_custom_active_status_monthly_hi",
+          "answer_mentions_owner:HAYLEYHU",
+          "answer_mentions_owner:hurunli"
+        ],
+        "expected_result_contract": {
+          "source": "target_tool_projection",
+          "grain": "metadata_discovery_answer",
+          "filters": {
+            "openmetadata_owner": "hurunli/HAYLEYHU",
+            "database_schema": "StarRocks-OCI-PRD.default.dws",
+            "candidate_tables": [
+              "dws_custom_active_status_daily_hi",
+              "dws_custom_active_status_monthly_hi"
+            ]
+          },
+          "row_count": 0,
+          "score_mode": "task_completed_only",
+          "expected_answer_key_points": [
+            "日粒度表 dws_custom_active_status_daily_hi",
+            "月粒度表 dws_custom_active_status_monthly_hi",
+            "owner 为 hurunli/HAYLEYHU"
+          ]
+        }
+      },
+      "metadata": {
+        "case_id": "L1-META-CONSTRAINED-001",
+        "task_level": "L1",
+        "task_type": "metadata_discovery",
+        "business_domain": "客户行为",
+        "evaluation_profile": "task_completed_only",
+        "deterministic_evaluators": [
+          "task_completed"
+        ],
+        "source": "openmetadata_metabase_verified",
+        "created_at": "2026-06-26",
+        "last_verified_at": "2026-06-26"
+      },
+      "datasetName": "aieval/data_analysis"
+    },
+    {
+      "case_id": "L1-META-FIELD-USAGE-001",
+      "input": {
+        "case_id": "L1-META-FIELD-USAGE-001",
+        "original_request": "我要取客户近24月留存、最新活跃月份、招商团队区域，可以用哪个表读取？请给出字段名和表名。"
+      },
+      "expectedOutput": {
+        "case_id": "L1-META-FIELD-USAGE-001",
+        "main_query": "OpenMetadata: customer retention field usage discovery",
+        "expected_tools": [
+          "openmetadata.search_metadata",
+          "metabase.search",
+          "metabase.get_table"
+        ],
+        "evaluation_focus": [
+          "answer_mentions_table:dws_custom_active_status_monthly_hi",
+          "answer_mentions_field:recent_24month_retention",
+          "answer_mentions_field:lastest_active_month",
+          "answer_mentions_field:effective_area_name"
+        ],
+        "expected_result_contract": {
+          "source": "target_tool_projection",
+          "grain": "metadata_discovery_answer",
+          "filters": {
+            "openmetadata_table": "StarRocks-OCI-PRD.default.dws.dws_custom_active_status_monthly_hi",
+            "metabase_table_id": 2125,
+            "fields": [
+              "recent_24month_retention",
+              "lastest_active_month",
+              "effective_area_name"
+            ]
+          },
+          "row_count": 0,
+          "score_mode": "task_completed_only",
+          "expected_answer_key_points": [
+            "使用 dws_custom_active_status_monthly_hi",
+            "recent_24month_retention 是近24月留存",
+            "lastest_active_month 是最新活跃月份",
+            "effective_area_name 是招商团队区域名称"
+          ]
+        }
+      },
+      "metadata": {
+        "case_id": "L1-META-FIELD-USAGE-001",
+        "task_level": "L1",
+        "task_type": "metadata_discovery",
+        "business_domain": "客户行为",
+        "evaluation_profile": "task_completed_only",
+        "deterministic_evaluators": [
+          "task_completed"
+        ],
+        "source": "openmetadata_metabase_verified",
+        "created_at": "2026-06-26",
+        "last_verified_at": "2026-06-26"
+      },
+      "datasetName": "aieval/data_analysis"
+    },
+    {
+      "case_id": "L1-META-ENUM-001",
+      "input": {
+        "case_id": "L1-META-ENUM-001",
+        "original_request": "dws_custom_active_status_monthly_hi 表里 business_type_name、market_cn_name、is_active、is_month_retention 的枚举值有哪些？"
+      },
+      "expectedOutput": {
+        "case_id": "L1-META-ENUM-001",
+        "main_query": "Metabase: dws_custom_active_status_monthly_hi field values",
+        "expected_tools": [
+          "metabase.search",
+          "metabase.get_table",
+          "metabase.get_table_field_values"
+        ],
+        "evaluation_focus": [
+          "answer_mentions_field_values:business_type_name=4DC,4SPL,外销,海外仓,自营",
+          "answer_mentions_field_values:market_cn_name=加拿大,德国,日本,美国,英国",
+          "answer_mentions_field_values:is_active=0,1",
+          "answer_mentions_field_values:is_month_retention=0,1"
+        ],
+        "expected_result_contract": {
+          "source": "target_tool_projection",
+          "grain": "metadata_field_values_answer",
+          "filters": {
+            "metabase_table_id": 2125,
+            "field_ids": {
+              "business_type_name": 48666,
+              "market_cn_name": 48668,
+              "is_active": 48673,
+              "is_month_retention": 48675
+            }
+          },
+          "row_count": 0,
+          "score_mode": "task_completed_only",
+          "expected_answer_key_points": [
+            "business_type_name 包含 4DC、4SPL、外销、海外仓、自营",
+            "market_cn_name 包含 加拿大、德国、日本、美国、英国",
+            "is_active 和 is_month_retention 均为 0/1"
+          ]
+        }
+      },
+      "metadata": {
+        "case_id": "L1-META-ENUM-001",
+        "task_level": "L1",
+        "task_type": "enum_discovery",
+        "business_domain": "客户行为",
+        "evaluation_profile": "task_completed_only",
+        "deterministic_evaluators": [
+          "task_completed"
+        ],
+        "source": "openmetadata_metabase_verified",
+        "created_at": "2026-06-26",
+        "last_verified_at": "2026-06-26"
+      },
+      "datasetName": "aieval/data_analysis"
+    }
+  ]
+}
